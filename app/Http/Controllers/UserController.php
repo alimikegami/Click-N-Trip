@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -16,6 +17,11 @@ class UserController extends Controller
     public function register()
     {
         return view('RegisterPage');
+    }
+
+    public function registerAsTourGuide()
+    {
+        return view('RegisterAsTourGuidePage');
     }
 
     public function store(Request $request)
@@ -32,10 +38,30 @@ class UserController extends Controller
         return redirect('/register')->with('status', 'Anda berhasil Mendaftar');
     }
 
-    public function authenticate(Request $request) {
+    public function storeTourGuideDetails(Request $request) {
         $validated = $request->validate([
+            'address' => 'required',
+            'province' => 'required|unique:users,email',
+            'nik' => 'required|unique:users,nik|digits:12',
+            'fotoktp' => 'required|image|mimes:png,jpeg|max:5120',
+        ]);
+
+        
+    }
+
+    public function authenticate(Request $request) {
+        $credentials = $request->validate([
             'email' => 'required',
             'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('register-as-tour-guide');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
         ]);
     }
 }
