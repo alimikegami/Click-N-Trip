@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/store', [UserController::class, 'store'])->name('store');
+Route::post('/authenticate', [UserController::class, 'authenticate'])->name('authenticate');
+Route::get('/register-as-tour-guide', [UserController::class, 'registerAsTourGuide'])->name('register-as-tour-guide');
