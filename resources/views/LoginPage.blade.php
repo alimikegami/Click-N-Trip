@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/LoginPage.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/LoginPage.css">
+    <link rel="stylesheet" href="../css/index.css">
     <title>Login</title>
 </head>
 <body>
       <!-- Login Page Starts Here -->
       <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
-        <div class="form-container container-fluid">
+        <div class="form-container container-fluid rounded">
           <div class="row">
             <div class="col">
               <div class="container">
@@ -36,7 +37,7 @@
             </form>
           </div>
           </div>
-          <div class="col">
+          <div class="col d-flex justify-content-center align-items-center">
             <div class="container" id="login-right-content">
               <h2 class='text-center'id='right-text' >Dont have an account?</h2>
               <div class="d-grid gap-2 pb-5">
