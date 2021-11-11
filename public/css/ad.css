@@ -1,0 +1,19 @@
+.ad:hover{
+    transform: scale(1.015);
+    cursor: pointer;
+}
+#ad1{
+    transition: transform .2s;
+    background-image: url(../Gallery/Uluwatu.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}
+#ad2{
+    transition: transform .2s;
+    background-image: url(../Gallery/beach1.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}
+

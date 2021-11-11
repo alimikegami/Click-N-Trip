@@ -1,0 +1,17 @@
+.nav-link{
+    font-size: 17px;
+    margin: 0px 5px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+#custom-navbar{
+    font-family: 'Roboto', sans-serif !important;
+    min-height: 70px;
+}
+.nav-link{
+    transition:transform .2s;
+}
+.nav-link:hover{
+    transform: scale(1.1);
+}
+
