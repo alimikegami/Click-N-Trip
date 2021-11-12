@@ -37,9 +37,19 @@
           </div>
         </div>
       </nav>
+      @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
       <!-- Register Page Starts Here -->
       <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
-        <form class="child">
+        <form class="child" action="/store-tour-guide" method="POST" enctype="multipart/form-data">
+            @csrf
             <h2>Fill in to Register as Tour Guide!</h2>
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
@@ -55,7 +65,7 @@
             </div>
             <div class="mb-3">
                 <label for="fotoktp" class="form-label">Selfie With KTP</label>
-                <input type="file" name='fotoktp' class="form-control" id="fotoktp">
+                <input type="file" name="fotoktp" class="form-control" id="fotoktp">
             </div>
         <button type="submit" class="btn btn-primary">Sign Up</button>
         <p class="mt-2">Don't have an account?</p>

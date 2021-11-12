@@ -41,12 +41,21 @@ class UserController extends Controller
     public function storeTourGuideDetails(Request $request) {
         $validated = $request->validate([
             'address' => 'required',
-            'province' => 'required|unique:users,email',
-            'nik' => 'required|unique:users,nik|digits:12',
-            'fotoktp' => 'required|image|mimes:png,jpeg|max:5120',
+            'province' => 'required',
+            'nik' => 'required|unique:users,nik|digits:16',
+            'fotoktp' => 'required|mimes:jpg,bmp,png|max:5120',
         ]);
 
-        
+        $path = $request->file('fotoktp')->store('selfie-ktp');
+        $temp = explode('/', $path);    // Getting the attachment name
+        $user = User::find(Auth::id());
+        $user->nik = $request->nik;
+        $user->address = $request->address;
+        $user->province = $request->province;
+        $user->selfie_with_ktp = $temp[1];
+        $user->save();
+
+        return redirect()->route('dummy', [$user]);
     }
 
     public function authenticate(Request $request) {
