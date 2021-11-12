@@ -37,4 +37,5 @@ label{
 }
 #delete-row-button{
     max-height: 45px !important;
+    background-color: red !important;
 }

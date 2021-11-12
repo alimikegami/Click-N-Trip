@@ -46,7 +46,7 @@
       <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
         <div class='form-container container-fluid mt-5 mb-5 rounded'>
           <div class="row">
-            <div class="col-2 rounded" id='container-image'>
+            <div class="col-lg-2 rounded" id='container-image'>
             </div>
             <div class="col">
               <div class="container">
@@ -111,9 +111,11 @@
                           row.appendChild(timeEnd);
                           row.appendChild(agenda);
                           $(row).append(
+                            "<div class = 'container'>"+
                             "<button type='button' onClick = 'deleteRow(this)'' class = 'btn btn-primary' id='delete-row-button'>"+
-                              "<p>" + "Remove" + "</p>"+
-                              "</button>"
+                              "Remove"+
+                              "</button>"+
+                            "</div>"
                           );
                           table.appendChild(row)      
                         }
