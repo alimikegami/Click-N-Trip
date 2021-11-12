@@ -17,6 +17,9 @@
       <div class="parent container d-flex justify-content-center align-items-center h-100">
         <div class='form-container container-fluid rounded mt-5 mb-5'>
           <div class="row">
+            <div class="col-lg-2 rounded" id='container-image'>
+              
+            </div>
             <div class="col">
               <div class="container">
                 <form action="/store" method="post" class='register-form'>

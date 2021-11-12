@@ -59,17 +59,17 @@
         <div class="benefits-section container">
             <div class="row">
                 <h2 class="text-center mt-5 mb-5">Why Use Click n Trip?</h2>
-                <div class="col pt-1 text-center benefits-item">
+                <div class="col-lg pt-1 text-center benefits-item">
                     <h3 class="pb-1">Easy to Use</h3>
                     <i class="bi bi-check2-square" style="font-size: 7rem; color:black;"></i>
                     <p class="pt-2">Our service provides ease of use and easy access for our customer</p>
                 </div>
-                <div class="col pt-1 text-center benefits-item">
+                <div class="col-lg pt-1 text-center benefits-item">
                     <h3 class="pb-1">Fast</h3>
                     <i class="bi bi-lightning-charge-fill" style="font-size: 7rem; color:black;"></i>
                     <p class="pt-2">Using Click-n-Trip you will get tour guide for your travels fast</p>
                 </div>
-                <div class="col pt-1 text-center benefits-item">
+                <div class="col-lg pt-1 text-center benefits-item">
                     <h3 class="pb-1">Efficient</h3>
                     <i class="bi bi-graph-up" style="font-size: 7rem; color:black;"></i>
                     <p class="pt-2">Click-n-Trip keeps all form of transactions using our services as efficient as possible</p>
