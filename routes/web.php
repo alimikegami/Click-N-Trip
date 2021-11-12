@@ -28,3 +28,6 @@ Route::post('/store', [UserController::class, 'store'])->name('store');
 Route::post('/authenticate', [UserController::class, 'authenticate'])->name('authenticate');
 Route::get('/register-as-tour-guide', [UserController::class, 'registerAsTourGuide'])->name('register-as-tour-guide')->middleware('auth');
 Route::post('/store-tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide')->middleware('auth');
+Route:: get ('/tourposting', function () {
+    return view('TourPostingPage');
+ });

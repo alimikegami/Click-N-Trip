@@ -1,0 +1,35 @@
+body{
+    font-family: 'Roboto',sans-serif !important;
+    background-image: url(../Gallery/cityimg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+#custom-navbar{
+    background-color: #11999E;
+}
+.parent {
+    min-height: 100vh;
+}
+.form-container{
+    background-color: #E4F9F5;
+    max-width: 950px;
+}
+.btn-primary{
+    background-color: #11999E !important;
+}
+#right-text{
+    font-weight: 700;
+    font-size: 36px;
+}
+label{
+    font-size: 18px !important;
+}
+#desc{
+    min-height: 80px;
+}
+#max_capacity_per_day{
+    max-width: 65px;
+}
+#show-thumbnail{
+    background-color: white;
+}
