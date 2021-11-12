@@ -117,11 +117,17 @@
                               "</button>"+
                             "</div>"
                           );
-                          table.appendChild(row)      
+                          table.appendChild(row) 
+                          clearScheduleForm();     
                         }
                       }
                       function deleteRow(button){
                         $(button).parents('tr').remove();
+                      }
+                      function clearScheduleForm(){
+                        $("#time-start").val("");
+                        $("#time-end").val("");
+                        $("#agenda").val("");
                       }
                     </script>
                     <div class="mb-3">
