@@ -31,3 +31,6 @@ Route::post('/store-tour-guide', [UserController::class, 'storeTourGuideDetails'
 Route:: get ('/tourposting', function () {
     return view('TourPostingPage');
  });
+ Route:: get ('/dashboard-admin', function () {
+    return view('AdminDashboard');
+ });
