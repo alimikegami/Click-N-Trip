@@ -24,6 +24,10 @@ class UserController extends Controller
         return view('users.register-as-tour-guide');
     }
 
+    public function dayTripPlanForm() {
+        return view('users.create-day-trip-plan');
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
