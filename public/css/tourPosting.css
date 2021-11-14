@@ -22,7 +22,7 @@ body{
     font-size: 36px;
 }
 label{
-    font-size: 18px !important;
+    font-size: 16px !important;
 }
 #max_capacity_per_day{
     max-width: 65px;
@@ -34,8 +34,4 @@ label{
     background-image: url(../Gallery/leave.jpg);
     background-size: cover;
     background-position: center;
-}
-#delete-row-button{
-    max-height: 45px !important;
-    background-color: red !important;
 }

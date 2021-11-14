@@ -73,86 +73,97 @@
                         <label for="destination" class="form-label">Destination</label>
                         <input type="text" name='destination' class="form-control" id="destination" placeholder='Seminyak-Bali'> 
                     </div>
-                    <div class="row mb-3" id='show_plans'>
-                        <label>Plan Schedule</label>
-                        <table class='table' id='schedule-table'>
-                          <thead>
-                            <tr>
-                              <th scope='col' class='text-center'>Time Start</th>
-                              <th scope='col' class='text-center'>Time End</th>
-                              <th scope='col' class='text-center'>Agenda</th>
-                              <th scope='col' class=''></th>
-                            </tr>
-                            <tbody id="table-body">
-                              <tr>
-                              </tr>
-                            </tbody>
-                          </thead>
-                        </table>
-                    </div>
                     <script>
                       function addRow(){
-                        let table = document.getElementById("table-body");
-                        let row = document.createElement('tr');
-                        let timeStart = document.createElement('td');
-                        timeStart.className = 'text-center';
-                        let timeEnd = document.createElement('td');
-                        timeEnd.className = 'text-center';
-                        let agenda = document.createElement('td');
-                        agenda.className = 'text-center';
-                        let timeStartValue = document.getElementById("time-start").value;
-                        let timeEndValue = document.getElementById("time-end").value;
-                        let agendaValue = document.getElementById("agenda").value;
-                        if (timeStartValue != "" && timeEndValue != "" && agendaValue != "") {
-                          timeStart.innerHTML = timeStartValue;
-                          timeEnd.innerHTML = timeEndValue;
-                          agenda.innerHTML = agendaValue;
-                          row.appendChild(timeStart);
-                          row.appendChild(timeEnd);
-                          row.appendChild(agenda);
-                          $(row).append(
-                            "<div class = 'container'>"+
-                            "<button type='button' onClick = 'deleteRow(this)'' class = 'btn btn-primary' id='delete-row-button'>"+
-                              "Remove"+
-                              "</button>"+
-                            "</div>"
-                          );
-                          table.appendChild(row) 
-                          clearScheduleForm();     
+                        let container = document.getElementById('schedule-form');
+
+                        let form = document.createElement('div');
+                        form.className = 'row mb-3';
+
+                        let formTimeColumn = document.createElement('div');
+                        formTimeColumn.className = 'col';
+
+                        let formTimeOutsideContainer = document.createElement('div');
+                        formTimeOutsideContainer.className = 'row';
+
+                        let formTimeStartContainer = document.createElement('div');
+                        formTimeStartContainer.className='col';
+                        let formTimeStart = document.createElement('input');
+                        formTimeStart.type = 'time';
+                        formTimeStart.name = 'time-start';
+                        formTimeStart.className = 'form-control'
+                        formTimeStart.id = 'time-start';
+                        formTimeStart.placeholder = 'start'
+
+                        let formTimeEndContainer = document.createElement('div');
+                        formTimeEndContainer.className='col';
+                        let formTimeEnd = document.createElement('input');
+                        formTimeEnd.type = 'time';
+                        formTimeEnd.name = 'time-end';
+                        formTimeEnd.className = 'form-control'
+                        formTimeEnd.id = 'time-end';
+                        formTimeEnd.placeholder = 'end'
+
+                        formAgendaColumn = document.createElement('div');
+                        formAgendaColumn.className='col';
+                        let formAgenda = document.createElement('input');
+                        formAgenda.type = 'text';
+                        formAgenda.name = 'agenda';
+                        formAgenda.className = 'form-control'
+                        formAgenda.id = 'agenda';
+                        formAgenda.placeholder = 'Schedule Agenda';
+
+                        let startLabel = document.createElement('label');
+                        startLabel.htmlFor = 'time-start';
+                        startLabel.className = 'form-label';
+                        startLabel.innerHTML = 'Time-Start';
+                        let endLabel = document.createElement('label');
+                        endLabel.htmlFor = 'time-end';
+                        endLabel.className = 'form-label';
+                        endLabel.innerHTML = 'Time-End';
+                        let agendaLabel = document.createElement('label');
+                        agendaLabel.htmlFor = 'agenda';
+                        agendaLabel.className = 'form-label';
+                        agendaLabel.innerHTML = 'Agenda';
+                        
+                        formTimeStartContainer.appendChild(startLabel)
+                        formTimeStartContainer.appendChild(formTimeStart);
+                        formTimeEndContainer.appendChild(endLabel);
+                        formTimeEndContainer.appendChild(formTimeEnd);
+                        formTimeOutsideContainer.appendChild(formTimeStartContainer);
+                        formTimeOutsideContainer.appendChild(formTimeEndContainer);
+                        formTimeColumn.appendChild(formTimeOutsideContainer)
+                        formAgendaColumn.appendChild(agendaLabel);
+                        formAgendaColumn.appendChild(formAgenda);
+                        form.appendChild(formTimeColumn);
+                        form.appendChild(formAgendaColumn);
+                        container.appendChild(form)
                         }
-                      }
-                      function deleteRow(button){
-                        $(button).parents('tr').remove();
-                      }
-                      function clearScheduleForm(){
-                        $("#time-start").val("");
-                        $("#time-end").val("");
-                        $("#agenda").val("");
-                      }
                     </script>
-                    <div class="mb-3">
+                    <div class="mb-3" id='schedule-form'>
                         <label class="form-label">Add Schedule</label>
-                        <div class="row">
-                            <div class="col"> 
-                                <label class="form-label">Time</label>
+                        <div class="row mb-3" >
+                            <div class="col" > 
                                 <div class="row">
                                     <div class="col">
-                                        <input type="text" name='time_start' class="form-control" id="time-start" placeholder='start'> 
+                                        <label for="time-start" class="form-label">Time-Start</label>
+                                        <input type="time" name='time-start' class="form-control" id="time-start" placeholder='start'> 
                                     </div>   
                                     <div class="col">
-                                        <input type="text" name='time_end' class="form-control" id="time-end" placeholder='end'> 
+                                        <label for="time-end" class="form-label">Time-End</label>
+                                        <input type="time" name='time-end' class="form-control" id="time-end" placeholder='end'> 
                                     </div>   
                                 </div>
                             </div>
                             <div class="col"> 
-                                <label class="form-label">Agenda</label>   
-                                <input type="text" name='agenda' class="form-control" id="agenda" placeholder='Visit Kintamani Village'> 
+                                <label for = 'agenda' class="form-label">Agenda</label>   
+                                <input type="text" name='agenda' class="form-control" id="agenda" placeholder='Shedule Agenda'> 
                             </div>
                         </div>
-                        <div class="d-grid gap-2">
-                            <button type='button' onclick="addRow()" class="btn btn-primary mt-3">Add Schedule</button>
-                        </div>
-                    </div>
+                      </div>
+                      <div class="d-grid gap-2">
+                          <button type='button' onclick="addRow()" class="btn btn-primary mt-3">Add Schedule</button>
+                      </div>
                     <div class="mb-3">
                         <label class="form-label">Day Trip Thumbnail</label>
                         <input type="file" name='image_path' class="form-control" id="image_path"> 
