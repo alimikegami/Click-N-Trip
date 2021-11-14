@@ -21,12 +21,15 @@
                     <h2 class='pt-5' id='caption'>Log-In</h2>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" name='email' id="email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name='email' id="email" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password">
+                        <input type="password" name="password" class="form-control @error('email') is-invalid @enderror" id="password">
                     </div>
+                        @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     <div class="d-grid gap-2 pb-3">
                       <button type="submit" class="btn btn-primary">Login</button>
                     </div>
