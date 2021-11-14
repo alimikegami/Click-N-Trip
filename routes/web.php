@@ -15,7 +15,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('LandingPage');
+    return view('landing-page.landing-page');
 });
 
 Route::get('/dummy', function(){
@@ -30,7 +30,4 @@ Route::get('/register-as-tour-guide', [UserController::class, 'registerAsTourGui
 Route::post('/store-tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide')->middleware('auth');
 Route:: get ('/tourposting', function () {
     return view('TourPostingPage');
- });
- Route:: get ('/dashboard-admin', function () {
-    return view('AdminDashboard');
  });
