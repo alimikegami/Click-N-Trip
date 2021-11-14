@@ -18,7 +18,7 @@
             </div>
             <div class="col">
               <div class="container">
-                <form class="child" action="/authenticate" method="POST">
+                <form class="child" action="/users/login" method="POST">
                     @csrf
                     <h2 class='pt-5' id='caption'>Log-In</h2>
                     <div class="mb-3">

@@ -22,7 +22,7 @@
             </div>
             <div class="col">
               <div class="container">
-                <form action="/store" method="post" class='register-form'>
+                <form action="/users/register" method="post" class='register-form'>
                     @csrf
                     <h2 class='pt-5' id='caption'>Sign-Up</h2>
                     <div class="mb-3">

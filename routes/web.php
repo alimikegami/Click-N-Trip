@@ -20,8 +20,13 @@ Route::get('/', function () {
 
 Route::get('/users/login', [UserController::class, 'login'])->name('login');
 Route::get('/users/register', [UserController::class, 'register'])->name('register');
-Route::post('/users/login', [UserController::class, 'store'])->name('store');
-Route::post('/users/register', [UserController::class, 'authenticate'])->name('authenticate');
+Route::post('/users/register', [UserController::class, 'store'])->name('store');
+Route::post('/users/login', [UserController::class, 'authenticate'])->name('authenticate');
 Route::get('/users/register/tour-guide', [UserController::class, 'registerAsTourGuide'])->name('register-as-tour-guide')->middleware('auth');
 Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide')->middleware('auth');
 Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->middleware('auth');
+
+Route::get('/day-trips');
+Route::post('/day-trips');
+Route::get('/day-trips/{id}');
+
