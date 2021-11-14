@@ -11,17 +11,17 @@ class UserController extends Controller
 {
     public function login()
     {
-        return view('LoginPage');
+        return view('users.login');
     }
 
     public function register()
     {
-        return view('RegisterPage');
+        return view('users.register');
     }
 
     public function registerAsTourGuide()
     {
-        return view('RegisterAsTourGuidePage');
+        return view('users.register-as-tour-guide');
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class UserController extends Controller
         $validated['role'] = "user";
         $validated['password'] = Hash::make($validated['password']);
         $user = User::create($validated);
-        return redirect('/register')->with('status', 'Anda berhasil Mendaftar');
+        return redirect('users/register')->with('status', 'Anda berhasil Mendaftar');
     }
 
     public function storeTourGuideDetails(Request $request) {
@@ -55,7 +55,7 @@ class UserController extends Controller
         $user->selfie_with_ktp = $temp[1];
         $user->save();
 
-        return redirect()->route('dummy', [$user]);
+        // return redirect()->route('dummy', [$user]);
     }
 
     public function authenticate(Request $request) {
