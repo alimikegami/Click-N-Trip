@@ -24,6 +24,4 @@ Route::post('/users/login', [UserController::class, 'store'])->name('store');
 Route::post('/users/register', [UserController::class, 'authenticate'])->name('authenticate');
 Route::get('/users/register/tour-guide', [UserController::class, 'registerAsTourGuide'])->name('register-as-tour-guide')->middleware('auth');
 Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide')->middleware('auth');
-Route::get('/users/day-trips', function () {
-    return view('TourPostingPage');
- });
+Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->middleware('auth');
