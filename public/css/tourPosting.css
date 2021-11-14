@@ -24,12 +24,18 @@ body{
 label{
     font-size: 18px !important;
 }
-#desc{
-    min-height: 80px;
-}
 #max_capacity_per_day{
     max-width: 65px;
 }
 #show-thumbnail{
     background-color: white;
+}
+#container-image{
+    background-image: url(../Gallery/leave.jpg);
+    background-size: cover;
+    background-position: center;
+}
+#delete-row-button{
+    max-height: 45px !important;
+    background-color: red !important;
 }

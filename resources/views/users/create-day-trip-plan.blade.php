@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Post Trip</title>
 </head>
 <body>
@@ -44,25 +46,20 @@
       <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
         <div class='form-container container-fluid mt-5 mb-5 rounded'>
           <div class="row">
-              <div class="col d-flex justify-content-center align-items-center">
-                <div class="container" id="right-content">
-                  <h2 class='text-center'id='right-text' >Post Day Trip Plan</h2>
-                  <div class="container d-flex align-items-center justify-content-center">
-                    <i class="bi bi-calendar-event" style="font-size: 9.5rem; color:black;"></i>
-                  </div>
-                </div>
-              </div>
+            <div class="col-lg-2 rounded" id='container-image'>
+            </div>
             <div class="col">
               <div class="container">
                 <form action="/store" method="post" class='register-form pt-5'>
                     @csrf
+                    <h1 class='mb-4'>Create a Day Trip Plan</h1>
                     <div class="mb-3">
                         <label for="day_trip_plan_name" class="form-label">Plan Name</label>
                         <input type="text" class="form-control" name="day_trip_plan_name" id="day_trip_plan_name" placeholder='The Grand Trip'>
                     </div>
                     <div class="mb-3">
                         <label for="desc" class="form-label">Plan Description</label>
-                        <input type="text" class="form-control" name="desc" id="desc" placeholder='The greatest trip plan ever seen'>
+                        <input type="textarea" class="form-control" name="desc" id="desc" placeholder='The greatest trip plan ever seen'>
                     </div>
                     <div class="mb-3">
                         <label for="price_per_day" class="form-label">Price per Day</label>
@@ -78,15 +75,61 @@
                     </div>
                     <div class="row mb-3" id='show_plans'>
                         <label>Plan Schedule</label>
-                        <div class="col mt-2">
-                            <p class='text-center border'>Time</p>
-                            <p class='text-center border'>8.00pm-9.00pm</p>
-                        </div>
-                        <div class="col mt-2">
-                            <p class='text-center border'>Agenda</p>
-                            <p class='text-center border'>Visit Kintamani Village</p>
-                        </div>
+                        <table class='table' id='schedule-table'>
+                          <thead>
+                            <tr>
+                              <th scope='col' class='text-center'>Time Start</th>
+                              <th scope='col' class='text-center'>Time End</th>
+                              <th scope='col' class='text-center'>Agenda</th>
+                              <th scope='col' class=''></th>
+                            </tr>
+                            <tbody id="table-body">
+                              <tr>
+                              </tr>
+                            </tbody>
+                          </thead>
+                        </table>
                     </div>
+                    <script>
+                      function addRow(){
+                        let table = document.getElementById("table-body");
+                        let row = document.createElement('tr');
+                        let timeStart = document.createElement('td');
+                        timeStart.className = 'text-center';
+                        let timeEnd = document.createElement('td');
+                        timeEnd.className = 'text-center';
+                        let agenda = document.createElement('td');
+                        agenda.className = 'text-center';
+                        let timeStartValue = document.getElementById("time-start").value;
+                        let timeEndValue = document.getElementById("time-end").value;
+                        let agendaValue = document.getElementById("agenda").value;
+                        if (timeStartValue != "" && timeEndValue != "" && agendaValue != "") {
+                          timeStart.innerHTML = timeStartValue;
+                          timeEnd.innerHTML = timeEndValue;
+                          agenda.innerHTML = agendaValue;
+                          row.appendChild(timeStart);
+                          row.appendChild(timeEnd);
+                          row.appendChild(agenda);
+                          $(row).append(
+                            "<div class = 'container'>"+
+                            "<button type='button' onClick = 'deleteRow(this)'' class = 'btn btn-primary' id='delete-row-button'>"+
+                              "Remove"+
+                              "</button>"+
+                            "</div>"
+                          );
+                          table.appendChild(row) 
+                          clearScheduleForm();     
+                        }
+                      }
+                      function deleteRow(button){
+                        $(button).parents('tr').remove();
+                      }
+                      function clearScheduleForm(){
+                        $("#time-start").val("");
+                        $("#time-end").val("");
+                        $("#agenda").val("");
+                      }
+                    </script>
                     <div class="mb-3">
                         <label class="form-label">Add Schedule</label>
                         <div class="row">
@@ -94,10 +137,10 @@
                                 <label class="form-label">Time</label>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="text" name='time_start' class="form-control" id="time" placeholder='start'> 
+                                        <input type="text" name='time_start' class="form-control" id="time-start" placeholder='start'> 
                                     </div>   
                                     <div class="col">
-                                        <input type="text" name='time_end' class="form-control" id="time" placeholder='end'> 
+                                        <input type="text" name='time_end' class="form-control" id="time-end" placeholder='end'> 
                                     </div>   
                                 </div>
                             </div>
@@ -107,7 +150,7 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary mt-3">Add Schedule</button>
+                            <button type='button' onclick="addRow()" class="btn btn-primary mt-3">Add Schedule</button>
                         </div>
                     </div>
                     <div class="mb-3">

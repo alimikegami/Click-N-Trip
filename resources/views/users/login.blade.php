@@ -12,8 +12,10 @@
 <body>
       <!-- Login Page Starts Here -->
       <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
-        <div class="form-container container-fluid rounded">
+        <div class="form-container container-fluid rounded mt-5 mb-5">
           <div class="row">
+            <div class="col-lg-2 rounded" id='container-image'>
+            </div>
             <div class="col">
               <div class="container">
                 <form class="child" action="/authenticate" method="POST">
@@ -35,10 +37,9 @@
                     </div>
                     <div class='pb-5'>
                       <p href="#" class='text-center text-black'>Forgot Password</p>
-                    </div>
-                    
-            </form>
-          </div>
+                    </div>   
+                </form>
+              </div>
           </div>
           <div class="col d-flex justify-content-center align-items-center">
             <div class="container" id="login-right-content">
