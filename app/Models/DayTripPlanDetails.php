@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DayTripPlan extends Model
+class DayTripPlanDetails extends Model
 {
     use HasFactory;
 
-    protected $table = 'day_trip_plan';
+    protected $table = 'day_trip_plan_details';
 
     protected $fillable = [
-        'title',
-        'description',
-        'price_per_day',
-        'max_capacity_per_day',
+        'start_time',
+        'end_time',
+        'destination',
     ];
 
     protected $guarded = [
-        'user_id',
+        'day_trip_plan_id'
     ];
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DayTripPlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -27,6 +28,6 @@ Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuid
 Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->middleware('auth');
 
 Route::get('/day-trips');
-Route::post('/day-trips');
+Route::post('/day-trips', [DayTripPlanController::class, 'store'])->middleware('auth');
 Route::get('/day-trips/{id}');
 
