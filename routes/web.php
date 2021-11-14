@@ -29,3 +29,4 @@ Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->mid
 Route::get('/day-trips');
 Route::post('/day-trips');
 Route::get('/day-trips/{id}');
+
