@@ -18,16 +18,10 @@ Route::get('/', function () {
     return view('landing-page.landing-page');
 });
 
-Route::get('/dummy', function(){
-    return view('dummy');
-})->name('dummy');
-
-Route::get('/login', [UserController::class, 'login'])->name('login');
-Route::get('/register', [UserController::class, 'register'])->name('register');
-Route::post('/store', [UserController::class, 'store'])->name('store');
-Route::post('/authenticate', [UserController::class, 'authenticate'])->name('authenticate');
-Route::get('/register-as-tour-guide', [UserController::class, 'registerAsTourGuide'])->name('register-as-tour-guide')->middleware('auth');
-Route::post('/store-tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide')->middleware('auth');
-Route:: get ('/tourposting', function () {
-    return view('TourPostingPage');
- });
+Route::get('/users/login', [UserController::class, 'login'])->name('login');
+Route::get('/users/register', [UserController::class, 'register'])->name('register');
+Route::post('/users/login', [UserController::class, 'store'])->name('store');
+Route::post('/users/register', [UserController::class, 'authenticate'])->name('authenticate');
+Route::get('/users/register/tour-guide', [UserController::class, 'registerAsTourGuide'])->name('register-as-tour-guide')->middleware('auth');
+Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide')->middleware('auth');
+Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->middleware('auth');
