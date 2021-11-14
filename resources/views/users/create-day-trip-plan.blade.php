@@ -50,7 +50,7 @@
             </div>
             <div class="col">
               <div class="container">
-                <form action="/store" method="post" class='register-form pt-5'>
+                <form action="/day-trips" method="post" class='register-form pt-5' enctype="multipart/form-data">
                     @csrf
                     <h1 class='mb-4'>Create a Day Trip Plan</h1>
                     <div class="mb-3">
@@ -90,37 +90,37 @@
                         formTimeStartContainer.className='col';
                         let formTimeStart = document.createElement('input');
                         formTimeStart.type = 'time';
-                        formTimeStart.name = 'time-start';
+                        formTimeStart.name = 'time_start[]';
                         formTimeStart.className = 'form-control'
-                        formTimeStart.id = 'time-start';
+                        formTimeStart.id = 'time_start';
                         formTimeStart.placeholder = 'start'
 
                         let formTimeEndContainer = document.createElement('div');
                         formTimeEndContainer.className='col';
                         let formTimeEnd = document.createElement('input');
                         formTimeEnd.type = 'time';
-                        formTimeEnd.name = 'time-end';
+                        formTimeEnd.name = 'time_end[]';
                         formTimeEnd.className = 'form-control'
-                        formTimeEnd.id = 'time-end';
+                        formTimeEnd.id = 'time_end';
                         formTimeEnd.placeholder = 'end'
 
                         formAgendaColumn = document.createElement('div');
                         formAgendaColumn.className='col';
                         let formAgenda = document.createElement('input');
                         formAgenda.type = 'text';
-                        formAgenda.name = 'agenda';
+                        formAgenda.name = 'agenda[]';
                         formAgenda.className = 'form-control'
                         formAgenda.id = 'agenda';
                         formAgenda.placeholder = 'Schedule Agenda';
 
                         let startLabel = document.createElement('label');
-                        startLabel.htmlFor = 'time-start';
+                        startLabel.htmlFor = 'time_start';
                         startLabel.className = 'form-label';
-                        startLabel.innerHTML = 'Time-Start';
+                        startLabel.innerHTML = 'Time_Start';
                         let endLabel = document.createElement('label');
-                        endLabel.htmlFor = 'time-end';
+                        endLabel.htmlFor = 'time_end';
                         endLabel.className = 'form-label';
-                        endLabel.innerHTML = 'Time-End';
+                        endLabel.innerHTML = 'Time_End';
                         let agendaLabel = document.createElement('label');
                         agendaLabel.htmlFor = 'agenda';
                         agendaLabel.className = 'form-label';
@@ -146,18 +146,18 @@
                             <div class="col" > 
                                 <div class="row">
                                     <div class="col">
-                                        <label for="time-start" class="form-label">Time-Start</label>
-                                        <input type="time" name='time-start' class="form-control" id="time-start" placeholder='start'> 
+                                        <label for="time_start" class="form-label">Time Start</label>
+                                        <input type="time" name='time_start[]' class="form-control" id="time_start" placeholder='start'> 
                                     </div>   
                                     <div class="col">
-                                        <label for="time-end" class="form-label">Time-End</label>
-                                        <input type="time" name='time-end' class="form-control" id="time-end" placeholder='end'> 
+                                        <label for="time_end" class="form-label">Time End</label>
+                                        <input type="time" name='time_end[]' class="form-control" id="time_end" placeholder='end'> 
                                     </div>   
                                 </div>
                             </div>
                             <div class="col"> 
                                 <label for = 'agenda' class="form-label">Agenda</label>   
-                                <input type="text" name='agenda' class="form-control" id="agenda" placeholder='Shedule Agenda'> 
+                                <input type="text" name='agenda[]' class="form-control" id="agenda" placeholder='Shedule Agenda'> 
                             </div>
                         </div>
                       </div>

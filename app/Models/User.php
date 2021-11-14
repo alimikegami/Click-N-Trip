@@ -24,11 +24,14 @@ class User extends Authenticatable
         'name',
         'email',
         'nik',
-        'role',
         'address',
         'province',
         'selfie_with_ktp',
         'password',
+    ];
+
+    protected $guarded = [
+        'role',
     ];
 
     /**
