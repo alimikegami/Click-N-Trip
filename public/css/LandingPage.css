@@ -44,6 +44,12 @@
     color: white;
     background-color: #40514E;
 }
-.btn-primary{
-    background-color: #11999E !important;
+.card{
+    max-width: 55rem;
+    min-width: 15rem;
+    background-color: #3D56B2;
+    color: white;
+}
+h5{
+    font-size: 24px;
 }

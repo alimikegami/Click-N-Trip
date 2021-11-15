@@ -6,23 +6,22 @@
 <!-- Register Page Starts Here -->
 
 @section('body')
-<div class="parent container d-flex justify-content-center align-items-center h-100">
-  <div class='form-container container-fluid rounded mt-5 mb-5'>
-    <div class="row">
-      <div class="col-lg-2 rounded" id='container-image'>
-        
+<div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
+  <div class='form-container container-fluid mt-5 mb-5'>
+    <div class="row" id='form-header'>
+      <div class="container d-flex justify-content-center">
+        <img id='logo' src="../Gallery/logobiru.png" alt="">
       </div>
-      <div class="col">
-        <div class="container">
-          <form action="/users/register" method="post" class='register-form'>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+        <form action="/users/register" method="post" id='form-login'>
               @csrf
-              <h2 class='pt-5' id='caption'>Sign-Up</h2>
               <div class="mb-3">
                   <label for="name" class="form-label">Full Name</label>
                   <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
-                  <label for="email" class="form-label">Email address</label>
+                  <label for="email" class="form-label">Email</label>
                   <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
                   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
               </div>
@@ -34,17 +33,17 @@
                   <label for="password-confirm" class="form-label">Confirm Password</label>
                   <input type="password" name='password-confirm' class="form-control" id="password-confirm">
               </div>
-              <div class="d-grid gap-2 pb-5">
+              <div class="d-grid gap-2 pb-3">
                 <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
               </div>
+              <hr>
         </form>
-      </div>
     </div>
-    <div class="col d-flex justify-content-center align-items-center">
-      <div class="container" id="right-content">
-        <h2 class='text-center'id='right-text' >Already have an account?</h2>
-        <div class="d-grid gap-2 pb-5">
-          <button type="submit" class="btn btn-primary">Login</button>
+    <div class="row">
+      <div class="container pt-2 pb-5" id='form-login'>
+        <p id='caption' class = 'text-center'>Already have an account?</p>
+        <div class="d-grid gap-2 pb-2" >
+          <button id='bottom-button' type="submit" class="btn btn-secondary text-black">Log in</button>
         </div>
       </div>
     </div>

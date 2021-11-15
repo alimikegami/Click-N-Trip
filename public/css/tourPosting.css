@@ -1,37 +1,22 @@
 body{
-    font-family: 'Roboto',sans-serif !important;
     background-color: white;
-
-}
-#custom-navbar{
-    background-color: #11999E;
-}
-.parent {
-    min-height: 100vh;
-}
-.form-container{
-    box-shadow: 0 0 5px 2px black;
-    background-color:#E4F9F5;
-    max-width: 1550px;
-}
-.btn-primary{
-    background-color: #11999E !important;
-}
-#right-text{
-    font-weight: 700;
-    font-size: 36px;
 }
 label{
-    font-size: 16px !important;
+    font-size: 18px !important;
 }
 #max_capacity_per_day{
     max-width: 65px;
 }
-#show-thumbnail{
-    background-color: white;
+#tourpostheadertitle{
+    font-size: 36px;
 }
-#container-image{
-    background-image: url(../Gallery/leave.jpg);
-    background-size: cover;
-    background-position: center;
+#tourpostform{
+    max-width: 800px;
+}
+#tourpostcontainer{
+    max-width: 1500px;
+}
+#create-button{
+    border-radius: 20px;
+    width: 290px;
 }
