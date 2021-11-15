@@ -48,11 +48,11 @@
         <h5 class="card-title text-center">Suramadu full Tour</h5>
         <p class="card-text text-center">IDR.599.000,00</p>
         <div class="d-flex justify-content-center">
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
         </div>
       </div>
     </div>
@@ -64,11 +64,11 @@
         <h5 class="card-title text-center">Seminyak Beach Full Tour</h5>
         <p class="card-text text-center">IDR.599.000,00</p>
         <div class="d-flex justify-content-center">
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
         </div>
       </div>
     </div>
@@ -80,11 +80,11 @@
         <h5 class="card-title text-center">Nusa Penida Full Tour</h5>
         <p class="card-text text-center">IDR.599.000,00</p>
         <div class="d-flex justify-content-center">
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
-          <i class="bi bi-star-fill" style="font-size: 4rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+          <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
         </div>
       </div>
     </div>

@@ -7,11 +7,12 @@
 @endsection
 
 @section('body')
+@include('components.navbar')
 <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
   <div class="form-container container-fluid mt-5 mb-5">
     <div class="row" id='form-header'>
       <div class="container d-flex justify-content-center">
-        <img id='logo' src="../Gallery/logobiru.png" alt="">
+        <img class='img-fluid' id='logo' src="../Gallery/logobiru.png" alt="">
       </div>
     </div>
       <div class="row d-flex align-items-center justify-content-center">
