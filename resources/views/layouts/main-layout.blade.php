@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/LandingPage.css')}}">
     <link rel="stylesheet" href="{{asset('css/Navbar.css')}}">
     <link rel="stylesheet" href="{{asset('css/ad.css')}}">
+    @yield('css')
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Click-n-Trip</title>

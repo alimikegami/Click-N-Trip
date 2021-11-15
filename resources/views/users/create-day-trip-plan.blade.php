@@ -54,12 +54,12 @@
                     @csrf
                     <h1 class='mb-4'>Create a Day Trip Plan</h1>
                     <div class="mb-3">
-                        <label for="day_trip_plan_name" class="form-label">Plan Name</label>
-                        <input type="text" class="form-control" name="day_trip_plan_name" id="day_trip_plan_name" placeholder='The Grand Trip'>
+                        <label for="title" class="form-label">Plan Name</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder='The Grand Trip'>
                     </div>
                     <div class="mb-3">
-                        <label for="desc" class="form-label">Plan Description</label>
-                        <input type="textarea" class="form-control" name="desc" id="desc" placeholder='The greatest trip plan ever seen'>
+                        <label for="description" class="form-label">Plan Description</label>
+                        <input type="textarea" class="form-control" name="description" id="description" placeholder='The greatest trip plan ever seen'>
                     </div>
                     <div class="mb-3">
                         <label for="price_per_day" class="form-label">Price per Day</label>
@@ -68,10 +68,6 @@
                     <div class="mb-3">
                         <label for="max_capacity_per_day" class="form-label">Max Capacity per Day</label>
                         <input type="number" name='max_capacity_per_day' class="form-control" id="max_capacity_per_day" placeholder='5'> 
-                    </div>
-                    <div class="mb-3">
-                        <label for="destination" class="form-label">Destination</label>
-                        <input type="text" name='destination' class="form-control" id="destination" placeholder='Seminyak-Bali'> 
                     </div>
                     <script>
                       function addRow(){
@@ -166,7 +162,7 @@
                       </div>
                     <div class="mb-3">
                         <label class="form-label">Day Trip Thumbnail</label>
-                        <input type="file" name='image_path' class="form-control" id="image_path"> 
+                        <input type="file" name='images[]' class="form-control" id="images" multiple> 
                         <div class='d-flex justify-content-center mt-3' id='show-thumbnail'>
                             <label class='text-center'>Image Show Here</label>
                             <div>
