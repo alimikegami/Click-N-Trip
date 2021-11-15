@@ -1,8 +1,7 @@
 body{
     font-family: 'Roboto',sans-serif !important;
-    background-image: url(../Gallery/cityimg.jpg);
-    background-size: cover;
-    background-position: center;
+    background-color: white;
+
 }
 #custom-navbar{
     background-color: #11999E;
@@ -11,8 +10,9 @@ body{
     min-height: 100vh;
 }
 .form-container{
-    background-color: #E4F9F5;
-    max-width: 950px;
+    box-shadow: 0 0 5px 2px black;
+    background-color:#E4F9F5;
+    max-width: 1550px;
 }
 .btn-primary{
     background-color: #11999E !important;

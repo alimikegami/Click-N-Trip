@@ -3,16 +3,14 @@
     <!-- Landing Page Starts Here -->
     @include('components.navbar')
     <!-- Header Section -->
-    <div class="header container-fluid" id='landing-header'>
-      <div id = "search-column" class="col offset-md-4 ">
+    <div class="header container-fluid d-flex justify-content-center" id='landing-header'>
+      <div id = "search-column" class="col">
           <div class="input-group pt-5 pb-5">
               <input type="text" class="form-control" placeholder="Search Your Destination..." aria-label="SearchLabel"/>
               <div id='SearchButton'>
-                  <div class="input-group-text" id='SearchIconBg'>
-                      <span>
-                          <i class="bi bi-search" style="font-size: 1.5rem; color:white;"></i>
-                      </span>
-                    </div>
+                      <button class='btn btn-primary' type='submit' >
+                        <i class="bi bi-search" style="font-size: 1.5rem; color:white;"></i>
+                      </button>
                 </div>
             </div>
         </div>
