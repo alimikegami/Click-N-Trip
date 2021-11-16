@@ -35,6 +35,6 @@ class DayTripPlan extends Model
     }
 
     public function scopeFilter($query, $search) {
-        return $query->where('title', 'like', '%'.$search.'%')->paginate(10);
+        return $query->where('title', 'like', '%'.$search.'%')->with('user')->paginate(5);
     }
 }

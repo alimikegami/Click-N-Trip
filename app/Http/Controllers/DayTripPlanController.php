@@ -11,7 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class DayTripPlanController extends Controller
 {
     public function search(){
-        dd(DayTripPlan::filter(request('search')));
+        $searchResult = DayTripPlan::filter(request('search'));
+        return view("day-trips.search-result", [
+            "search_result"=>$searchResult,
+            "keyword"=>request('search')
+    ]);
+
     }
 
     public function store(Request $request) {
@@ -61,5 +66,7 @@ class DayTripPlanController extends Controller
                 $day_trip_plan_images->save();
             }
         }
+
+        return back()->with('success', 'Day Trip Listing Successfully Created!');
     }
 }

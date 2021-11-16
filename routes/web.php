@@ -31,3 +31,7 @@ Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->mid
 Route::get('/day-trips', [DayTripPlanController::class, 'search'])->name('search');
 Route::post('/day-trips', [DayTripPlanController::class, 'store'])->middleware('auth');
 Route::get('/day-trips/{id}');
+
+Route::get('/test', function () {
+    return view('day-trips.search-result');
+});

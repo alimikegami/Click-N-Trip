@@ -18,17 +18,18 @@
       <div class="row d-flex align-items-center justify-content-center">
           <form class="child" action="/users/login" method="POST" id = 'form-login'>
               @csrf
+              @error('email')
+                      <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
               <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control @error('email') is-invalid @enderror" name='email' id="email" aria-describedby="emailHelp">
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" name='email' id="email" aria-describedby="emailHelp" required>
               </div>
               <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
-                  <input type="password" name="password" class="form-control @error('email') is-invalid @enderror" id="password">
+                  <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" required>
               </div>
-                  @error('email')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                  @enderror
+                  
               <div class="d-grid gap-2 pb-3 pt-4">
                 <button type="submit" class="btn btn-primary">Log In</button>
               </div>

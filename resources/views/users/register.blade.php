@@ -17,23 +17,36 @@
     <div class="row d-flex align-items-center justify-content-center">
         <form action="/users/register" method="post" id='form-login'>
               @csrf
+              @if (Session::has('success'))
+                <div class="alert alert-success">{{ Session::get('success') }}</div>
+              @endif
+              @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+              @error('email')
+                      <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+              @error('password')
+                      <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
               <div class="mb-3">
                   <label for="name" class="form-label">Full Name</label>
-                  <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp">
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="emailHelp" value="{{ old('name') }}" required>
               </div>
               <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" aria-describedby="emailHelp" value="{{ old('email') }}" required>
                   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
               </div>
               <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" name="password" class="form-control" id="password">
+                  <label for="password" class="form-label @error('password') is-invalid @enderror">Password</label>
+                  <input type="password" name="password" class="form-control" id="password" required>
               </div>
               <div class="mb-3">
                   <label for="password-confirm" class="form-label">Confirm Password</label>
-                  <input type="password" name='password-confirm' class="form-control" id="password-confirm">
+                  <input type="password" name='password-confirm' class="form-control" id="password-confirm" required>
               </div>
+              
               <div class="d-grid gap-2 pb-3">
                 <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
               </div>
