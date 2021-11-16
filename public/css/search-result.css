@@ -6,3 +6,9 @@
 #section-container{
     max-width:1088px;
 }
+#arrow-button{
+    color: white !important;
+}
+#arrow-button:hover{
+    color:#14279B !important;
+}

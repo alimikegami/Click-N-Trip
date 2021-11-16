@@ -30,3 +30,9 @@ p{
     background-color:#14279B !important;
     color: white !important;
 }
+.bi-search{
+    color: white;
+}
+#search-icon:hover{
+    background-color: #3D56B2 !important;
+}
