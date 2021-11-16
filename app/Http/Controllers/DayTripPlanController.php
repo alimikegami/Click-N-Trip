@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class DayTripPlanController extends Controller
 {
     public function search(){
-        dd(DayTripPlan::filter(request('search'))->get());
+        dd(DayTripPlan::filter(request('search')));
     }
 
     public function store(Request $request) {
