@@ -4,17 +4,8 @@
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="{{asset('css/LoginPage.css')}}">
 @endsection
-
 @section('body')
-@if ($errors->any())
-<div class="alert alert-danger">
-  <ul>
-      @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-      @endforeach
-  </ul>
-</div>
-@endif
+@include('components.navbar')
 <!-- Register Page Starts Here -->
 <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
   <div class="form-container container-fluid mt-5 mb-5">
@@ -25,11 +16,30 @@
       <p class='text-center' id='header-caption'>Fill in to register as tour guide!</p>
     </div>
     <div class="row d-flex align-items-center justify-content-center">
-      <form id='form-login' class="child" action="/store-tour-guide" method="POST" enctype="multipart/form-data">
+      <form id='form-login' class="child" action="/users/register/tour-guide" method="POST" enctype="multipart/form-data">
           @csrf
+          @if (Session::has('success'))
+              <div class="alert alert-success">{{ Session::get('success') }}</div>
+          @endif
+          @error('nik')
+                      <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+          @error('province')
+                      <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+          @error('fotoktp')
+                      <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+          @error('address')
+                      <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+          <div class="mb-3">
+            <label for="nik" class="form-label">NIK</label>
+            <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror" id="nik" value="{{ old('nik') }}" required>
+          </div>
           <div class="mb-3">
               <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" name="address" id="address" aria-describedby="emailHelp">
+              <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" id="address" aria-describedby="emailHelp" value="{{ old('address') }}" required>
           </div>
           <div class="mb-3">
             <div class="row">
@@ -77,12 +87,8 @@
             </div>
           </div>
           <div class="mb-3">
-              <label for="nik" class="form-label">NIK</label>
-              <input type="text" name="nik" class="form-control" id="nik">
-          </div>
-          <div class="mb-3">
               <label for="fotoktp" class="form-label">Selfie With KTP</label>
-              <input type="file" name="fotoktp" class="form-control" id="fotoktp">
+              <input type="file" name="fotoktp" class="form-control @error('fotoktp') is-invalid @enderror" id="fotoktp" required>
           </div>
           <div class="d-grid gap-2 pb-5 pt-4">
             <button type="submit" class="btn btn-primary">Register</button>

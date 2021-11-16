@@ -15,8 +15,8 @@ class CreateDayTripPlanDetailsTable extends Migration
     {
         Schema::create('day_trip_plan_details', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('start_time')->useCurrent();
-            $table->timestamp('end_time')->useCurrent();
+            $table->time('start_time');
+            $table->time('end_time');
             $table->string('destination');
             $table->unsignedBigInteger('day_trip_plan_id');
             $table->foreign('day_trip_plan_id')->references('id')->on('day_trip_plan');

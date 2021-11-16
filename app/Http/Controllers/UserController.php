@@ -36,10 +36,11 @@ class UserController extends Controller
             'password' => 'required|same:password-confirm|min:8',
         ]);
 
-        $validated['role'] = "user";
         $validated['password'] = Hash::make($validated['password']);
-        $user = User::create($validated);
-        return redirect('users/register')->with('status', 'Anda berhasil Mendaftar');
+        $user = new User($validated);
+        $user->role = "user";
+        $user->save();
+        return back()->with('success', 'Registration Completed!');
     }
 
     public function storeTourGuideDetails(Request $request) {
@@ -59,7 +60,7 @@ class UserController extends Controller
         $user->selfie_with_ktp = $temp[1];
         $user->save();
 
-        // return redirect()->route('dummy', [$user]);
+        return back()->with('success', 'Registration Completed!');
     }
 
     public function authenticate(Request $request) {
@@ -70,7 +71,7 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('register-as-tour-guide');
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([

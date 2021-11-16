@@ -16,10 +16,10 @@
           <a class="nav-link active" href="#">About</a>
         </li>
         <li class="nav-item">
-          <button href='users/login' id="navbar-button" class='btn btn-secondary'>Log In</button>
+          <a type="button" href='{{ route('login') }}' id="navbar-button" class='btn btn-secondary'>Log In</a>
         </li>
         <li class="nav-item">
-          <button href='users/register'  id="navbar-button" class='btn btn-secondary'>Sign Up</button>
+          <a type="button" href='{{ route('register') }}'  id="navbar-button" class='btn btn-secondary'>Sign Up</a>
         </li>
       </ul>
     </div>

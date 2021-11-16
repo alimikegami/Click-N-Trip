@@ -3,6 +3,7 @@
 use App\Http\Controllers\DayTripPlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\DayTripPlan;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +28,18 @@ Route::get('/users/register/tour-guide', [UserController::class, 'registerAsTour
 Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide')->middleware('auth');
 Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->middleware('auth');
 
-Route::get('/day-trips');
+Route::get('/day-trips', [DayTripPlanController::class, 'search'])->name('search');
 Route::post('/day-trips', [DayTripPlanController::class, 'store'])->middleware('auth');
 Route::get('/day-trips/{id}');
 
-Route::get('/search', function () {
+Route::get('/test', function () {
     return view('day-trips.search-result');
+<<<<<<< HEAD
 });
 Route::get('/trip-details', function () {
     return view('day-trips.day-trip-pages');
 });
 
+=======
+});
+>>>>>>> 269297f49152ab60f6190133556b906722a725d7

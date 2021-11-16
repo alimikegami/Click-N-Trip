@@ -21,42 +21,38 @@
 </div>
 <div class="container-fluid">
     <div class="container mb-3" id='section-container'>
-        <p>Showing Results for "Seminyak"</p>
+        <p>Showing Results for "{{ $keyword }}"</p>
     </div>
     <div class="container" id='section-container'>
-        <div class="container border rounded mb-3">
-            <div class="row mt-2 mb-2">
-                <div class="col-lg-3 col-md-3">
-                    <img class="img-fluid rounded" src="Gallery/Uluwatu.jpg" alt="">
-                </div>
-                <div class="col-lg">
-                    <p>
-                        Seminyak Beach Tour 
-                        <br> <span style='font-size: 14px;'>Seminyak, Bali</span>
-                        <br> <span style='font-size: 14px;'> <a href="#">Pasha Renaisan</a></span>
-                    </p> 
-                    <div class="pt-3" id='stars'>
-                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                        <span id='star-text'>5 out of 5</span>
+        @foreach ($search_result as $item)
+            <div class="container border rounded mb-3">
+                <div class="row mt-2 mb-2">
+                    <div class="col-lg-3 col-md-3">
+                        <img class="img-fluid rounded" src="Gallery/Uluwatu.jpg" alt="">
                     </div>
-                </div>
-                <div class="col-lg-4 d-flex justify-content-lg-end">
-                        <p>IDR. 150.000,00 /Person</p>
+                    <div class="col-lg">
+                        <p>
+                            {{ $item->title }} 
+                            <br> <span style='font-size: 14px;'>Seminyak, Bali</span>
+                            <br> <span style='font-size: 14px;'> <a href="#">{{ $item->user->name }}</a></span>
+                        </p> 
+                        <div class="pt-3" id='stars'>
+                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
+                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
+                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
+                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
+                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
+                            <span id='star-text'>5 out of 5</span>
+                        </div>
                     </div>
+                    <div class="col-lg-4 d-flex justify-content-lg-end">
+                            <p>IDR{{ $item->price_per_day }}/Person</p>
+                        </div>
                 </div>
             </div>
+        @endforeach
             <div class="container d-flex justify-content-center mt-4 mb-4">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button id='arrow-button' type="button" class="btn btn-primary"><i  class="bi bi-arrow-left" style="font-size: 1rem;"></i></button>
-                    <button id="num-button" type="button" class="btn btn-secondary">1</button>
-                    <button id="num-button" type="button" class="btn btn-secondary">2</button>
-                    <button id="num-button" type="button" class="btn btn-secondary">3</button>
-                    <button id='arrow-button'  type="button" class="btn btn-primary"><i class="bi bi-arrow-right" style="font-size: 1rem;"></i></button>
-                </div>
+                {{ $search_result->links() }}
             </div>
         </div>
     </div>
