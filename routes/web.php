@@ -38,5 +38,3 @@ Route::get('/test', function () {
 Route::get('/trip-details', function () {
     return view('day-trips.day-trip-pages');
 });
-
-});
