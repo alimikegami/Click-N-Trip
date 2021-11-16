@@ -9,7 +9,7 @@ class DayTripPlanImages extends Model
 {
     use HasFactory;
 
-    protected $table = 'day_trip_images';
+    protected $table = 'day_trip_image';
 
     protected $fillable = [
         'image_path',
@@ -18,4 +18,8 @@ class DayTripPlanImages extends Model
     protected $guarded = [
         'day_trip_plan_id'
     ];
+
+    public function dayTripPlan(){
+        return $this->belongsTo(DayTripPlan::class, 'day_trip_plan_id');
+    } 
 }

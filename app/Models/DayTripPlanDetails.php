@@ -20,4 +20,8 @@ class DayTripPlanDetails extends Model
     protected $guarded = [
         'day_trip_plan_id'
     ];
+
+    public function dayTripPlan(){
+        return $this->belongsTo(DayTripPlan::class, 'day_trip_plan_id');
+    }
 }

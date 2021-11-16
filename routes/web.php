@@ -27,7 +27,10 @@ Route::get('/users/register/tour-guide', [UserController::class, 'registerAsTour
 Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide')->middleware('auth');
 Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->middleware('auth');
 
-Route::get('/day-trips');
+Route::get('/day-trips', [DayTripPlanController::class, 'search']);
 Route::post('/day-trips', [DayTripPlanController::class, 'store'])->middleware('auth');
 Route::get('/day-trips/{id}');
 
+Route::get('/dummy', function () {
+    return view('day-trips.search-results');
+});

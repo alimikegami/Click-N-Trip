@@ -36,9 +36,10 @@ class UserController extends Controller
             'password' => 'required|same:password-confirm|min:8',
         ]);
 
-        $validated['role'] = "user";
         $validated['password'] = Hash::make($validated['password']);
-        $user = User::create($validated);
+        $user = new User($validated);
+        $user->role = "user";
+        $user->save();
         return redirect('users/register')->with('status', 'Anda berhasil Mendaftar');
     }
 
