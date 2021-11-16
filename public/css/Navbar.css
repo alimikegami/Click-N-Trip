@@ -5,7 +5,7 @@
 }
 #custom-navbar{
     font-family: 'Roboto', sans-serif !important;
-    height: 67px;
+    min-height: 67px;
     background-color: #14279B;
 }
 .nav-link{
