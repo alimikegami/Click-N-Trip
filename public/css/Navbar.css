@@ -1,11 +1,11 @@
-.nav-link{
+.nav-item{
     font-size: 18px;
     margin: 0px 5px;
     font-weight: 300;
 }
 #custom-navbar{
     font-family: 'Roboto', sans-serif !important;
-    min-height: 70px;
+    height: 67px;
     background-color: #14279B;
 }
 .nav-link{
@@ -26,6 +26,6 @@
     color: black !important;
 }
 #navbar-logo{
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 170px;
+    max-height: 170px;
 }

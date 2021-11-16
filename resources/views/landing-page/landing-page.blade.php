@@ -4,19 +4,17 @@
     @include('components.navbar')
     <!-- Header Section -->
     <div class="header container-fluid d-flex justify-content-center" id='landing-header'>
-      <div id = "search-column" class="col">
+      <form action="{{ route('search') }}" id = "search-column" class="col">
+          @csrf
           <div class="input-group pt-5 pb-5">
-              <form action="{{ route('search') }}">
-                @csrf
                 <input type="text" class="form-control" name="search" placeholder="Search Your Destination..." aria-label="SearchLabel"/>
                 <div id='SearchButton'>
                         <button class='btn btn-primary' type='submit' >
                           <i class="bi bi-search" style="font-size: 1.5rem; color:white;"></i>
                         </button>
                 </div>
-              </form>
-          </div>
-      </div>
+            </div>
+          </form>
 </div>
 <!-- Benefits Section -->
 <div class="benefits-section container">

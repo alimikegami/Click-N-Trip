@@ -7,7 +7,7 @@
 @include('components.navbar')
 <div class="container-fluid">
     <div class="container" id='section-container'>
-        <div id = "search-column" class="col">
+        <form id = "search-column" class="col">
             <div class="input-group pb-5">
                 <input type="text" class="form-control" placeholder="Search Your Destination..." aria-label="SearchLabel"/>
                 <div id='SearchButton'>
@@ -16,7 +16,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>  
 </div>
 <div class="container-fluid">
