@@ -34,12 +34,9 @@ Route::get('/day-trips/{id}');
 
 Route::get('/test', function () {
     return view('day-trips.search-result');
-<<<<<<< HEAD
 });
 Route::get('/trip-details', function () {
     return view('day-trips.day-trip-pages');
 });
 
-=======
 });
->>>>>>> 269297f49152ab60f6190133556b906722a725d7
