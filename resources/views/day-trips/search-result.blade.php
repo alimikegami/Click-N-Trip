@@ -51,11 +51,11 @@
             </div>
             <div class="container d-flex justify-content-center mt-4 mb-4">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary"><i class="bi bi-arrow-left" style="font-size: 1rem; color:white;"></i></button>
-                    <button type="button" class="btn btn-secondary">1</button>
-                    <button type="button" class="btn btn-secondary">2</button>
-                    <button type="button" class="btn btn-secondary">3</button>
-                    <button type="button" class="btn btn-primary"><i class="bi bi-arrow-right" style="font-size: 1rem; color:white;"></i></button>
+                    <button id='arrow-button' type="button" class="btn btn-primary"><i  class="bi bi-arrow-left" style="font-size: 1rem;"></i></button>
+                    <button id="num-button" type="button" class="btn btn-secondary">1</button>
+                    <button id="num-button" type="button" class="btn btn-secondary">2</button>
+                    <button id="num-button" type="button" class="btn btn-secondary">3</button>
+                    <button id='arrow-button'  type="button" class="btn btn-primary"><i class="bi bi-arrow-right" style="font-size: 1rem;"></i></button>
                 </div>
             </div>
         </div>
