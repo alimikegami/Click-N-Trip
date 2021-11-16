@@ -21,7 +21,7 @@ p{
     color: black !important;
 }
 
-.btn-secondary{
+.btn-secondary,.btn-secondary:focus{
     border-color: #14279B !important;
     background-color: white !important;
     color:black

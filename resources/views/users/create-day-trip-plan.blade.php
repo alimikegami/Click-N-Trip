@@ -85,7 +85,7 @@
                       function addRow(){
                         let container = document.getElementById('schedule-form');
 
-                        let form = document.createElement('div');
+                        let form = document.createElement('section');
                         form.className = 'row mb-3';
 
                         let formTimeColumn = document.createElement('div');
@@ -140,7 +140,14 @@
                         emptyColumn.className = 'col-3';
                         let containerColumn = document.createElement('div');
                         containerColumn.className = 'col';
-
+                        let removeButtonColumn = document.createElement('div');
+                        removeButtonColumn.className='col'
+                        
+                        let removeLabel = document.createElement('label');
+                        removeLabel.innerHTML = "Action";
+                        removeLabel.htmlFor = 'removebutton';
+                        removeLabel.className = 'form-label'
+                        
                         formTimeStartContainer.appendChild(startLabel)
                         formTimeStartContainer.appendChild(formTimeStart);
                         formTimeEndContainer.appendChild(endLabel);
@@ -150,13 +157,23 @@
                         formTimeColumn.appendChild(formTimeOutsideContainer)
                         formAgendaColumn.appendChild(agendaLabel);
                         formAgendaColumn.appendChild(formAgenda);
+                        removeButtonColumn.appendChild(removeLabel);
                         form.appendChild(formTimeColumn);
                         form.appendChild(formAgendaColumn);
+                        form.appendChild(removeButtonColumn);
+                        $(removeButtonColumn).append(
+                          "<button onclick='removeSchedule(this)' class='d-block btn btn-primary' id='removebutton' type='button'>"+
+                          "Remove"+
+                          "</button>"
+                        );
                         dummyRow.appendChild(emptyColumn);
                         containerColumn.appendChild(form);
                         dummyRow.appendChild(containerColumn);
                         container.appendChild(dummyRow);
-                        }
+                      }
+                      function removeSchedule(pointer){
+                        $(pointer).parents("section").remove();
+                      }
                     </script>
                     <div class="mb-3" id='schedule-form'>
                     <div class="row">
@@ -181,6 +198,10 @@
                                 <label for = 'agenda' class="form-label">Agenda</label>   
                                 <input type="text" name='agenda[]' class="form-control" id="agenda" placeholder='Shedule Agenda' required> 
                             </div>
+                            <div class="col"> 
+                              <label for = 'removebutton' class="form-label">Action</label> 
+                              <button type="button" id="removebutton" class="d-block btn btn-primary">Remove</button>  
+                          </div>
                         </div>
                       </div>
                     </div>
