@@ -4,7 +4,7 @@
     @include('components.navbar')
     <!-- Header Section -->
     <div class="header container-fluid d-flex justify-content-center" id='landing-header'>
-      <div id = "search-column" class="col">
+      <form id = "search-column" class="col">
           <div class="input-group pt-5 pb-5">
               <input type="text" class="form-control" placeholder="Search Your Destination..." aria-label="SearchLabel"/>
               <div id='SearchButton'>
@@ -13,7 +13,7 @@
                       </button>
                 </div>
             </div>
-        </div>
+          </form>
 </div>
 <!-- Benefits Section -->
 <div class="benefits-section container">
