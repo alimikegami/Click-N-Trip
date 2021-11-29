@@ -57,7 +57,7 @@
       <div class="container pt-2 pb-5" id='form-login'>
         <p id='caption' class = 'text-center'>Already have an account?</p>
         <div class="d-grid gap-2 pb-2" >
-          <button id='bottom-button' type="submit" class="btn btn-secondary text-black">Log in</button>
+          <a href="{{ route('login') }}" id='bottom-button' type="submit" class="btn btn-secondary text-black">Log in</a>
         </div>
       </div>
     </div>

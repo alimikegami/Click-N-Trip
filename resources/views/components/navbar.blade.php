@@ -10,7 +10,7 @@
           <a class="nav-link active" href="#">Find a Tour</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">List your Trip</a>
+          <a class="nav-link active" href="{{ route('list-day-trips') }}">List your Trip</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">About</a>
