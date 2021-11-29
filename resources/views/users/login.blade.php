@@ -41,9 +41,9 @@
       </div>
       <div class="row">
         <div class="container pt-5 pb-5" id = 'form-login'>
-          <p id='caption' class='text-center' >Dont have an account yet?</p>
+          <p id='caption' class='text-center' >Don't have an account yet?</p>
           <div class="d-grid gap-2 pb-3">
-            <button class="btn btn-secondary">Sign Up</button>
+            <a href="{{ route('register') }}" class="btn btn-secondary">Sign Up</a>
           </div>
         </div>
       </div>
