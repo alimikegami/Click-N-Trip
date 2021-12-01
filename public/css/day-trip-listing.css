@@ -1,0 +1,30 @@
+#profile-info-holder{
+   width: 22rem;
+   max-height: 400px;
+}
+#outer-container{
+    margin-top: 6.5rem;
+}
+#see-button{
+    width: 149px;
+    height: 39px;
+}
+.status{  
+    border-radius: 10px !important;
+}
+.status.finished{
+    background-color: #2BE048;
+}
+.status.approved{
+    background-color: #FFD700;
+}
+#reviewbutton{
+    border-color: #FFD700 !important;
+}
+#reviewbutton:hover{
+    background-color: #FFD700 !important;
+}
+#image{
+    height: 100%;
+    width: 100%;
+}

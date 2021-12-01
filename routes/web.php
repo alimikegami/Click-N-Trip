@@ -37,3 +37,19 @@ Route::get('/test', function () {
 Route::get('/trip-details', function () {
     return view('day-trips.day-trip-pages');
 });
+Route::get('/user-trip-listing', function () {
+    return view('users.my-day-trip-listing');
+});
+Route::get('/user-trip-listing-reservation', function () {
+    return view('users.my-day-trip-listing-reservation');
+});
+Route::get('/transac-history', function () {
+    return view('users.user-transaction-history');
+});
+Route::get('/payment-method', function () {
+    return view('users.payment-method');
+});
+Route::get('/payment-details', function () {
+    return view('users.payment-details');
+});
+
