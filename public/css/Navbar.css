@@ -29,3 +29,17 @@
     max-width: 170px;
     max-height: 170px;
 }
+#username{
+    font-size: 18px;
+    font-style: normal;
+}
+#dropdownMenuButton{
+    background-color: transparent !important;
+    border:none;
+    color: white;
+    font-size: 25px;
+}
+#dropdownMenuButton:focus{
+    border-color: transparent !important;
+    outline: none !important;
+}

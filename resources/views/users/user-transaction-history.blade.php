@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../css/day-trip-listing.css">
 @endsection
 @section('body')
-@include('components.navbar')
+@include('components.navbar-logged-in')
     <div id="outer-container" class="container">
         <div class="row">
             <div class="col-lg-4 d-flex justify-content-center">

@@ -36,3 +36,42 @@ p{
 #search-icon:hover{
     background-color: #3D56B2 !important;
 }
+#redbutton{
+    background-color: #ed1c24!important;
+    border-color: #ed1c24!important;
+}
+#redbutton:hover{
+    background-color: white !important;
+}
+#greenbutton{
+    background-color: #228b22 !important;
+    border-color: #228b22!important;
+}
+#greenbutton:hover{
+    background-color: white !important;
+}
+.xbutton{
+    font-size: 1.7rem; border:1px solid #ed1c24; border-radius: 5px; color:black;
+}
+.xbutton:hover{
+    background-color: #ed1c24;
+    color: white;
+}
+.xbutton2{
+    color: white;
+    background-color: #ed1c24;
+    border:1px solid #ed1c24; 
+    border-radius: 50%; 
+    font-size: 1.5rem;
+}
+.xbutton2:hover{
+    color: #ed1c24 ;
+    background-color: white ;
+}
+.editbutton{
+    font-size: 1.7rem; border:1px solid #FFD700; border-radius: 5px; color:black;
+}
+.editbutton:hover{
+    background-color: #FFD700;
+    color: white;
+}

@@ -12,7 +12,7 @@
 @endsection
 
 @section('body')
-@include('components.navbar')
+@include('components.navbar-logged-in')
       <!-- Register Page Starts Here -->
       <div class="container mt-5">
         <div class="row mb-5" id='header'>

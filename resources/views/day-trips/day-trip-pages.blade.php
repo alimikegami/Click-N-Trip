@@ -55,7 +55,25 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button id='check-button' type="submit" class="btn btn-primary mt-3 mb-5">Check Availibility</button>
+                            <button id='check-button' type="button" class="btn btn-primary mt-3 mb-5" data-toggle="modal" data-target="#confirmationModal">Check Availibility</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                                    <i type='button' data-dismiss="modal" aria-label="Close" class="px-2 bi bi-x xbutton2"></i>
+                                    </div>
+                                    <div class="modal-body">
+                                        Do you want to book this trip?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" id="redbutton" data-dismiss="modal">No</button>
+                                        <button type="submit" class="btn btn-primary" id="greenbutton">Book Now</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

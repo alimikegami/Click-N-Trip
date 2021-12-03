@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="{{asset('css/LoginPage.css')}}">
 @endsection
 @section('body')
-@include('components.navbar')
+@include('components.navbar-logged-in')
 <!-- Register Page Starts Here -->
 <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
   <div class="form-container container-fluid mt-5 mb-5">

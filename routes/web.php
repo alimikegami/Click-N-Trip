@@ -52,4 +52,3 @@ Route::get('/payment-method', function () {
 Route::get('/payment-details', function () {
     return view('users.payment-details');
 });
-
