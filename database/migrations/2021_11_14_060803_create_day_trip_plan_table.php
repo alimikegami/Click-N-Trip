@@ -16,6 +16,7 @@ class CreateDayTripPlanTable extends Migration
         Schema::create('day_trip_plan', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('destination');
             $table->text('description');
             $table->float('price_per_day');
             $table->integer('max_capacity_per_day');

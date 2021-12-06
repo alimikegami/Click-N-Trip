@@ -17,7 +17,7 @@ class CreateDayTripPlanDetailsTable extends Migration
             $table->id();
             $table->time('start_time');
             $table->time('end_time');
-            $table->string('destination');
+            $table->string('agenda');
             $table->unsignedBigInteger('day_trip_plan_id');
             $table->foreign('day_trip_plan_id')->references('id')->on('day_trip_plan');
             $table->timestamps();

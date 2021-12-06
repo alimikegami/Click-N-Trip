@@ -59,6 +59,14 @@
                     </div>
                     <div class="row mb-3">
                       <div class="col-3">
+                        <label for="destination" class="form-label">Day Trip Plan Destination</label>
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control" name="destination" id="destination" placeholder='Canggu, Bali' required></input>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-3">
                         <label for="description" class="form-label">Day Trip Plan Description</label>
                       </div>
                       <div class="col">

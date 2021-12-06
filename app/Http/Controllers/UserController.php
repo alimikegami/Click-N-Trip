@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\DayTripPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +13,14 @@ class UserController extends Controller
     public function login()
     {
         return view('users.login');
+    }
+
+    public function show(User $user){
+        $userListing = DayTripPlan::listings($user->id);
+        return view('users.my-day-trip-listing', [
+            'user'=>$user,
+            'listings'=>$userListing
+        ]);
     }
 
     public function register()

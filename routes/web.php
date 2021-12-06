@@ -24,13 +24,18 @@ Route::get('/users/login', [UserController::class, 'login'])->name('login');
 Route::get('/users/register', [UserController::class, 'register'])->name('register');
 Route::post('/users/register', [UserController::class, 'store'])->name('store');
 Route::post('/users/login', [UserController::class, 'authenticate'])->name('authenticate');
+Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->name('list-day-trips')->middleware('auth');
+
+Route::get('/users/{user}', [UserController::class, 'show']);
+
 Route::get('/users/register/tour-guide', [UserController::class, 'registerAsTourGuide'])->name('register-as-tour-guide')->middleware('auth');
 Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide')->middleware('auth');
-Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->name('list-day-trips')->middleware('auth');
 
 Route::get('/day-trips', [DayTripPlanController::class, 'search'])->name('search');
 Route::post('/day-trips', [DayTripPlanController::class, 'store'])->middleware('auth');
-Route::get('/day-trips/{id}');
+Route::get('/day-trips/{day_trip_plan}', [DayTripPlanController::class, 'show']);
+
+
 Route::get('/test', function () {
     return view('day-trips.search-result');
 });
