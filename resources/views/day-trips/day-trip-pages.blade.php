@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="../css/day-trip-pages.css">
 @endsection
 @section('body')
-@include('components.navbar')
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-7">

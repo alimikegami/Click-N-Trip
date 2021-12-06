@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="../css/search-result.css">
 @endsection
 @section('body')
-    @include('components.navbar')
     <div class="container-fluid">
         <div class="container" id='section-container'>
             <form id="search-column" class="col">
