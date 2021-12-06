@@ -7,7 +7,6 @@
 @endsection
 
 @section('body')
-@include('components.navbar')
 <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
   <div class="form-container container-fluid mt-5 mb-5">
     <div class="row" id='form-header'>
