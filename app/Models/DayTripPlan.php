@@ -13,6 +13,7 @@ class DayTripPlan extends Model
 
     protected $fillable = [
         'title',
+        'destination',
         'description',
         'price_per_day',
         'max_capacity_per_day',
@@ -36,5 +37,9 @@ class DayTripPlan extends Model
 
     public function scopeFilter($query, $search) {
         return $query->where('title', 'like', '%'.$search.'%')->with('user')->paginate(5);
+    }
+
+    public function scopeListings($query, $id) {
+        return $query->where('user_id', $id)->paginate(5);
     }
 }

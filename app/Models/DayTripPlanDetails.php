@@ -14,7 +14,7 @@ class DayTripPlanDetails extends Model
     protected $fillable = [
         'start_time',
         'end_time',
-        'destination',
+        'agenda',
     ];
 
     protected $guarded = [

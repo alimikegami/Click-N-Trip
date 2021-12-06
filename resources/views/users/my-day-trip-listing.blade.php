@@ -13,16 +13,17 @@
                         <i class="bi bi-person-circle" style="font-size: 5rem; color:#14279B;"></i>
                     </div>
                     <div id="text-holder" class="container mt-4 mb-5">
-                        <p class="fw-bold text-center">My Account</p>
-                        <p>Name: Alim Ikegami</p>
-                        <p>Email: alimikegami1@gmail.com</p>
-                        <p>Total Listing: 5</p>
+                        <p class="fw-bold text-center">User Profile</p>
+                        <p>Name: {{ $user->name }}</p>
+                        <p>Total Listing:</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="container-fluid" id="trip-container">
                     <h3 class="mb-3 mt-sm-4 mt-md-4">My Day Trip Listing</h3>
+                    @foreach ($listings as $listing)
                     <div id="trip-outside-container" class="container border rounded">
                         <div id="trip-inside-container" class="container">
                             <div class="row mt-3 mb-3">
@@ -31,8 +32,8 @@
                                 </div>
                                 <div id="plan-desc" class="col">
                                     <p>
-                                        Seminyak Beach Tour
-                                        <br> <span style='font-size: 14px;'>Seminyak, Bali</span>
+                                        {{ $listing->title }}
+                                        <br> <span style='font-size: 14px;'>{{ $listing->destination }}</span>
                                     </p> 
                                     <div id='stars'>
                                         <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
@@ -68,14 +69,11 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
                 <div class="container d-flex justify-content-center mt-4 mb-4">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button id='arrow-button' type="button" class="btn btn-primary"><i  class="bi bi-arrow-left" style="font-size: 1rem;"></i></button>
-                        <button id="num-button" type="button" class="btn btn-secondary">1</button>
-                        <button id="num-button" type="button" class="btn btn-secondary">2</button>
-                        <button id="num-button" type="button" class="btn btn-secondary">3</button>
-                        <button id='arrow-button'  type="button" class="btn btn-primary"><i class="bi bi-arrow-right" style="font-size: 1rem;"></i></button>
+                    <div class="container d-flex justify-content-center mt-4 mb-4">
+                        {{ $listings->links() }}
                     </div>
                 </div>
             </div>

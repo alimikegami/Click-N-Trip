@@ -15,14 +15,20 @@ class DayTripPlanController extends Controller
         return view("day-trips.search-result", [
             "search_result"=>$searchResult,
             "keyword"=>request('search')
-    ]);
+        ]);
+    }
 
+    public function show(DayTripPlan $day_trip_plan){
+        return view('day-trips.day-trip-pages',[
+            "dayTripPlan"=>$day_trip_plan
+        ]);
     }
 
     public function store(Request $request) {
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'destination' => 'required',
             'price_per_day' => 'required',
             'max_capacity_per_day' => 'required',
             'time_start' => 'required|array|min:1',
@@ -33,6 +39,7 @@ class DayTripPlanController extends Controller
 
         $fillable_data = [
             'title' => $request->title,
+            'destination' => $request->destination,
             'description' => $request->description,
             'price_per_day' => $request->price_per_day,
             'max_capacity_per_day' => $request->max_capacity_per_day,
@@ -49,7 +56,7 @@ class DayTripPlanController extends Controller
             $time=strtotime($request->time_end[$x]);
             $end_time = date("H:i:s",$time);
             $day_trip_plan_details->end_time = $end_time;
-            $day_trip_plan_details->destination = $request->agenda[$x];
+            $day_trip_plan_details->agenda = $request->agenda[$x];
             $day_trip_plan_details->day_trip_plan_id = $day_trip_plan->id;
             $day_trip_plan_details->save();
         }
