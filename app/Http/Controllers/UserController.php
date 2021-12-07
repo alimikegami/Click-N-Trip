@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AuthenticationRequest;
-use App\Http\Requests\TourGuideStoreRequest;
+use App\Services\UserService;
 use App\Models\User;
 use App\Models\DayTripPlan;
 use Illuminate\Http\Request;
@@ -11,26 +10,29 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserStoreRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\AuthenticationRequest;
+use App\Http\Requests\TourGuideStoreRequest;
 
 class UserController extends Controller
 {
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function login()
     {
         return view('users.login');
     }
 
     public function show(User $user){
-        $userListing = DayTripPlan::getDayTripPlanWithImages();
+        $userListing = $this->userService->getAllUserDataById($user->id);
         return view('users.my-day-trip-listing', [
             'user'=>$user,
-            'listings'=>$userListing
+            'userListing'=>$userListing
         ]);
-    }
-
-    public function showListings(Request $request, $id){
-        $userListing = DayTripPlan::with(['dayTripImages'])->get();
-        dd($userListing);
-        return view('users.my-day-trip-listing');
     }
 
     public function register()
@@ -50,34 +52,31 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         $validated = $request->validated();
-        $validated['password'] = Hash::make($validated['password']);
-        $user = new User($validated);
-        $user->role = "user";
-        $user->save();
-        return back()->with('success', 'Registration Completed!');
+        $user = $this->userService->store($validated);
+
+        if ($user) {
+            return back()->with('success', 'Registration Completed!');
+        }
+        return back()->with('error', 'Registration Incomplete!');
     }
 
     public function storeTourGuideDetails(TourGuideStoreRequest $request) {
         $validated = $request->validated();
-        $path = $request->file('fotoktp')->store('selfie-ktp');
-        $temp = explode('/', $path);    // Getting the attachment name
-        $user = User::find(Auth::id());
-        $user->nik = $request->nik;
-        $user->address = $request->address;
-        $user->province = $request->province;
-        $user->selfie_with_ktp = $temp[1];
-        $user->save();
-
-        return back()->with('success', 'Registration Completed!');
+        // dd($validated);
+        $user = $this->userService->storeTourGuide($validated, $request->file('fotoktp'));
+        if ($user) {
+            return back()->with('success', 'Registration Completed!');
+        } else {
+            return back()->with('error', 'Registration Incomplete!');
+        }
     }
 
     public function authenticate(AuthenticationRequest $request) {
         $credentials = $request->validated();
-        if (Auth::attempt($credentials)) {
+        if ($this->userService->authenticate($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
-
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);

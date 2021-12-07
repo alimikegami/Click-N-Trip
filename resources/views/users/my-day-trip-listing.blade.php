@@ -22,7 +22,7 @@
             <div class="col">
                 <div class="container-fluid" id="trip-container">
                     <h3 class="mb-3 mt-sm-4 mt-md-4">My Day Trip Listing</h3>
-                    @foreach ($listings as $listing)
+                    @foreach ($userListing[0]->dayTripPlan as $listing)
                     <div id="trip-outside-container" class="container border rounded">
                         <div id="trip-inside-container" class="container">
                             <div class="row mt-3 mb-3">
@@ -72,7 +72,7 @@
                 </div>
                 <div class="container d-flex justify-content-center mt-4 mb-4">
                     <div class="container d-flex justify-content-center mt-4 mb-4">
-                        {{-- {{ $listings->links() }} --}}
+                        {{-- {{ $userListing[0]->links() }} --}}
                     </div>
                 </div>
             </div>
