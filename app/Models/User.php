@@ -58,6 +58,6 @@ class User extends Authenticatable
     }
 
     public static function getAllUserDataById($id) {
-        return User::with('daytripPlan.dayTripImages')->get();
+        return User::with('daytripPlan.dayTripImages')->where('id', $id)->get();
     }
 }

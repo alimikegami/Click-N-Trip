@@ -44,24 +44,8 @@
                                     </div>
                                     <div id="list-buttons" class="pt-3">
                                         <a href=""><i class="editbutton bi bi-pencil-square me-2 px-2"></i></a>
-                                        <a data-toggle="modal" data-target="#confirmationModal" href=""><i class="xbutton bi bi-trash me-2 px-2"></i></a>
-                                        <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
-                                                    <i type='button' data-dismiss="modal" aria-label="Close" class="px-2 xbutton2 bi bi-x close"></i>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Do you want to delete this day trip plan?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary" id="redbutton" data-dismiss="modal">No</button>
-                                                        <button type="submit" class="btn btn-primary" id="greenbutton">Delete</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <a href=""><i class="xbutton bi bi-trash me-2 px-2"></i></a>
+                                        
                                     </div>
                                     <button class="btn btn-secondary mt-2 ">See Reservation</button>
                                 </div>
@@ -70,14 +54,37 @@
                     </div>
                     @endforeach
                 </div>
+
                 <div class="container d-flex justify-content-center mt-4 mb-4">
                     <div class="container d-flex justify-content-center mt-4 mb-4">
                         {{-- {{ $userListing[0]->links() }} --}}
+                    </div>
+                </div>
+
+                <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                            <i type='button' data-dismiss="modal" aria-label="Close" class="px-2 xbutton2 bi bi-x close"></i>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this day trip plan?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="redbutton" data-dismiss="modal">No</button>
+                                <button type="submit" class="btn btn-primary" id="greenbutton">Delete</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
+
+    <script>
+        
+    </script>
 
 @endsection
