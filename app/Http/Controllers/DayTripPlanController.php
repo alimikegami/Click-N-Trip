@@ -47,7 +47,6 @@ class DayTripPlanController extends Controller
 
     public function store(DayTripStoreRequest $request) {
         $validated = $request->validated();
-
         $fillableData = [
             'title' => $request->title,
             'destination' => $request->destination,

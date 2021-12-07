@@ -19,6 +19,9 @@
               @if (Session::has('success'))
                 <div class="alert alert-success">{{ Session::get('success') }}</div>
               @endif
+              @if (Session::has('error'))
+                <div class="alert alert-success">{{ Session::get('error') }}</div>
+              @endif
               @error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
               @enderror

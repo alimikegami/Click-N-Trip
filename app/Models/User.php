@@ -56,4 +56,8 @@ class User extends Authenticatable
     public function dayTripPlan(){
         return $this->hasMany(DayTripPlan::class, 'user_id');
     }
+
+    public static function getAllUserDataById($id) {
+        return User::with('daytripPlan.dayTripImages')->get();
+    }
 }
