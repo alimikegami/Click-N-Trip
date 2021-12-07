@@ -27,7 +27,7 @@
                         <div id="trip-inside-container" class="container">
                             <div class="row mt-3 mb-3">
                                 <div id="image-holder" class="col-lg-4 col-md-4">
-                                    <img id="image" class="img-fluid rounded" src="Gallery/Uluwatu.jpg" alt="">
+                                    <img id="image" class="img-fluid rounded" src="{{ asset('storage/day-trip/' . $listing->dayTripImages[0]->image_path) }}" alt="">
                                 </div>
                                 <div id="plan-desc" class="col">
                                     <p>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="container d-flex justify-content-center mt-4 mb-4">
                     <div class="container d-flex justify-content-center mt-4 mb-4">
-                        {{ $listings->links() }}
+                        {{-- {{ $listings->links() }} --}}
                     </div>
                 </div>
             </div>
