@@ -9,7 +9,7 @@ class Reservation extends Model
 {
     use HasFactory;
 
-    protected $table = 'day_trip_images';
+    protected $table = 'reservation';
 
     protected $fillable = [
         'reservation_date',
@@ -17,7 +17,14 @@ class Reservation extends Model
 
     protected $guarded = [
         'day_trip_plan_id',
-        'tour_guide_id',
         'user_id'
     ];
+
+    public function dayTripPlan(){
+        return $this->belongsTo(DayTripPlan::class, 'day_trip_plan_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

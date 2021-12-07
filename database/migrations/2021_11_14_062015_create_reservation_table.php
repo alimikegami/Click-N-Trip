@@ -15,12 +15,14 @@ class CreateReservationTable extends Migration
     {
         Schema::create('reservation', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tour_guide_id');
             $table->unsignedBigInteger('user_id');
             $table->date('reservation_date');
-            $table->foreign('tour_guide_id')->references('id')->on('users');
+            $table->unsignedBigInteger('day_trip_plan_id');
+            $table->unsignedInteger('person');
+            $table->unsignedInteger('status')->default(0);
+            $table->foreign('day_trip_plan_id')->references('id')->on('day_trip_plan');            
             $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
+            $table->timestamps();   
         });
     }
 

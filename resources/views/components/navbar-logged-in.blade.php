@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item d-flex align-items-center">
-          <a class="nav-link active" href="#">Find a Tour</a>
+          <a class="nav-link active" href="#">Be A Tour Guide</a>
         </li>
         <li class="nav-item d-flex align-items-center">
           <a class="nav-link active" href="{{ route('list-day-trips') }}">List your Trip</a>
@@ -22,7 +22,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Transaction History</a>
-                <a class="dropdown-item" href="#">Listing</a>
+                <a class="dropdown-item" href="/users/{{ Auth::id() }}">Listing</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Log Out</a>
             </div>

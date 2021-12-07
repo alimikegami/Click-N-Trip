@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthenticationRequest;
+use App\Http\Requests\TourGuideStoreRequest;
 use App\Models\User;
 use App\Models\DayTripPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserStoreRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -16,11 +20,17 @@ class UserController extends Controller
     }
 
     public function show(User $user){
-        $userListing = DayTripPlan::listings($user->id);
+        $userListing = DayTripPlan::getDayTripPlanWithImages();
         return view('users.my-day-trip-listing', [
             'user'=>$user,
             'listings'=>$userListing
         ]);
+    }
+
+    public function showListings(Request $request, $id){
+        $userListing = DayTripPlan::with(['dayTripImages'])->get();
+        dd($userListing);
+        return view('users.my-day-trip-listing');
     }
 
     public function register()
@@ -37,14 +47,9 @@ class UserController extends Controller
         return view('users.create-day-trip-plan');
     }
 
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:users,email',
-            'password' => 'required|same:password-confirm|min:8',
-        ]);
-
+        $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
         $user = new User($validated);
         $user->role = "user";
@@ -52,14 +57,8 @@ class UserController extends Controller
         return back()->with('success', 'Registration Completed!');
     }
 
-    public function storeTourGuideDetails(Request $request) {
-        $validated = $request->validate([
-            'address' => 'required',
-            'province' => 'required',
-            'nik' => 'required|unique:users,nik|digits:16',
-            'fotoktp' => 'required|mimes:jpg,bmp,png|max:5120',
-        ]);
-
+    public function storeTourGuideDetails(TourGuideStoreRequest $request) {
+        $validated = $request->validated();
         $path = $request->file('fotoktp')->store('selfie-ktp');
         $temp = explode('/', $path);    // Getting the attachment name
         $user = User::find(Auth::id());
@@ -72,12 +71,8 @@ class UserController extends Controller
         return back()->with('success', 'Registration Completed!');
     }
 
-    public function authenticate(Request $request) {
-        $credentials = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-
+    public function authenticate(AuthenticationRequest $request) {
+        $credentials = $request->validated();
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/');

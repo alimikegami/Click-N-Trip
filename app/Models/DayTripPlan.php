@@ -35,11 +35,19 @@ class DayTripPlan extends Model
         return $this->hasMany(DayTripPlanImages::class, 'day_trip_plan_id');
     }
 
+    public function dayTripPlan(){
+        return $this->hasMany(Reservation::class, 'user_id');
+    }
+
     public function scopeFilter($query, $search) {
         return $query->where('title', 'like', '%'.$search.'%')->with('user')->paginate(5);
     }
 
     public function scopeListings($query, $id) {
         return $query->where('user_id', $id)->paginate(5);
+    }
+
+    public static function getDayTripPlanWithImages(){
+        return DayTripPlan::with('dayTripImages')->get();
     }
 }
