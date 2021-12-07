@@ -17,7 +17,7 @@ class CreateDayTripImageTable extends Migration
             $table->id();
             $table->string('image_path');
             $table->unsignedBigInteger('day_trip_plan_id');
-            $table->foreign('day_trip_plan_id')->references('id')->on('day_trip_plan');
+            $table->foreign('day_trip_plan_id')->references('id')->on('day_trip_plan')->onDelete('cascade');;
             $table->timestamps();
         });
     }
