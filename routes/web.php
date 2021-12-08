@@ -31,11 +31,13 @@ Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuid
 Route::get('/users/history', [UserController::class, 'showHistory'])->middleware('auth');
 
 // Route::get('/day-trips', [DayTripPlanController::class, 'search'])->name('search');
+Route::patch('/day-trips/reservation/{resId}', [DayTripPlanController::class, 'updateStatus']);
+Route::get('/day-trips/{id}/reservation', [DayTripPlanController::class, 'showReservation']);
 Route::get('/day-trips/search', [DayTripPlanController::class, 'search'])->name('search');
 Route::post('/day-trips', [DayTripPlanController::class, 'store'])->middleware('auth');
+Route::delete('/day-trips/{id}', [DayTripPlanController::class, 'delete']);
 Route::get('/day-trips/{day_trip_plan}', [DayTripPlanController::class, 'show']);
 Route::post('/day-trips/book', [DayTripPlanController::class, 'book']);
-
 
 Route::get('/test', function () {
     return view('day-trips.search-result');
