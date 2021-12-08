@@ -35,7 +35,6 @@ class UserRepository
         $user->address = $userData["address"];
         $user->province = $userData["province"];
         $user->selfie_with_ktp = $imgPath[1];
-        $user->role = "tour guide";
         $user->save();
 
         return $user;

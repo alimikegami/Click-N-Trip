@@ -69,7 +69,20 @@
                                         <td>alimikegami1@gmail.com</td>
                                         <td>{{ $item->person }}</td>
                                         <td>{{ $item->reservation_date }}</td>
-                                        <td>{{ $item->status }}</td>
+                                        <td>
+                                            @if ($item->status == 0)
+                                                Pending
+                                            @endif
+                                            @if ($item->status == 1)
+                                                Pending Payment
+                                            @endif
+                                            @if ($item->status == 2)
+                                                Rejected
+                                            @endif
+                                            @if ($item->status == 3)
+                                                Reserved
+                                            @endif
+                                        </td>
                                         <td>
                                             <a type="button" onclick="showApprovalModal({{ $item->id }})"
                                                 class="ps-3"><i class="bi bi-check-square-fill"

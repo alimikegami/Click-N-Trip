@@ -19,6 +19,7 @@ class CreateReservationTable extends Migration
             $table->date('reservation_date');
             $table->unsignedBigInteger('day_trip_plan_id');
             $table->unsignedInteger('person');
+            $table->string('payment_image_path');
             $table->unsignedInteger('status')->default(0);
             $table->foreign('day_trip_plan_id')->references('id')->on('day_trip_plan')->onDelete('cascade');;            
             $table->foreign('user_id')->references('id')->on('users');

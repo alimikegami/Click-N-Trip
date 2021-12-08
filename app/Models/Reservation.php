@@ -14,6 +14,7 @@ class Reservation extends Model
     protected $fillable = [
         'person',
         'reservation_date',
+        'payment_image_path',
         'status'
     ];
 
