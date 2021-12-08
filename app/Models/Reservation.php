@@ -12,7 +12,9 @@ class Reservation extends Model
     protected $table = 'reservation';
 
     protected $fillable = [
+        'person',
         'reservation_date',
+        'status'
     ];
 
     protected $guarded = [

@@ -79,6 +79,28 @@ class DayTripPlanRepository
         }
         return false;
     }
+
+    public function delete($id) {
+        $queryState = DB::delete('DELETE FROM day_trip_plan WHERE id = ?', [$id]);
+        return $queryState;
+    }
+
+    public function getReservationById($userId, $dtpId) {
+        $res = DB::select('SELECT r.* FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = r.day_trip_plan_id WHERE dtp.user_id = ? AND r.day_trip_plan_id = ?', [$userId, $dtpId]);
+
+        return $res;
+    }
+
+    public function getDayTripPlanById($id){
+        $res = DB::select('SELECT * FROM day_trip_plan dtp WHERE id = ?', [$id]);
+        return $res;
+    }
+
+    public function updateStatus($status, $resId){
+        $affected = DB::update('UPDATE reservation SET status = ? WHERE id = ?', [$status, $resId]);
+
+        return $affected;
+    }
 }
 
 ?>
