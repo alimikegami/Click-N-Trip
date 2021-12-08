@@ -79,10 +79,8 @@
                                         <a href="" class="ps-3"><i class="bi bi-check-square-fill" style="font-size: 1.7rem; color:#2BE048;"></i></a>
                                         <a href="" class="ps-3"><i class="bi bi-x-square-fill" style="font-size: 1.7rem; color:#FF0000;"></i></a>
                                     </td>
-                                </tr>
-                                
+                                </tr>                      
                             </tbody>
-
                         </table>
                     </div>
                     <div class="container d-flex justify-content-center mt-5 mb-4">
