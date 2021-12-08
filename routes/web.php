@@ -60,3 +60,19 @@ Route::get('/payment-method', function () {
 Route::get('/payment-details', function () {
     return view('users.payment-details');
 });
+Route::get('/adminhome', function () {
+    return view('users.admin-home');
+});
+Route::get('/adminuserlist', function () {
+    return view('users.admin-user-list');
+});
+Route::get('/admintourapply', function () {
+    return view('users.admin-tour-apply');
+});
+Route::get('/adminpendingpayment', function () {
+    return view('users.admin-pending-payment');
+});
+Route::get('/adminapprovedpayment', function () {
+    return view('users.admin-approved-payment');
+});
+

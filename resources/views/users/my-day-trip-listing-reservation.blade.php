@@ -80,10 +80,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
-
                         </table>
                     </div>
                     <div class="container d-flex justify-content-center mt-5 mb-4">
