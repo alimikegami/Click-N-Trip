@@ -21,10 +21,10 @@
                 <span class="text-white" id='username'>{{ Auth::user()->name }}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Transaction History</a>
+                <a class="dropdown-item" href="/users/history">Transaction History</a>
                 <a class="dropdown-item" href="/users/{{ Auth::id() }}">Listing</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log Out</a>
+                <a type="button" class="dropdown-item" id="logoutButton" onclick="showLogoutModal()">Log Out</a>
             </div>
         </li>
       </ul>
