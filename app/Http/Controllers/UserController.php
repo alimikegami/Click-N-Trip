@@ -46,7 +46,10 @@ class UserController extends Controller
 
     public function showHistory()
     {
-        return view('users.user-transaction-history');
+        $history = $this->userService->getReservationHistoryByUserId(Auth::id());
+        return view('users.user-transaction-history', [
+            "history" => $history,
+        ]);
     }
 
     public function register()
