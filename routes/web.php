@@ -31,6 +31,7 @@ Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuid
 Route::get('/users/history', [UserController::class, 'showHistory'])->middleware('auth');
 Route::get('/users/{user}', [UserController::class, 'show']);
 
+Route::patch('/day-trips/reservation/proof/{resId}', [DayTripPlanController::class, 'updatePaymentProof']);
 Route::patch('/day-trips/reservation/{resId}', [DayTripPlanController::class, 'updateStatus']);
 Route::get('/day-trips/{id}/reservation', [DayTripPlanController::class, 'showReservation']);
 Route::get('/day-trips/search', [DayTripPlanController::class, 'search'])->name('search');

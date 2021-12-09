@@ -35,6 +35,10 @@ class UserService
         
         return false;
     }
+
+    public function getReservationHistoryByUserId($id){
+        return $this->userRepository->getReservationHistoryByUserId($id);
+    }
 }
 
 ?>

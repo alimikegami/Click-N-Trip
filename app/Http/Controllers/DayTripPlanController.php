@@ -77,6 +77,16 @@ class DayTripPlanController extends Controller
             return response()->json(['status' => "success"], 200);
         }
         
-        return response()->json(['status' => $resId], 200);
+        return response()->json(['status' => "invalid"], 500);
+    }
+
+    public function updatePaymentProof(Request $request, $id){
+        $res = $this->dayTripPlanService->updatePaymentProof($request->file('proofImg'), $id);
+        if ($res) {
+            return response()->json(['status' => "success"], 200);
+        }
+
+        return response()->json(['status' => $id], 500);
+
     }
 }

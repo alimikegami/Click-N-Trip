@@ -227,8 +227,6 @@
         }
 
         function showApprovalModal($id, $dayTripid) {
-            console.log($id);
-            console.log($dayTripid);
             $('#approvalModal').modal('show');
             document.getElementById('approveButton').dataset.id = $id;
         }
