@@ -96,7 +96,6 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
 }
 
 a, a:hover, a:focus {
@@ -129,12 +128,12 @@ a, a:hover, a:focus {
     padding: 10px;
 }
 
-#sidebar ul li a {
+#sidebar ul li a{
     padding: 10px;
     font-size: 1.1em;
     display: block;
 }
-#sidebar ul li a:hover {
+#sidebar a:hover {
     color: #7386D5;
     background: #fff;
 }
