@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Repositories;
 
@@ -8,20 +8,22 @@ use App\Models\DayTripPlanDetails;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class DayTripPlanRepository 
+class DayTripPlanRepository
 {
     protected $dayTripPlan;
 
     public function __construct(DayTripPlan $dayTripPlan)
-    {   
+    {
         $this->dayTripPlan = $dayTripPlan;
     }
 
-    public function searchByKeyword($keyword){
+    public function searchByKeyword($keyword)
+    {
         return DayTripPlan::filter($keyword);
     }
 
-    public function store($daytripPlanData){
+    public function store($daytripPlanData)
+    {
         $fillableData = [
             'title' => $daytripPlanData["title"],
             'destination' => $daytripPlanData["destination"],
@@ -32,14 +34,14 @@ class DayTripPlanRepository
         $dayTripPlan = new DayTripPlan($fillableData);
         $dayTripPlan->user_id = Auth::id();
         $dayTripPlan->save();
-                
+
         for ($x = 0; $x < count($daytripPlanData["time_start"]); $x++) {
             $dayTripPlanDetails = new DayTripPlanDetails();
-            $time=strtotime($daytripPlanData["time_start"][$x]);
-            $startTime = date("H:i:s",$time);
+            $time = strtotime($daytripPlanData["time_start"][$x]);
+            $startTime = date("H:i:s", $time);
             $dayTripPlanDetails->start_time = $startTime;
-            $time=strtotime($daytripPlanData["time_end"][$x]);
-            $endTime = date("H:i:s",$time);
+            $time = strtotime($daytripPlanData["time_end"][$x]);
+            $endTime = date("H:i:s", $time);
             $dayTripPlanDetails->end_time = $endTime;
             $dayTripPlanDetails->agenda = $daytripPlanData["agenda"][$x];
             $dayTripPlanDetails->day_trip_plan_id = $dayTripPlan->id;
@@ -62,7 +64,8 @@ class DayTripPlanRepository
         return $dayTripPlan;
     }
 
-    public function book($bodyContent){
+    public function book($bodyContent)
+    {
         // check the number of reservation for that particular date
         $numberOfReservation = DB::select('SELECT COUNT(*) AS amount FROM reservation WHERE day_trip_plan_id = ? AND reservation_date = ?', [$bodyContent["day_trip_plan_id"], $bodyContent["date"]]);
         // return response()->json(['success' => $numberOfReservation[0]->amount], 200);
@@ -79,6 +82,37 @@ class DayTripPlanRepository
         }
         return false;
     }
-}
 
-?>
+    public function delete($id)
+    {
+        $queryState = DB::delete('DELETE FROM day_trip_plan WHERE id = ?', [$id]);
+        return $queryState;
+    }
+
+    public function getReservationById($userId, $dtpId)
+    {
+        $res = DB::select('SELECT r.* FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = r.day_trip_plan_id WHERE dtp.user_id = ? AND r.day_trip_plan_id = ?', [$userId, $dtpId]);
+
+        return $res;
+    }
+
+    public function getDayTripPlanById($id)
+    {
+        $res = DB::select('SELECT * FROM day_trip_plan dtp WHERE id = ?', [$id]);
+        return $res;
+    }
+
+    public function updateStatus($status, $resId)
+    {
+        $affected = DB::update('UPDATE reservation SET status = ? WHERE id = ?', [$status, $resId]);
+
+        return $affected;
+    }
+
+    public function updatePaymentProof($imgPath, $id)
+    {
+        $res = DB::update('UPDATE reservation SET payment_image_path = ? WHERE id = ?', [$imgPath, $id]);
+
+        return $res;
+    }
+}

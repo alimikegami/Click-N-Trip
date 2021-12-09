@@ -50,6 +50,43 @@ class DayTripPlanController extends Controller
             return back()->with('success', 'Day Trip Listing Successfully Created!');
         }
         return back()->with('error', 'Day Trip Listing Could Not Be Created!');
+    }
+
+    public function delete(Request $request, $id){
+        $querystate = $this->dayTripPlanService->delete($id);
+        if ($querystate) {
+            return response()->json(['status' => 'success'], 200);
+        }
+        return response()->json(['status' => 'invalid'], 500);
+    }
+
+    public function showReservation(Request $request, $id){
+        $dayTripPlan = $this->dayTripPlanService->getDayTripPlanById($id);
+        $reservation = $this->dayTripPlanService->getReservationById($id);
+        return view('users.my-day-trip-listing-reservation', [
+            "dayTripPlan" => $dayTripPlan,
+            "reservation" => $reservation
+        ]);
+
+    }
+
+    public function updateStatus(Request $request, $resId){
+        $bodyContent = $request->json()->all();
+        $res = $this->dayTripPlanService->updateStatus($bodyContent["status"], $resId);
+        if ($res){
+            return response()->json(['status' => "success"], 200);
+        }
+        
+        return response()->json(['status' => "invalid"], 500);
+    }
+
+    public function updatePaymentProof(Request $request, $id){
+        $res = $this->dayTripPlanService->updatePaymentProof($request->file('proofImg'), $id);
+        if ($res) {
+            return response()->json(['status' => "success"], 200);
+        }
+
+        return response()->json(['status' => $id], 500);
 
     }
 }

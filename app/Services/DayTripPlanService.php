@@ -1,10 +1,11 @@
-<?php 
+<?php
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\DayTripPlanRepository;
 
-class DayTripPlanService 
+class DayTripPlanService
 {
     protected $dayTripPlanRepository;
 
@@ -13,11 +14,13 @@ class DayTripPlanService
         $this->dayTripPlanRepository = $dayTripPlanRepository;
     }
 
-    public function searchByKeyword($keyword){
+    public function searchByKeyword($keyword)
+    {
         return $this->dayTripPlanRepository->searchByKeyword($keyword);
     }
 
-    public function store($daytripPlanData){
+    public function store($daytripPlanData)
+    {
         $queryState = $this->dayTripPlanRepository->store($daytripPlanData);
         if ($queryState) {
             return true;
@@ -26,10 +29,44 @@ class DayTripPlanService
         return false;
     }
 
-    public function book($bodyContent){
+    public function book($bodyContent)
+    {
         $queryRes = $this->dayTripPlanRepository->book($bodyContent);
         return $queryRes;
     }
-}
 
-?>
+    public function delete($id)
+    {
+        $queryRes = $this->dayTripPlanRepository->delete($id);
+        return $queryRes;
+    }
+
+    public function getReservationById($id)
+    {
+        $res = $this->dayTripPlanRepository->getReservationById(Auth::id(), $id);
+        return $res;
+    }
+
+    public function getDayTripPlanById($id)
+    {
+        $res = $this->dayTripPlanRepository->getDayTripPlanById($id);
+        return $res;
+    }
+
+    public function updateStatus($status, $id)
+    {
+        $res = $this->dayTripPlanRepository->updateStatus($status, $id);
+
+        return $res;
+    }
+
+    public function updatePaymentProof($imgFile, $id)
+    {
+        $path = $imgFile->store('payment-proof');
+        $temp = explode('/', $path);    // Getting the attachment name
+        $temp = $temp[1];
+        $res = $this->dayTripPlanRepository->updatePaymentProof($temp, $id);
+
+        return $res;
+    }
+}

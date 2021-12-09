@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark" id='custom-navbar'>
   <div class="container d-flex align-items-center">
-    <a class="navbar-brand" href="/"><img id='navbar-logo'src="../Gallery/logoterang.png" alt=""></a>
+    <a class="navbar-brand" href="/"><img id='navbar-logo'src="{{ asset('Gallery/logoterang.png') }}" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,10 +21,10 @@
                 <span class="text-white" id='username'>{{ Auth::user()->name }}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Transaction History</a>
+                <a class="dropdown-item" href="/users/history">Transaction History</a>
                 <a class="dropdown-item" href="/users/{{ Auth::id() }}">Listing</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log Out</a>
+                <a type="button" class="dropdown-item" id="logoutButton" onclick="showLogoutModal()">Log Out</a>
             </div>
         </li>
       </ul>

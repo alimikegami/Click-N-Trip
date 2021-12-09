@@ -27,11 +27,28 @@ class UserController extends Controller
         return view('users.login');
     }
 
-    public function show(User $user){
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return response()->json(['status' => 200], 200);
+    }
+
+    public function show(User $user)
+    {
         $userListing = $this->userService->getAllUserDataById($user->id);
         return view('users.my-day-trip-listing', [
-            'user'=>$user,
-            'userListing'=>$userListing
+            'user' => $user,
+            'userListing' => $userListing
+        ]);
+    }
+
+    public function showHistory()
+    {
+        $history = $this->userService->getReservationHistoryByUserId(Auth::id());
+        return view('users.user-transaction-history', [
+            "history" => $history,
         ]);
     }
 
@@ -45,7 +62,8 @@ class UserController extends Controller
         return view('users.register-as-tour-guide');
     }
 
-    public function dayTripPlanForm() {
+    public function dayTripPlanForm()
+    {
         return view('users.create-day-trip-plan');
     }
 
@@ -60,7 +78,8 @@ class UserController extends Controller
         return back()->with('error', 'Registration Incomplete!');
     }
 
-    public function storeTourGuideDetails(TourGuideStoreRequest $request) {
+    public function storeTourGuideDetails(TourGuideStoreRequest $request)
+    {
         $validated = $request->validated();
         // dd($validated);
         $user = $this->userService->storeTourGuide($validated, $request->file('fotoktp'));
@@ -71,7 +90,8 @@ class UserController extends Controller
         }
     }
 
-    public function authenticate(AuthenticationRequest $request) {
+    public function authenticate(AuthenticationRequest $request)
+    {
         $credentials = $request->validated();
         if ($this->userService->authenticate($credentials)) {
             $request->session()->regenerate();
