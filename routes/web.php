@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DayTripPlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -40,26 +41,8 @@ Route::delete('/day-trips/{id}', [DayTripPlanController::class, 'delete']);
 Route::get('/day-trips/{day_trip_plan}', [DayTripPlanController::class, 'show']);
 Route::post('/day-trips/book', [DayTripPlanController::class, 'book']);
 
-Route::get('/admins/dashboard');
-Route::get('/payment-method', function () {
-    return view('users.payment-method');
-});
-Route::get('/payment-details', function () {
-    return view('users.payment-details');
-});
-Route::get('/adminhome', function () {
-    return view('users.admin-home');
-});
-Route::get('/adminuserlist', function () {
-    return view('users.admin-user-list');
-});
-Route::get('/admintourapply', function () {
-    return view('users.admin-tour-apply');
-});
-Route::get('/adminpendingpayment', function () {
-    return view('users.admin-pending-payment');
-});
-Route::get('/adminapprovedpayment', function () {
-    return view('users.admin-approved-payment');
-});
-
+Route::get('/admins/dashboard', [AdminController::class, 'showDashboard']);
+Route::get('/admins/dashboard/tour-guide-applications', [AdminController::class, 'showTourGuideApplications']);
+Route::get('/admins/dashboard/payment-details', [AdminController::class, 'showPaymentDetails']);
+Route::get('/admins/dashboard/transaction-history', [AdminController::class, 'showTransactionHistory']);
+Route::get('/admins/dashboard/users', [AdminController::class, 'showUsers']);

@@ -21,6 +21,7 @@
             </thead>
             <tbody class="text-center">
             <h1 class="mb-3">Tour Guide Applicant List</h1>
+<<<<<<< HEAD:resources/views/users/admin-tour-apply.blade.php
                 <div style="max-width: 700px;">
                     <form class="pt-3">
                         <div class="input-group pb-3">
@@ -53,6 +54,15 @@
                     <td>Jln.jalan-jalan no 2</td>
                     <td>Bali</td>
                     <td>190876789xxx</td>
+=======
+                @foreach ($applications as $application)
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{ $application->name }}</td>
+                    <td>{{ $application->address }}</td>
+                    <td>{{ $application->province }}</td>
+                    <td>{{ $application->nik }}</td>
+>>>>>>> f2ec7c057f7f0b566d64c0b78e0082209075da53:resources/views/admin/admin-tour-apply.blade.php
                     <td>
                         <button class="btn btn-primary">View</button> 
                     </td>
@@ -60,6 +70,7 @@
                         <button class="btn redbutton2">Ban</button> 
                     </td>
                 </tr>
+                @endforeach
                   
             </tbody>
         </table>

@@ -28,10 +28,10 @@ class User extends Authenticatable
         'province',
         'selfie_with_ktp',
         'password',
+        'role',
     ];
 
     protected $guarded = [
-        'role',
     ];
 
     /**
