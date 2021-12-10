@@ -95,7 +95,11 @@ class UserController extends Controller
         $credentials = $request->validated();
         if ($this->userService->authenticate($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            if (Auth::user()->role == "user"){
+                return redirect()->intended('/');
+            } else {
+                return redirect()->intended('/admins/dashboard');
+            }
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

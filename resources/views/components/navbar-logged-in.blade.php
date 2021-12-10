@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item d-flex align-items-center">
-          <a class="nav-link active" href="#">Be A Tour Guide</a>
+          <a class="nav-link active" href="/users/register/tour-guide">Be A Tour Guide</a>
         </li>
         <li class="nav-item d-flex align-items-center">
           <a class="nav-link active" href="{{ route('list-day-trips') }}">List your Trip</a>

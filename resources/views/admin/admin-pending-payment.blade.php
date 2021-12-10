@@ -1,4 +1,4 @@
-@extends('layouts.main-layout')
+@extends('layouts.admin-layout')
 @section('css')
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/day-trip-listing.css">
