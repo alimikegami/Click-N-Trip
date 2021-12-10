@@ -21,12 +21,13 @@
             </thead>
             <tbody class="text-center">
             <h1 class="mb-3">Tour Guide Applicant List</h1>
+                @foreach ($applications as $application)
                 <tr>
                     <th scope="row">1</th>
-                    <td>Mr.A</td>
-                    <td>Jln.jalan-jalan no 2</td>
-                    <td>Bali</td>
-                    <td>190876789xxx</td>
+                    <td>{{ $application->name }}</td>
+                    <td>{{ $application->address }}</td>
+                    <td>{{ $application->province }}</td>
+                    <td>{{ $application->nik }}</td>
                     <td>
                         <button class="btn btn-primary">View</button> 
                     </td>
@@ -34,19 +35,7 @@
                         <button class="btn btn-primary" id="redbutton">Ban</button> 
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mr.A</td>
-                    <td>Jln.jalan-jalan no 2</td>
-                    <td>Bali</td>
-                    <td>190876789xxx</td>
-                    <td>
-                        <button class="btn btn-primary">View</button> 
-                    </td>
-                    <td>
-                        <button class="btn btn-primary" id="redbutton">Ban</button> 
-                    </td>
-                </tr>
+                @endforeach
                   
             </tbody>
         </table>
