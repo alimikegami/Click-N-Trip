@@ -1,4 +1,4 @@
-@extends('layouts.main-layout')
+@extends('layouts.admin-layout')
 @section('css')
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/day-trip-listing.css">
@@ -8,6 +8,19 @@
     @include('components.navbar-admin')
     <div class="container mt-3">
         <h1 class="mb-3">User List</h1>
+        <div style="max-width: 700px;">
+            <form class="pt-3">
+                <div class="input-group pb-3">
+                    <input type="text" class="form-control" placeholder="Search data..."
+                        aria-label="SearchLabel" />
+                    <div id='SearchButton'>
+                        <button id='search-icon' class='btn btn-primary' type='submit'>
+                            <i class="bi bi-search" style="font-size: 1.5rem;"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
         <table class="table admin-table">
             <thead>
                 <tr class="text-center">
@@ -25,7 +38,7 @@
                     <td>A@gmail.com</td>
                     <td>User</td>
                     <td>
-                        <button class="btn btn-primary" id="redbutton">Ban</button> 
+                        <button class="btn redbutton2" type="button" data-toggle="modal" data-target="#confirmationModal">Ban</button> 
                     </td>
                 </tr>
                 <tr>
@@ -34,7 +47,7 @@
                     <td>A@gmail.com</td>
                     <td>User</td>
                     <td>
-                        <button class="btn btn-primary" type="button" id="redbutton" data-toggle="modal" data-target="#confirmationModal">Ban</button> 
+                        <button class="btn redbutton2" type="button" data-toggle="modal" data-target="#confirmationModal">Ban</button> 
                             <!-- Modal -->
                             <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">

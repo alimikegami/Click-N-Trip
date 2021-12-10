@@ -43,6 +43,15 @@ p{
 #redbutton:hover{
     background-color: white !important;
 }
+.redbutton2{
+    background-color: #ed1c24;
+    border-color: #ed1c24;
+    color: white;
+}
+.redbutton2:hover{
+    background-color:#fd0e35;
+    color: white;
+}
 #greenbutton{
     background-color: #228b22 !important;
     border-color: #228b22!important;
@@ -159,4 +168,20 @@ ul ul a {
 }
 .admin-table{
     max-width: 850px;
+}
+#zoom-element{
+    transition:transform .2s;
+}
+#zoom-element:hover{
+    transform: scale(1.03);
+    cursor: pointer;
+}
+#rating-stars{
+    font-size: 1rem; color:gold;
+}
+#dashboard-icons{
+    font-size: 14px; color:white;
+}
+#dashboard-icons:hover{
+    color: #7386D5;
 }

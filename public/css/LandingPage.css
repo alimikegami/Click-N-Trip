@@ -36,7 +36,7 @@
 }
 #landing-footer{
     color: white;
-    background-color: #40514E;
+    background-color: #14279B;
 }
 .card{
     max-width: 55rem;
@@ -47,3 +47,23 @@
 h5{
     font-size: 24px;
 }
+#footer-inner{
+    max-width: 1700px;
+}
+#footer-links{
+    color: red;
+}
+#footer-links:hover{
+    background-color: #E6E6E6;
+    color: black;
+}
+
+#contact-logo{
+    color:white;
+}
+#contact-logo:hover{
+    background-color: #E6E6E6;
+    color: black;
+}
+
+
