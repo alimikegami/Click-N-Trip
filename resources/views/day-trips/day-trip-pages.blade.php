@@ -69,16 +69,16 @@
                 <!-- write review section -->
                 <div class="container mb-5" id="review-write">
                     <p class="mt-3" id="desc-title">Write Your Own Review!</p>
-                    <span id="desc-content">Rate:
-                        <span id="star-container">
-                            <i class="bi bi-star-fill" id="rating-stars"></i>
-                        </span>
-                    </span>
-                    <div class="mt-2">
-                        <button type="button" onclick="addStars()" class="btn btn-primary"><i class="bi bi-star-fill" id="rating-stars"></i>Add Stars</button>
-                        <button type="button" onclick="removeStars()" class="btn btn-primary" id="redbutton">Remove Stars</button>
-                    </div>
                     <form class="mt-3">
+                        <span id="desc-content">Rate:
+                            <span id="star-container">
+                                <i class="bi bi-star-fill" id="rating-stars"></i>
+                            </span>
+                        </span>
+                        <div class="mt-2 mb-3">
+                            <button type="button" onclick="addStars()" class="btn btn-primary"><i class="bi bi-star-fill" id="rating-stars"></i>Add Stars</button>
+                            <button type="button" onclick="removeStars()" class="btn btn-primary" id="redbutton">Remove Stars</button>
+                        </div>
                         <textarea class="form-control" name="description" id="description"
                         placeholder='Review Goes Here' required></textarea>
                         <button class="btn btn-primary mt-3">Submit Review</button>
