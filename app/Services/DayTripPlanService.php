@@ -62,9 +62,9 @@ class DayTripPlanService
 
     public function updatePaymentProof($imgFile, $id)
     {
-        $path = $imgFile->store('payment-proof');
+        $path = $imgFile->store('public/payment-proof');
         $temp = explode('/', $path);    // Getting the attachment name
-        $temp = $temp[1];
+        $temp = $temp[2];
         $res = $this->dayTripPlanRepository->updatePaymentProof($temp, $id);
 
         return $res;

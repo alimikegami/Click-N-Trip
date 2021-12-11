@@ -32,6 +32,7 @@ Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuid
 Route::get('/users/history', [UserController::class, 'showHistory'])->middleware('auth');
 Route::get('/users/{user}', [UserController::class, 'show']);
 
+Route::post('/day-trips/book', [DayTripPlanController::class, 'book']);
 Route::patch('/day-trips/reservation/proof/{resId}', [DayTripPlanController::class, 'updatePaymentProof']);
 Route::patch('/day-trips/reservation/{resId}', [DayTripPlanController::class, 'updateStatus']);
 Route::get('/day-trips/{id}/reservation', [DayTripPlanController::class, 'showReservation']);
@@ -39,10 +40,10 @@ Route::get('/day-trips/search', [DayTripPlanController::class, 'search'])->name(
 Route::post('/day-trips', [DayTripPlanController::class, 'store'])->middleware('auth');
 Route::delete('/day-trips/{id}', [DayTripPlanController::class, 'delete']);
 Route::get('/day-trips/{day_trip_plan}', [DayTripPlanController::class, 'show']);
-Route::post('/day-trips/book', [DayTripPlanController::class, 'book']);
 
 Route::get('/admins/dashboard', [AdminController::class, 'showDashboard']);
 Route::get('/admins/dashboard/tour-guide-applications', [AdminController::class, 'showTourGuideApplications']);
+Route::patch('/admins/tour-guide-application/{id}');
 Route::get('/admins/dashboard/payment-details', [AdminController::class, 'showPaymentDetails']);
 Route::get('/admins/dashboard/transaction-history', [AdminController::class, 'showTransactionHistory']);
 Route::get('/admins/dashboard/users', [AdminController::class, 'showUsers']);

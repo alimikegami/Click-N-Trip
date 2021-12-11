@@ -37,7 +37,7 @@ class UserRepository
         $user->nik = $userData["nik"];
         $user->address = $userData["address"];
         $user->province = $userData["province"];
-        $user->selfie_with_ktp = $imgPath[1];
+        $user->selfie_with_ktp = $imgPath[2];
         $user->save();
 
         return $user;

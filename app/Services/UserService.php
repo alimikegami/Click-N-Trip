@@ -22,7 +22,7 @@ class UserService
     }
 
     public function storeTourGuide($userData, $img){
-        $path = $img->store('selfie-ktp');
+        $path = $img->store('public/selfie-ktp');
         $temp = explode('/', $path);    // Getting the attachment name
         $user = $this->userRepository->storeTourGuide($userData, $temp);
         return $user;

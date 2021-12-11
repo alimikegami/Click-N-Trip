@@ -68,15 +68,18 @@ class DayTripPlanRepository
     {
         // check the number of reservation for that particular date
         $numberOfReservation = DB::select('SELECT COUNT(*) AS amount FROM reservation WHERE day_trip_plan_id = ? AND reservation_date = ?', [$bodyContent["day_trip_plan_id"], $bodyContent["date"]]);
+        // return $numberOfReservation[0]->amount;
         // return response()->json(['success' => $numberOfReservation[0]->amount], 200);
         // check the maximum capacity of the day trip plan
         $maximumCapacity = DB::select('SELECT max_capacity_per_day FROM day_trip_plan WHERE id = ?', [$bodyContent["day_trip_plan_id"]]);
         // if it exceeds the capacity, reservation can't be made
+        // return $maximumCapacity[0]->max_capacity_per_day;
+
         if ($numberOfReservation[0]->amount >= $maximumCapacity[0]->max_capacity_per_day) {
             return false;
         }
         // create reservation
-        $queryState = DB::insert('INSERT INTO reservation (day_trip_plan_id, user_id, person, reservation_date) VALUES (?, ?, ?, ?)', [$bodyContent["day_trip_plan_id"], Auth::id(), $bodyContent["person"], $bodyContent["date"]]);
+        $queryState = DB::insert('INSERT INTO reservation (day_trip_plan_id, user_id, person, reservation_date) VALUES (?, ?, ?, ?)', [(int)$bodyContent["day_trip_plan_id"], Auth::id(), (int)$bodyContent["person"], $bodyContent["date"]]);
         if ($queryState) {
             return true;
         }

@@ -21,40 +21,6 @@
             </thead>
             <tbody class="text-center">
             <h1 class="mb-3">Tour Guide Applicant List</h1>
-<<<<<<< HEAD:resources/views/users/admin-tour-apply.blade.php
-                <div style="max-width: 700px;">
-                    <form class="pt-3">
-                        <div class="input-group pb-3">
-                            <input type="text" class="form-control" placeholder="Search data..."
-                                aria-label="SearchLabel" />
-                            <div id='SearchButton'>
-                                <button id='search-icon' class='btn btn-primary' type='submit'>
-                                    <i class="bi bi-search" style="font-size: 1.5rem;"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mr.A</td>
-                    <td>Jln.jalan-jalan no 2</td>
-                    <td>Bali</td>
-                    <td>190876789xxx</td>
-                    <td>
-                        <button class="btn btn-primary">View</button> 
-                    </td>
-                    <td>
-                        <button class="btn redbutton2">Ban</button> 
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mr.A</td>
-                    <td>Jln.jalan-jalan no 2</td>
-                    <td>Bali</td>
-                    <td>190876789xxx</td>
-=======
                 @foreach ($applications as $application)
                 <tr>
                     <th scope="row">1</th>
@@ -62,12 +28,12 @@
                     <td>{{ $application->address }}</td>
                     <td>{{ $application->province }}</td>
                     <td>{{ $application->nik }}</td>
->>>>>>> f2ec7c057f7f0b566d64c0b78e0082209075da53:resources/views/admin/admin-tour-apply.blade.php
                     <td>
-                        <button class="btn btn-primary">View</button> 
+                        <button class="btn btn-primary" onclick="showPic('{{ $application->selfie_with_ktp }}')">View</button> 
                     </td>
                     <td>
-                        <button class="btn redbutton2">Ban</button> 
+                        <a href="" class="ps-3"><i class="bi bi-check-square-fill" style="font-size: 1.7rem; color:#2BE048;"></i></a>
+                        <a href="" class="ps-3"><i class="bi bi-x-square-fill" style="font-size: 1.7rem; color:#FF0000;"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -77,4 +43,31 @@
     </div>
  
 </div>
+
+<div class="modal fade" id="applicationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Unable To Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="application-img" id="applicationImg">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showPic(imgPath){
+        let path = "http://127.0.0.1:8000/storage/selfie-ktp/" + imgPath;
+        console.log(path);
+        document.getElementById("applicationImg").src = path;
+        $('#applicationModal').modal('show');
+    }
+</script>
 @endsection
