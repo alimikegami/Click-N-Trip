@@ -44,8 +44,8 @@ class AdminRepository {
         return $affected;
     }
 
-    public function blockUser($id){
-        $affected = DB::update('UPDATE users SET is_blocked = 1 WHERE id = ?', [$id]);
+    public function setUserAccess($id, $status){
+        $affected = DB::update('UPDATE users SET is_blocked = ? WHERE id = ?', [$status, $id]);
         return $affected;
     }
 }

@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;700&display=swap"
         rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Click N Trip</title>
 </head>
 

@@ -38,6 +38,11 @@ class AdminService {
         $res = $this->adminRepository->setApplicationResults($id, $status);
         return $res;
     }
+
+    public function setUserAccess($id, $status) {
+        $res = $this->adminRepository->setUserAccess($id, $status);
+        return $res;
+    }
 }
 
 ?>
