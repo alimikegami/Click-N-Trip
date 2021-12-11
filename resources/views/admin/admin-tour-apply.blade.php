@@ -21,6 +21,19 @@
             </thead>
             <tbody class="text-center">
             <h1 class="mb-3">Tour Guide Applicant List</h1>
+                <div style="max-width: 700px;">
+                    <form class="pt-3">
+                        <div class="input-group pb-3">
+                            <input type="text" class="form-control" placeholder="Search data..."
+                                aria-label="SearchLabel" />
+                            <div id='SearchButton'>
+                                <button id='search-icon' class='btn btn-primary' type='submit'>
+                                    <i class="bi bi-search" style="font-size: 1.5rem;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 @foreach ($applications as $application)
                 <tr>
                     <th scope="row">1</th>
