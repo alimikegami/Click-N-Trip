@@ -15,7 +15,7 @@ class AdminRepository {
     }
 
     public function getTourGuideApplications(){
-        $user = DB::select("SELECT * FROM users WHERE role = 'user' AND selfie_with_ktp != ''");
+        $user = DB::select("SELECT * FROM users WHERE role = 'user' AND selfie_with_ktp != '' AND is_approved_as_tour_guide = 0");
         return $user;
     }
 
