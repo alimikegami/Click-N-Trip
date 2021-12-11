@@ -26,13 +26,17 @@ class AdminController extends Controller
     }
 
     public function showPaymentDetails(){
-        return view('admin.admin-pending-payment');
-
+        $payment = $this->adminService->getPendingPayments();
+        return view('admin.admin-pending-payment', [
+            'payments' => $payment
+        ]);
     }
 
     public function showTransactionHistory(){
-        return view('admin.admin-approved-payment');
-
+        $history = $this->adminService->getTransactionHistory();
+        return view('admin.admin-approved-payment', [
+            "history" => $history
+        ]);
     }
 
     public function showTourGuideApplications(){
@@ -40,5 +44,14 @@ class AdminController extends Controller
         return view('admin.admin-tour-apply', [
             'applications'=>$users
         ]);
+    }
+
+    public function setApplicationResults(Request $request, $id){
+        $bodyContent = $request->json()->all();
+        $res = $this->adminService->setApplicationResults($id, $bodyContent["status"]);
+        if ($res) {
+            return response()->json(['status' => "success"], 200);
+        }
+        return response()->json(['status' => "invalid"], 500);
     }
 }

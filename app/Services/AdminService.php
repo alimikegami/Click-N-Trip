@@ -23,6 +23,21 @@ class AdminService {
         $users = $this->adminRepository->getUsers();
         return $users;
     }
+
+    public function getTransactionHistory(){
+        $history = $this->adminRepository->getTransactionHistory();
+        return $history;
+    }
+
+    public function getPendingPayments(){
+        $payments = $this->adminRepository->getPendingPayments();
+        return $payments;
+    }
+
+    public function setApplicationResults($id, $status){
+        $res = $this->adminRepository->setApplicationResults($id, $status);
+        return $res;
+    }
 }
 
 ?>

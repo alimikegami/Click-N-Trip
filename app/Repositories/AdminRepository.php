@@ -30,8 +30,23 @@ class AdminRepository {
     }
 
     public function getTransactionHistory(){
-        $history = DB::select("SELECT * FROM reservation WHERE status = 3");
+        $history = DB::select("SELECT * FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id WHERE status = 3");
         return $history;
+    }
+
+    public function setApplicationResults($id, $status){
+        $affected = DB::update("UPDATE users SET is_approved_as_tour_guide = ?, role = 'admin' WHERE id = ?", [$status, $id]);
+        return $affected;
+    }
+
+    public function setPaymentApproval($id, $status){
+        $affected = DB::update('UPDATE reservation SET status = ? WHERE id = ?', [$status, $id]);
+        return $affected;
+    }
+
+    public function blockUser($id){
+        $affected = DB::update('UPDATE users SET is_blocked = 1 WHERE id = ?', [$id]);
+        return $affected;
     }
 }
 

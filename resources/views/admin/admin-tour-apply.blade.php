@@ -29,10 +29,11 @@
                     <td>{{ $application->province }}</td>
                     <td>{{ $application->nik }}</td>
                     <td>
-                        <button class="btn btn-primary">View</button> 
+                        <button class="btn btn-primary" onclick="showPic({{ $application->selfie_with_ktp }})">View</button> 
                     </td>
                     <td>
-                        <button class="btn btn-primary" id="redbutton">Ban</button> 
+                        <a href="" class="ps-3"><i class="bi bi-check-square-fill" style="font-size: 1.7rem; color:#2BE048;"></i></a>
+                        <a href="" class="ps-3"><i class="bi bi-x-square-fill" style="font-size: 1.7rem; color:#FF0000;"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -42,4 +43,9 @@
     </div>
  
 </div>
+
+
+<script>
+    
+</script>
 @endsection
