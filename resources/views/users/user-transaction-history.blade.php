@@ -2,6 +2,7 @@
 @section('css')
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/day-trip-listing.css">
+    <link rel="stylesheet" href="../css/day-trip-pages.css">
 @endsection
 @section('body')
     <div id="outer-container" class="container">
@@ -64,7 +65,48 @@
                                                 Proof</button>
                                         @endif
                                         @if ($item->status == 3)
-                                            <button id="reviewbutton" class="btn btn-secondary mt-3">Leave a Review</button>
+                                            <button type="button" data-toggle='modal' data-target="#reviewModal" class="btn btn-secondary mt-3">Leave a Review</button>
+                                            <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog">
+                                                <div class="modal-dialog modal-sm" role="document">
+                                                <form class="mt-3">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5>Review</h5>
+                                                            <i type='button' data-dismiss="modal" aria-label="Close" class="px-2 bi bi-x xbutton2"></i>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                                <div class="d-flex align-items-center justify-content-center mb-2">
+                                                                    <span id="star-container">
+                                                                        <input class="rate" value="5" type="radio" name="rate" id="rate-1">
+                                                                        <label id="rating-stars-empty" for="rate-1" class="bi bi-star-fill"></label>
+                                                                        <input class="rate" value="4" type="radio" name="rate" id="rate-2">
+                                                                        <label id="rating-stars-empty" for="rate-2" class="bi bi-star-fill"></label>
+                                                                        <input class="rate" value="3" type="radio" name="rate" id="rate-3">
+                                                                        <label id="rating-stars-empty" for="rate-3" class="bi bi-star-fill"></label>
+                                                                        <input class="rate" value="2" type="radio" name="rate" id="rate-4">
+                                                                        <label id="rating-stars-empty" for="rate-4" class="bi bi-star-fill"></label>
+                                                                        <input class="rate" value="1" type="radio" name="rate" id="rate-5">
+                                                                        <label id="rating-stars-empty" for="rate-5" class="bi bi-star-fill"></label>
+                                                                    </span>
+                                                                </div>
+                                                                <textarea class="form-control" name="description" id="description"
+                                                                placeholder='Review Goes Here' required style="min-height: 100px;"></textarea>
+                                                            <script>
+                                                                $(document).ready(function(){
+                                                                    $('#star-container input[type="radio"]').click(function(){
+                                                                        var rate = $(this).val();
+                                                                        console.log(rate);
+                                                                    });
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-center">
+                                                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                            </div>
                                         @endif
 
                                         
@@ -116,13 +158,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Reservation Success</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button onclick="window.location.reload(true);" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     Action completed!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button onclick="window.location.reload(true);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -133,13 +175,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Unable To Book</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button onclick="window.location.reload(true);" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     Action was unsuccesfull!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button onclick="window.location.reload(true);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
