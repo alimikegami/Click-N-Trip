@@ -42,7 +42,7 @@
         <div class="container-fluid d-flex justify-content-center">
             <div class="row">
                 <div class="col mb-3">
-                    <div class="card">
+                    <div class="card" id="zoom-element">
                         <img src="Gallery/Surabaya.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-center">Suramadu full Tour</h5>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <div class="card">
+                    <div class="card" id="zoom-element">
                         <img src="Gallery/Uluwatu.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-center">Seminyak Beach Full Tour</h5>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <div class="card">
+                    <div class="card" id="zoom-element">
                         <img src="Gallery/baligirls.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-center">Nusa Penida Full Tour</h5>
@@ -99,8 +99,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col mb-3">
-                    <div class="card"">
-          <img src=" Gallery/Surabaya.jpg" class="card-img-top" alt="...">
+                    <div class="card" id="zoom-element">
+                        <img src=" Gallery/Surabaya.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Surabaya</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <div class="card">
+                    <div class="card" id="zoom-element">
                         <img src="Gallery/Uluwatu.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Bali</h5>
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <div class="card">
+                    <div class="card" id="zoom-element">
                         <img src="Gallery/baligirls.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Nusa Penida</h5>
@@ -134,11 +134,38 @@
 
     <!-- Footer Section -->
     <div class="container-fluid mt-5" id="landing-footer">
-        <h3>Contact Us!</h3>
-        <ul class="pb-5">
-            <li>Instagram</li>
-            <li>Facebook</li>
-            <li>Whats-App</li>
-        </ul>
+        <div class="container d-flex justify-content-center" id="footer-inner">
+            <div class="row">
+                <div class="col pt-5 pb-5">
+                    <h3 class="pb-2 px-5">About Click n Trip</h3>
+                    <p class="px-5"><a id='footer-links' href="">Click n Trip</a> is the online solution for your tour guides needs!</p>
+   
+                </div>
+                <div class="col pt-5 pb-5">
+                    <h3 class="pb-2 px-5">Get Your Day Trip Now</h3>
+                    <p class="px-5">Click n Trip provides <a id='footer-links' href="">day trips</a> from our travel guides/agencies for customer needs!</p>
+ 
+                </div>
+                <div class="col pt-5 pb-5">
+                    <h3 class="pb-2 px-5">Connect With Us</h3>
+                    <div class="container">
+                        <div class="row px-4">
+                            <div class="col">
+                            <a href=""><i id="contact-logo" class="bi bi-instagram px-3 py-2" style="font-size: 2rem; "></i> </a> 
+                        </div>
+                        <div class="col">
+                            <a href=""><i id="contact-logo" class="bi bi-facebook px-3 py-2" style="font-size: 2rem; "></i> </a>
+                        </div>
+                        <div class="col">
+                            <a href=""><i id="contact-logo" class="bi bi-whatsapp px-3 py-2" style="font-size: 2rem;"></i></a>
+                        </div>
+                        <div class="col">
+                            <a href=""><i id="contact-logo" class="bi bi-twitter px-3 py-2" style="font-size: 2rem;"></i></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
