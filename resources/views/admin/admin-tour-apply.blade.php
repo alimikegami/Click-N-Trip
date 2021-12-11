@@ -159,14 +159,14 @@
             $('#applicationModal').modal('show');
         }
 
-        function showApproveModal($id) {
+        function showApproveModal(id) {
             $('#approvalModal').modal('show');
-            document.getElementById('approveButton').dataset.id = $id;
+            document.getElementById('approveButton').dataset.id = id;
         }
 
-        function showRejectModal($id) {
+        function showRejectModal(id) {
             $('#rejectModal').modal('show');
-            document.getElementById('rejectButton').dataset.id = $id;
+            document.getElementById('rejectButton').dataset.id = id;
         }
 
         function fetchApproval(status) {
@@ -207,5 +207,15 @@
                     }
                 });
         }
+
+        $(document).ready(function() {
+            $('#successModal').on('hidden.bs.modal', function() {
+                location.reload();
+            })
+
+            $('#failModal').on('hidden.bs.modal', function() {
+                location.reload();
+            })
+        });
     </script>
 @endsection
