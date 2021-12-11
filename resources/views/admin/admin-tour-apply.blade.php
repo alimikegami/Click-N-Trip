@@ -21,7 +21,6 @@
             </thead>
             <tbody class="text-center">
             <h1 class="mb-3">Tour Guide Applicant List</h1>
-<<<<<<< HEAD:resources/views/users/admin-tour-apply.blade.php
                 <div style="max-width: 700px;">
                     <form class="pt-3">
                         <div class="input-group pb-3">
@@ -35,26 +34,6 @@
                         </div>
                     </form>
                 </div>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mr.A</td>
-                    <td>Jln.jalan-jalan no 2</td>
-                    <td>Bali</td>
-                    <td>190876789xxx</td>
-                    <td>
-                        <button class="btn btn-primary">View</button> 
-                    </td>
-                    <td>
-                        <button class="btn redbutton2">Ban</button> 
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mr.A</td>
-                    <td>Jln.jalan-jalan no 2</td>
-                    <td>Bali</td>
-                    <td>190876789xxx</td>
-=======
                 @foreach ($applications as $application)
                 <tr>
                     <th scope="row">1</th>
@@ -62,12 +41,12 @@
                     <td>{{ $application->address }}</td>
                     <td>{{ $application->province }}</td>
                     <td>{{ $application->nik }}</td>
->>>>>>> f2ec7c057f7f0b566d64c0b78e0082209075da53:resources/views/admin/admin-tour-apply.blade.php
                     <td>
-                        <button class="btn btn-primary">View</button> 
+                        <button class="btn btn-primary" onclick="showPic({{ $application->selfie_with_ktp }})">View</button> 
                     </td>
                     <td>
-                        <button class="btn redbutton2">Ban</button> 
+                        <a href="" class="ps-3"><i class="bi bi-check-square-fill" style="font-size: 1.7rem; color:#2BE048;"></i></a>
+                        <a href="" class="ps-3"><i class="bi bi-x-square-fill" style="font-size: 1.7rem; color:#FF0000;"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -77,4 +56,9 @@
     </div>
  
 </div>
+
+
+<script>
+    
+</script>
 @endsection
