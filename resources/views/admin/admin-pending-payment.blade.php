@@ -80,5 +80,7 @@
         document.getElementById("applicationImg").src = path;
         $('#paymentModal').modal('show');
     }
+
+    
 </script>
 @endsection

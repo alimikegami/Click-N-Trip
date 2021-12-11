@@ -44,6 +44,7 @@ Route::get('/day-trips/{day_trip_plan}', [DayTripPlanController::class, 'show'])
 Route::get('/admins/dashboard', [AdminController::class, 'showDashboard']);
 Route::get('/admins/dashboard/tour-guide-applications', [AdminController::class, 'showTourGuideApplications']);
 Route::patch('/admins/tour-guide-application/{id}', [AdminController::class, 'setApplicationResults']);
+Route::patch('/admins/users/block/{id}', [AdminController::class, 'setUserAccess']);
 Route::get('/admins/dashboard/payment-details', [AdminController::class, 'showPaymentDetails']);
 Route::get('/admins/dashboard/transaction-history', [AdminController::class, 'showTransactionHistory']);
 Route::get('/admins/dashboard/users', [AdminController::class, 'showUsers']);
