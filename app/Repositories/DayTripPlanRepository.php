@@ -19,7 +19,12 @@ class DayTripPlanRepository
 
     public function searchByKeyword($keyword)
     {
-        return DayTripPlan::filter($keyword);
+        // return DayTripPlan::filter($keyword);
+        return DB::select("SELECT tbl.*, dtpi.image_path FROM (SELECT dtp.id, ROUND(AVG(star_count)) star_count, u.name, dtp.price_per_day, dtp.title, dtp.destination FROM day_trip_plan dtp INNER JOIN users u ON u.id = dtp.user_id LEFT JOIN reservation r ON dtp.id = r.day_trip_plan_id LEFT JOIN review r2 ON r.id = r2.reservation_id GROUP BY dtp.id) tbl LEFT JOIN day_trip_image dtpi ON tbl.id = dtpi.day_trip_plan_id WHERE title LIKE ? OR destination LIKE ? GROUP BY tbl.id;", ["%".$keyword."%", "%".$keyword."%"]);
+    }
+
+    public function getImages($id){
+        return DB::select('SELECT * FROM day_trip_image WHERE day_trip_plan_id = ?', [$id]);
     }
 
     public function store($daytripPlanData)
@@ -78,6 +83,10 @@ class DayTripPlanRepository
         if ($numberOfReservation[0]->amount >= $maximumCapacity[0]->max_capacity_per_day) {
             return false;
         }
+
+        if ($bodyContent["person"] > $maximumCapacity[0]->max_capacity_per_day){
+            return false;
+        }
         // create reservation
         $queryState = DB::insert('INSERT INTO reservation (day_trip_plan_id, user_id, person, reservation_date) VALUES (?, ?, ?, ?)', [(int)$bodyContent["day_trip_plan_id"], Auth::id(), (int)$bodyContent["person"], $bodyContent["date"]]);
         if ($queryState) {
@@ -101,7 +110,7 @@ class DayTripPlanRepository
 
     public function getDayTripPlanById($id)
     {
-        $res = DB::select('SELECT * FROM day_trip_plan dtp WHERE id = ?', [$id]);
+        $res = DB::select('SELECT dtp.title, dtp.id, dtp.destination, dtp.price_per_day, ROUND(AVG(r2.star_count)) AS star_count, dti.image_path FROM day_trip_plan dtp LEFT JOIN reservation r ON r.day_trip_plan_id = dtp.id LEFT JOIN review r2 ON r2.reservation_id = r.id LEFT JOIN day_trip_image dti ON dti.day_trip_plan_id = dtp.id WHERE dtp.id = ? GROUP BY dtp.id', [$id]);
         return $res;
     }
 

@@ -48,6 +48,11 @@ class AdminRepository {
         $affected = DB::update('UPDATE users SET is_blocked = ? WHERE id = ?', [$status, $id]);
         return $affected;
     }
+
+    public function getUsersByKeyword($keyword){
+        $users = DB::select("SELECT * FROM users WHERE name LIKE ? OR nik LIKE ? OR email LIKE ?", ["%" . $keyword . "%", "%" . $keyword . "%", "%" . $keyword . "%"]);
+        return $users;
+    }
 }
 
 

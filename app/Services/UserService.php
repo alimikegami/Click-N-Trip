@@ -43,6 +43,10 @@ class UserService
     public function getListings($id){
         return $this->userRepository->getListings($id);
     }
+
+    public function getListingCount($id) {
+        return $this->userRepository->getListingCount($id);
+    }
 }
 
 ?>

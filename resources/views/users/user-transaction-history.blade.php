@@ -7,19 +7,7 @@
 @section('body')
     <div id="outer-container" class="container">
         <div class="row">
-            <div class="col-lg-4 d-flex justify-content-center">
-                <div id="profile-info-holder" class="container border">
-                    <div id="icon-holder" class="container d-flex align-items-center justify-content-center mt-4">
-                        <i class="bi bi-person-circle" style="font-size: 5rem; color:#14279B;"></i>
-                    </div>
-                    <div id="text-holder" class="container mt-4 mb-5">
-                        <p class="fw-bold text-center">My Account</p>
-                        <p>Name: Alim Ikegami</p>
-                        <p>Email: alimikegami1@gmail.com</p>
-                        <p>Total Listing: 5</p>
-                    </div>
-                </div>
-            </div>
+            @include('components.my-profile')
             <div class="col">
                 <div class="container-fluid" id="trip-container">
                     <h3 class="mb-3 mt-sm-4 mt-md-4">Transaction History</h3>
@@ -28,21 +16,13 @@
                             <div id="trip-inside-container" class="container">
                                 <div class="row mt-3 mb-3">
                                     <div id="image-holder" class="col-lg-5 col-md-5">
-                                        <img id="image" class="img-fluid rounded" src="Gallery/Uluwatu.jpg" alt="">
+                                        <img id="image" class="img-fluid rounded" src="{{ asset('storage/day-trip/' . $item->image_path) }}" alt="">
                                     </div>
                                     <div id="plan-desc" class="col">
                                         <p>
                                             {{ $item->title }}
                                             <br> <span style='font-size: 14px;'>{{ $item->destination }}</span>
                                         </p>
-                                        <div id='stars'>
-                                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                            <span id='star-text'>5 out of 5</span>
-                                        </div>
                                         <div id="list-buttons" class="pt-3">
                                             <div>
                                                 <span class="text-white rounded px-3 py-1 status approved">
@@ -68,7 +48,12 @@
                                                     onclick="showFileUploadModal({{ $item->id }})">Upload Payment
                                                     Proof</button>
                                             @endif
-                                            @if ($item->status == 3)
+                                            @if ($item->status == 4)
+                                                <button id="paymentbutton" class="btn btn-secondary mt-3"
+                                                    onclick="showFileUploadModal({{ $item->id }})">Edit Payment
+                                                    Proof</button>
+                                            @endif
+                                            @if ($item->status == 3 && $item->is_reviewed == 0)
                                                 <button type="button" onclick="showReviewModal('{{ $item->id }}')">Leave
                                                     a Review</button>
                                             @endif
@@ -275,8 +260,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     'Accept': 'application/json'
                 }
-            }
-
+            };
             fetch('http://127.0.0.1:8000/day-trips/' + currentId + '/review', options)
                 .then(response => response.json())
                 .then(data => {

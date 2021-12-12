@@ -16,6 +16,6 @@
                 <a href="/admins/dashboard/transaction-history"><i class="bi bi-credit-card-fill  px-2"></i><span class="fw-bold side-navlinks">Approved User Payment</span></a>
             </li>
             <li id="dashboard-icons">
-                <a href="#"><i class="bi bi-door-open-fill px-2"></i><span class="fw-bold side-navlinks">Log Out</span></a>
+                <a type="button" onclick="showLogoutModal()"><i class="bi bi-door-open-fill px-2"></i><span class="fw-bold side-navlinks">Log Out</span></a>
         </ul>
     </nav>
