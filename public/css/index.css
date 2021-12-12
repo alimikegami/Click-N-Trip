@@ -176,12 +176,36 @@ ul ul a {
     transform: scale(1.03);
     cursor: pointer;
 }
-#rating-stars{
-    font-size: 1rem; color:gold;
-}
 #dashboard-icons{
     font-size: 14px; color:white;
 }
 #dashboard-icons:hover{
     color: #7386D5;
+}
+#rating-stars{
+    font-size: 1rem; color:gold;
+}
+#rating-stars-empty{
+    font-size: 1rem; color:#444;
+}
+#star-container label{
+    float: right;
+    font-size: 2rem;
+    padding-left:  1rem;
+}
+#star-container input{
+    display: none;
+    transition:all 0.2s ease;
+}
+#star-container input:not(:checked) ~ label:hover,
+#star-container input:not(:checked) ~ label:hover~label{
+    cursor: pointer;
+    color: gold;
+}
+#star-container input:checked ~label{
+    cursor: pointer;
+    color: gold;
+}
+#star-container input#rate-5:checked~label{
+    color: gold;
 }
