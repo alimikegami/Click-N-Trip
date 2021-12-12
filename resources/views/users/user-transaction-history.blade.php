@@ -50,13 +50,16 @@
                                                     Pending
                                                 @endif
                                                 @if ($item->status == 1)
-                                                    Approved
+                                                    Reservation Approved
                                                 @endif
                                                 @if ($item->status == 2)
-                                                    Rejected
+                                                    Reservation Rejected
                                                 @endif
                                                 @if ($item->status == 3)
                                                     Reserved
+                                                @endif
+                                                @if ($item->status == 4)
+                                                    Payment Rejected
                                                 @endif
                                             </span>
                                         </div>
@@ -224,11 +227,11 @@
 
         $(document).ready(function() {
             $('#successModal').on('hidden.bs.modal', function() {
-                location.reload();
+                window.location.reload(true)
             })
 
             $('#failModal').on('hidden.bs.modal', function() {
-                location.reload();
+                window.location.reload(true)
             })
         });
     </script>

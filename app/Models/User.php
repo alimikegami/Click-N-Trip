@@ -60,4 +60,9 @@ class User extends Authenticatable
     public static function getAllUserDataById($id) {
         return User::with('daytripPlan.dayTripImages')->where('id', $id)->get();
     }
+
+    public function hasRole()
+    {
+        return $this->role;
+    }
 }

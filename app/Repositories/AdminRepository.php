@@ -35,7 +35,7 @@ class AdminRepository {
     }
 
     public function setApplicationResults($id, $status){
-        $affected = DB::update("UPDATE users SET is_approved_as_tour_guide = ?, role = 'admin' WHERE id = ?", [$status, $id]);
+        $affected = DB::update("UPDATE users SET is_approved_as_tour_guide = ?, role = 'tour_guide' WHERE id = ?", [$status, $id]);
         return $affected;
     }
 

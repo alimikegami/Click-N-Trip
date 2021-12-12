@@ -35,10 +35,16 @@ class UserController extends Controller
         return response()->json(['status' => 200], 200);
     }
 
+    public function showMyListings(Request $request){
+        $userId = Auth::id();
+        $myListings = $this->userService->getListings($userId);
+        return view('users.my-day-trip-listing', ['userListing' => $myListings]);
+    }
+
     public function show(User $user)
     {
         $userListing = $this->userService->getAllUserDataById($user->id);
-        return view('users.my-day-trip-listing', [
+        return view('users.day-trip-listing', [
             'user' => $user,
             'userListing' => $userListing
         ]);

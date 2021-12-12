@@ -43,6 +43,16 @@ class AdminService {
         $res = $this->adminRepository->setUserAccess($id, $status);
         return $res;
     }
+
+    public function setPaymentApproval($id, $status){
+        if ($status == 0){
+            $status = 4;
+        } else {
+            $status = 3;
+        }
+        $res = $this->adminRepository->setPaymentApproval($id, $status);
+        return $res;
+    }
 }
 
 ?>

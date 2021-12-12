@@ -39,6 +39,10 @@ class UserService
     public function getReservationHistoryByUserId($id){
         return $this->userRepository->getReservationHistoryByUserId($id);
     }
+
+    public function getListings($id){
+        return $this->userRepository->getListings($id);
+    }
 }
 
 ?>

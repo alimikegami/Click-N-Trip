@@ -172,12 +172,12 @@
             console.log('hello');
             $('#successModal').on('hide', function() {
                 console.log('tutup');
-                window.location.href = window.location.href;
-            })
+                window.location.reload(true);
+            });
 
             $('#failModal').on('hide', function() {
-                window.location.href = window.location.href;
-            })
+                window.location.reload(true);
+            });
         })();
     </script>
 @endsection

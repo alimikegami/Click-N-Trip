@@ -63,4 +63,13 @@ class AdminController extends Controller
         }
         return response()->json(['status' => "invalid"], 500);
     }
+
+    public function setPaymentApproval(Request $request, $id){
+        $bodyContent = $request->json()->all();
+        $res = $this->adminService->setPaymentApproval($id, $bodyContent["status"]);
+        if ($res) {
+            return response()->json(['status' => "success"], 200);
+        }
+        return response()->json(['status' => "invalid"], 500);
+    }
 }
