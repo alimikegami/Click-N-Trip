@@ -16,6 +16,11 @@ class ReviewService {
         $res = $this->reviewRepository->store($bodyContent, $id, $userId);
         return $res;
     }
+
+    public function getReviewsByDayTripId($id){
+        $res = $this->reviewRepository->getReviewsByDayTripId($id);
+        return $res;
+    }
 }
 
 

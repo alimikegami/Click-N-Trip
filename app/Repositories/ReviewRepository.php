@@ -21,6 +21,11 @@ class ReviewRepository{
         }
         return false;
     }
+
+    public function getReviewsByDayTripId($id){
+        $res = DB::select('SELECT * FROM review r INNER JOIN users u ON r.user_id = u.id  WHERE day_trip_plan_id = ?', [$id]);
+        return $res;
+    }
 }
 
 ?>
