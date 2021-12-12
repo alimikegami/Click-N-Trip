@@ -6,9 +6,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item d-flex align-items-center">
-          <a class="nav-link active" href="/users/register/tour-guide">Be A Tour Guide</a>
-        </li>
+        @if (Auth::user()->role == 'user')
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link active" href="/users/register/tour-guide">Be A Tour Guide</a>
+          </li>
+        @endif
         <li class="nav-item d-flex align-items-center">
           <a class="nav-link active" href="{{ route('list-day-trips') }}">List your Trip</a>
         </li>
@@ -22,7 +24,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/users/history">Transaction History</a>
-                <a class="dropdown-item" href="/users/{{ Auth::id() }}">Listing</a>
+                @if (Auth::user()->role == "tour_guide")
+                  <a class="dropdown-item" href="/users/my-listings">Listing</a>
+                @endif
                 <div class="dropdown-divider"></div>
                 <a type="button" class="dropdown-item" id="logoutButton" onclick="showLogoutModal()">Log Out</a>
             </div>

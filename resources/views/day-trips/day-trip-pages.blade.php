@@ -111,51 +111,55 @@
                 <div class="container-fluid" id="inner-container-right">
                     <h1 id="price">IDR.{{ $dayTripPlan->price_per_day }}/Person</h1>
                     <div id='book-trip-container' class="container-fluid border mt-3">
-                        <p class="text-center pt-3">Book This Day Trip</p>
-                        <div class="row mb-3">
-                            <div class="col-2">
-                                <label for="person">Person</label>
+                        @if (Auth::user())
+                            <p class="text-center pt-3">Book This Day Trip</p>
+                            <div class="row mb-3">
+                                <div class="col-2">
+                                    <label for="person">Person</label>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control book-form" type="number" id="person" name="numberOfPerson"
+                                        required>
+                                </div>
                             </div>
-                            <div class="col">
-                                <input class="form-control book-form" type="number" id="person" name="numberOfPerson"
-                                    required>
+                            <div class="row mb-3">
+                                <div class="col-2">
+                                    <label for="date">Date</label>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control book-form" type="date" id="date" name="date" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-2">
-                                <label for="date">Date</label>
-                            </div>
-                            <div class="col">
-                                <input class="form-control book-form" type="date" id="date" name="date" required>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button id='check-button' type="button" class="btn btn-primary mt-3 mb-5"
-                                onclick="checkInput()">Check Availibility</button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
-                                            <i type='button' data-dismiss="modal" aria-label="Close"
-                                                class="px-2 bi bi-x xbutton2"></i>
-                                        </div>
-                                        <div class="modal-body">
-                                            Do you want to book this trip?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" id="redbutton"
-                                                data-dismiss="modal">No</button>
-                                            <button type="button" class="btn btn-primary" id="greenbutton"
-                                                onclick="event.preventDefault(); return book('{{ $dayTripPlan->id }}');">Book
-                                                Now</button>
+                            <div class="d-flex justify-content-center">
+                                <button id='check-button' type="button" class="btn btn-primary mt-3 mb-5"
+                                    onclick="checkInput()">Check Availibility</button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                                                <i type='button' data-dismiss="modal" aria-label="Close"
+                                                    class="px-2 bi bi-x xbutton2"></i>
+                                            </div>
+                                            <div class="modal-body">
+                                                Do you want to book this trip?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" id="redbutton"
+                                                    data-dismiss="modal">No</button>
+                                                <button type="button" class="btn btn-primary" id="greenbutton"
+                                                    onclick="event.preventDefault(); return book('{{ $dayTripPlan->id }}');">Book
+                                                    Now</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @else
+                            <p>Don't have an account yet?</p>
+                        @endif
                     </div>
                 </div>
                 <div class="container-fluid mt-3" id="inner-container-right">

@@ -13,7 +13,7 @@
                     </div>
                     <div id="text-holder" class="container mt-4 mb-5">
                         <p class="fw-bold text-center">User Profile</p>
-                        <p>Name: </p>
+                        <p>Name: {{ $user->name }}</p>
                         <p>Total Listing:</p>
                         <p></p>
                     </div>
@@ -21,7 +21,7 @@
             </div>
             <div class="col">
                 <div class="container-fluid" id="trip-container">
-                    <h3 class="mb-3 mt-sm-4 mt-md-4">My Day Trip Listing</h3>
+                    <h3 class="mb-3 mt-sm-4 mt-md-4">{{ $user->name }}'s Day Trip Listing</h3>
                     @foreach ($userListing[0]->dayTripPlan as $listing)
                         <div id="trip-outside-container" class="container border rounded">
                             <div id="trip-inside-container" class="container">
@@ -44,13 +44,6 @@
                                             <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
                                             <span id='star-text'>5 out of 5</span>
                                         </div>
-                                        <div id="list-buttons" class="pt-3">
-                                            <a href=""><i class="editbutton bi bi-pencil-square me-2 px-2"></i></a>
-                                            <a type="button" onclick="showConfirmationModal({{ $listing->id }})"><i
-                                                    class="xbutton bi bi-trash me-2 px-2"></i></a>
-
-                                        </div>
-                                        <a type="button" href="/day-trips/{{ $listing->id }}/reservation" class="btn btn-secondary mt-2 ">See Reservation</a>
                                     </div>
                                 </div>
                             </div>

@@ -48,4 +48,10 @@ class UserRepository
         $history = DB::select('SELECT r.*, dtp.title, dtp.destination, dtp.price_per_day FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id WHERE r.user_id = ?', [$id]);
         return $history;
     }
+
+    public function getListings($id)
+    {
+        $myListing = DB::select('SELECT * FROM day_trip_plan WHERE user_id = ?', [$id]);
+        return $myListing;
+    }
 }
