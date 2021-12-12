@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DayTripPlanController;
+use App\Models\DayTripPlan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Models\DayTripPlan;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\DayTripPlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/users/register/tour-guide', [UserController::class, 'registerAsTourGuide'])->name('register-as-tour-guide');
     Route::post('/users/register/tour-guide', [UserController::class, 'storeTourGuideDetails'])->name('store-tour-guide');
     Route::get('/users/history', [UserController::class, 'showHistory']);
+    Route::post('/day-trips/{id}/review', [ReviewController::class, 'store']);
     Route::post('/day-trips/book', [DayTripPlanController::class, 'book']);
     Route::patch('/day-trips/reservation/proof/{resId}', [DayTripPlanController::class, 'updatePaymentProof']);
     
