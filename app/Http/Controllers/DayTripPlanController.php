@@ -7,6 +7,7 @@ use App\Models\DayTripPlan;
 use App\Models\DayTripPlanDetails;
 use App\Models\DayTripPlanImages;
 use App\Services\DayTripPlanService;
+use App\Services\ReviewService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,12 @@ use Illuminate\Support\Facades\DB;
 class DayTripPlanController extends Controller
 {
     protected $dayTripPlanService;
+    protected $reviewService;
 
-    public function __construct(DayTripPlanService $dayTripPlanService)
+    public function __construct(DayTripPlanService $dayTripPlanService, ReviewService $reviewService)
     {
         $this->dayTripPlanService = $dayTripPlanService;
+        $this->reviewService = $reviewService;
     }
 
     public function search(){
@@ -29,8 +32,10 @@ class DayTripPlanController extends Controller
     }
 
     public function show(DayTripPlan $day_trip_plan){
+        $reviews = $this->reviewService->getReviewsByDayTripId($day_trip_plan->id);
         return view('day-trips.day-trip-pages',[
-            "dayTripPlan"=>$day_trip_plan
+            "dayTripPlan"=>$day_trip_plan,
+            "reviews"=>$reviews,
         ]);
     }
 
