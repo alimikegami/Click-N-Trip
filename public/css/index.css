@@ -209,3 +209,9 @@ ul ul a {
 #star-container input#rate-5:checked~label{
     color: gold;
 }
+.background-set{
+    background-position: center;
+    background-size: cover;
+    max-height: 147px;
+    min-width: 211px;
+}

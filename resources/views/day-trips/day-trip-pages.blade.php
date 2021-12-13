@@ -17,8 +17,16 @@
                         <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
                     </div>
                     <a href="/users/{{ $dayTripPlan->user->id }}">{{ $dayTripPlan->user->name }}</a>
-                    <div class="container-fluid mt-3" id='img-container'>
-                        <img src="{{ asset('storage/day-trip/' . $images[0]->image_path ) }}" alt="">
+                    <div class="row">
+                            <div
+                            style="
+                                width: 45rem;
+                                height: 20rem;
+                                background-image: url({{ asset('storage/day-trip/' . $images[0]->image_path ) }});
+                                background-size:cover;
+                                background-position:center;" 
+                            class="col-lg-4 col-md-4 border rounded">
+                            </div>
                     </div>
                     <div class="mt-3">
                         <p id='desc-title'>Description</p>
@@ -104,35 +112,26 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @else
-                    <div class="container mt-3">
-                        <div class="d-flex justify-content-center">
-                            <span id="desc-title" class="text-center">Log In To Book This Trip!</span>
-                        </div>
-                        <a href='{{ route('login') }}' class="d-grid gap-2 pb-3 pt-4">
-                            <button  type="button" class="btn btn-primary">Log In</button>
-                        </a>
-                    </div>
-                    <hr>
-                    <div class="container mt-3 mb-3">
-                        <div class="d-flex justify-content-center">
-                            <span id="desc-title" class="text-center">Don't have an account?</span>
-                        </div>
-                        <a href='{{ route('register') }}' class="d-grid gap-2 pb-3 pt-4">
-                            <button  type="button" class="btn btn-secondary">Sign Up</button>
-                        </a>
-                    </div>
-                        @endif
-                    </div>
-                </div>
-                <div class="container-fluid mt-sm-5 mt-md-3 mt-lg-3" id="inner-container-right">
-                    <p class="text-center text-md-start text-lg-start" id="desc-title">Schedule</p>
-                    <div class="container-fluid border mb-5" id='table-container'>
-                        <table class="container mt-3">
-                            <thead>
                         @else
-                            <p>Don't have an account yet?</p>
+                            <div>
+                                <div class="container mt-3">
+                                    <div class="d-flex justify-content-center">
+                                        <span id="desc-title" class="text-center">Log In To Book This Trip!</span>
+                                    </div>
+                                    <a href='{{ route('login') }}' class="d-grid gap-2 pb-3 pt-4">
+                                        <button  type="button" class="btn btn-primary">Log In</button>
+                                    </a>
+                                </div>
+                                <hr>
+                                <div class="container mt-3 mb-3">
+                                    <div class="d-flex justify-content-center">
+                                        <span id="desc-title" class="text-center">Don't have an account?</span>
+                                    </div>
+                                    <a href='{{ route('register') }}' class="d-grid gap-2 pb-3 pt-4">
+                                        <button  type="button" class="btn btn-secondary">Sign Up</button>
+                                    </a>
+                                </div>
+                            </div> 
                     @endif
                 </div>
                 @endif
