@@ -72,4 +72,11 @@ class AdminController extends Controller
         }
         return response()->json(['status' => "invalid"], 500);
     }
+
+    public function searchUsers(){
+        $users = $this->adminService->getUsersByKeyword(request('search'));
+        return view('admin.admin-user-list',[
+            'users'=>$users
+        ]);
+    }
 }

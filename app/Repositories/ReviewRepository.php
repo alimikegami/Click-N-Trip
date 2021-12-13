@@ -15,7 +15,7 @@ class ReviewRepository{
     }
 
     public function store($bodyContent, $id, $userId){
-        $res = DB::insert('INSERT INTO review (star_count, description, day_trip_plan_id, user_id) VALUES (?, ?, ?, ?)', [(int)$bodyContent["review_count"], $bodyContent["review_content"], (int)$id, (int)$userId]);
+        $res = DB::insert('INSERT INTO review (star_count, description, reservation_id, user_id) VALUES (?, ?, ?, ?)', [(int)$bodyContent["review_count"], $bodyContent["review_content"], (int)$id, (int)$userId]);
         if ($res) {
             return true;
         }
@@ -23,7 +23,7 @@ class ReviewRepository{
     }
 
     public function getReviewsByDayTripId($id){
-        $res = DB::select('SELECT * FROM review r INNER JOIN users u ON r.user_id = u.id  WHERE day_trip_plan_id = ?', [$id]);
+        $res = DB::select('SELECT r.*, u.* FROM review r INNER JOIN users u ON r.user_id = u.id INNER JOIN reservation res ON r.reservation_id = res.id INNER JOIN day_trip_plan dtp ON dtp.id = res.day_trip_plan_id WHERE res.day_trip_plan_id = ?', [$id]);
         return $res;
     }
 }

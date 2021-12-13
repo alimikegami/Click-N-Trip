@@ -17,11 +17,12 @@ class CreateReviewTable extends Migration
             $table->id();
             $table->integer('star_count');
             $table->string('description');
-            $table->unsignedBigInteger('day_trip_plan_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('day_trip_plan_id')->references('id')->on('day_trip_plan');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('reservation_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('reservation_id')->references('id')->on('reservation');
+
         });
     }
 

@@ -25,37 +25,40 @@
         </div>
         <div class="container" id='section-container'>
             @foreach ($search_result as $item)
-                    <a href="/day-trips/{{ $item->id }}">
-                        <div class="container border rounded mb-3">
-                            <div class="row mt-2 mb-2">
-                                <div class="col-lg-3 col-md-3">
-                                    <img class="img-fluid rounded" src="Gallery/Uluwatu.jpg" alt="">
-                                </div>
-                                <div class="col-lg">
-                                    <p>
-                                        {{ $item->title }}
-                                        <br> <span style='font-size: 14px;'>{{ $item->destination }}</span>
-                                        <br> <span style='font-size: 14px;'>{{ $item->user->name }}</span>
-                                    </p>
-                                    <div class="pt-3" id='stars'>
-                                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                                        <span id='star-text'>5 out of 5</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 d-flex justify-content-lg-end">
-                                    <p>IDR{{ $item->price_per_day }}/Person</p>
+                <a href="/day-trips/{{ $item->id }}">
+                    <div class="container border rounded mb-3">
+                        <div class="row mt-2 mb-2">
+                            <div class="col-lg-3 col-md-3">
+                                <img class="img-fluid rounded" src="{{ asset('storage/day-trip/' . $item->image_path) }}"
+                                    alt="">
+                            </div>
+                            <div class="col-lg">
+                                <p>
+                                    {{ $item->title }}
+                                    <br> <span style='font-size: 14px;'>{{ $item->destination }}</span>
+                                    <br> <span style='font-size: 14px;'>{{ $item->name }}</span>
+                                </p>
+                                <div class="pt-3" id='stars'>
+                                    @if ($item->star_count)
+                                        @for ($i = 0; $i < $item->star_count; $i++)
+                                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
+
+                                        @endfor
+
+                                    @endif
+                                    <span id='star-text'>{{ $item->star_count ? $item->star_count : 0 }} out of 5</span>
                                 </div>
                             </div>
+                            <div class="col-lg-4 d-flex justify-content-lg-end">
+                                <p>IDR{{ $item->price_per_day }}/Person</p>
+                            </div>
                         </div>
-                    </a>
+                    </div>
+                </a>
             @endforeach
-            <div class="container d-flex justify-content-center mt-4 mb-4">
+            {{-- <div class="container d-flex justify-content-center mt-4 mb-4">
                 {{ $search_result->links() }}
-            </div>
+            </div> --}}
         </div>
     </div>
     </div>

@@ -38,23 +38,31 @@ class UserController extends Controller
     public function showMyListings(Request $request){
         $userId = Auth::id();
         $myListings = $this->userService->getListings($userId);
-        return view('users.my-day-trip-listing', ['userListing' => $myListings]);
+        $listingCount = $this->userService->getListingCount($userId);
+        return view('users.my-day-trip-listing', [
+            'userListing' => $myListings,
+            'listingCount' => $listingCount
+        ]);
     }
 
     public function show(User $user)
     {
         $userListing = $this->userService->getAllUserDataById($user->id);
+        $listingCount = $this->userService->getListingCount($user->id);
         return view('users.day-trip-listing', [
             'user' => $user,
-            'userListing' => $userListing
+            'userListing' => $userListing,
+            'listingCount' => $listingCount
         ]);
     }
 
     public function showHistory()
     {
         $history = $this->userService->getReservationHistoryByUserId(Auth::id());
+        $listingCount = $this->userService->getListingCount(Auth::id());
         return view('users.user-transaction-history', [
             "history" => $history,
+            'listingCount' => $listingCount
         ]);
     }
 
@@ -101,7 +109,7 @@ class UserController extends Controller
         $credentials = $request->validated();
         if ($this->userService->authenticate($credentials)) {
             $request->session()->regenerate();
-            if (Auth::user()->role == "user"){
+            if (Auth::user()->role == "user" || Auth::user()->role == "tour_guide"){
                 return redirect()->intended('/');
             } else {
                 return redirect()->intended('/admins/dashboard');

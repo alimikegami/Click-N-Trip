@@ -8,6 +8,19 @@
         @include('components.navbar-admin')
         <div class="container mt-3">
             <h1 class="mb-3">User List</h1>
+            <div style="max-width: 700px;">
+                <form class="pt-3" action="/admins/users/search">
+                    <div class="input-group pb-3">
+                        <input type="text" class="form-control" placeholder="Search data..."
+                            aria-label="SearchLabel" name="search"/>
+                        <div id='SearchButton'>
+                            <button id='search-icon' class='btn btn-primary' type='submit'>
+                                <i class="bi bi-search" style="font-size: 1.5rem;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <table class="table admin-table">
                 <thead>
                     <tr class="text-center">
