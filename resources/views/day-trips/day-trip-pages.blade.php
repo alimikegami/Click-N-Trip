@@ -47,7 +47,7 @@
             </div>
             <div class="col">
                 <div class="container-fluid" id="inner-container-right">
-                    <h1 id="price">IDR.{{ $dayTripPlan->price_per_day }}/Person</h1>
+                    <h1 class="text-center text-md-start text-lg-start" id="price">IDR.{{ $dayTripPlan->price_per_day }}/Person</h1>
                     <div id='book-trip-container' class="container-fluid border mt-3">
                         @if (Auth::user())
                             <p class="text-center pt-3">Book This Day Trip</p>
@@ -102,12 +102,28 @@
                             </div>
                         </div>
                     @else
-                        <p>Don't have an account yet?</p>
+                    <div class="container mt-3">
+                        <div class="d-flex justify-content-center">
+                            <span id="desc-title" class="text-center">Log In To Book This Trip!</span>
+                        </div>
+                        <a href='{{ route('login') }}' class="d-grid gap-2 pb-3 pt-4">
+                            <button  type="button" class="btn btn-primary">Log In</button>
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="container mt-3 mb-3">
+                        <div class="d-flex justify-content-center">
+                            <span id="desc-title" class="text-center">Don't have an account?</span>
+                        </div>
+                        <a href='{{ route('register') }}' class="d-grid gap-2 pb-3 pt-4">
+                            <button  type="button" class="btn btn-secondary">Sign Up</button>
+                        </a>
+                    </div>
                         @endif
                     </div>
                 </div>
-                <div class="container-fluid mt-3" id="inner-container-right">
-                    <p id="desc-title">Schedule</p>
+                <div class="container-fluid mt-sm-5 mt-md-3 mt-lg-3" id="inner-container-right">
+                    <p class="text-center text-md-start text-lg-start" id="desc-title">Schedule</p>
                     <div class="container-fluid border mb-5" id='table-container'>
                         <table class="container mt-3">
                             <thead>

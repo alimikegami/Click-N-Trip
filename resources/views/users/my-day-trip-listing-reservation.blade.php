@@ -25,7 +25,7 @@
                     <div id="trip-outside-container" class="container border rounded">
                         <div id="trip-inside-container" class="container">
                             <div class="row mt-3 mb-3">
-                                <div id="image-holder" class="col-lg-4 col-md-4">
+                                <div id="image-holder" style="padding-left: 0px;  padding-right: 0px;" class="col-lg-4 col-md-4">
                                     <img id="image" class="img-fluid rounded" src="{{ asset('Gallery/Uluwatu.jpg') }}"
                                         alt="">
                                 </div>

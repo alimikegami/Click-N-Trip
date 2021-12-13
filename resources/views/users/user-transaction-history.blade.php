@@ -12,7 +12,7 @@
                     <div id="icon-holder" class="container d-flex align-items-center justify-content-center mt-4">
                         <i class="bi bi-person-circle" style="font-size: 5rem; color:#14279B;"></i>
                     </div>
-                    <div id="text-holder" class="container mt-4 mb-5">
+                    <div class="container mt-4 mb-5">
                         <p class="fw-bold text-center">My Account</p>
                         <p>Name: Alim Ikegami</p>
                         <p>Email: alimikegami1@gmail.com</p>
@@ -69,7 +69,7 @@
                                                     Proof</button>
                                             @endif
                                             @if ($item->status == 3)
-                                                <button type="button" onclick="showReviewModal('{{ $item->id }}')">Leave
+                                                <button id="reviewbutton" class="btn btn-secondary mt-3" type="button" onclick="showReviewModal('{{ $item->id }}')">Leave
                                                     a Review</button>
                                             @endif
                                         </div>
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container d-flex justify-content-center mt-4 mb-4">
+                <div class="container d-flex justify-content-center mt-4 mb-5">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button id='arrow-button' type="button" class="btn btn-primary"><i class="bi bi-arrow-left"
                                 style="font-size: 1rem;"></i></button>
