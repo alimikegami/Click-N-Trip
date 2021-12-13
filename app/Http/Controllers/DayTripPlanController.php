@@ -8,6 +8,7 @@ use App\Models\DayTripPlanDetails;
 use App\Models\DayTripPlanImages;
 use App\Services\DayTripPlanService;
 use App\Services\ReviewService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,11 +17,13 @@ class DayTripPlanController extends Controller
 {
     protected $dayTripPlanService;
     protected $reviewService;
+    protected $userService;
 
-    public function __construct(DayTripPlanService $dayTripPlanService, ReviewService $reviewService)
+    public function __construct(DayTripPlanService $dayTripPlanService, ReviewService $reviewService, UserService $userService)
     {
         $this->dayTripPlanService = $dayTripPlanService;
         $this->reviewService = $reviewService;
+        $this->userService = $userService;
     }
 
     public function search(){
@@ -33,9 +36,11 @@ class DayTripPlanController extends Controller
 
     public function show(DayTripPlan $day_trip_plan){
         $reviews = $this->reviewService->getReviewsByDayTripId($day_trip_plan->id);
+        $dayTripPlanImages = $this->dayTripPlanService->getImages($day_trip_plan->id);
         return view('day-trips.day-trip-pages',[
             "dayTripPlan"=>$day_trip_plan,
             "reviews"=>$reviews,
+            "images"=>$dayTripPlanImages
         ]);
     }
 
@@ -68,9 +73,11 @@ class DayTripPlanController extends Controller
     public function showReservation(Request $request, $id){
         $dayTripPlan = $this->dayTripPlanService->getDayTripPlanById($id);
         $reservation = $this->dayTripPlanService->getReservationById($id);
+        $listingCount = $this->userService->getListingCount($id);
         return view('users.my-day-trip-listing-reservation', [
             "dayTripPlan" => $dayTripPlan,
-            "reservation" => $reservation
+            "reservation" => $reservation,
+            'listingCount' => $listingCount
         ]);
 
     }

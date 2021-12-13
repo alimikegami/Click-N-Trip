@@ -46,6 +46,8 @@ Route::middleware(['auth', 'ensureroles:admin'])->group(function(){
     Route::get('/admins/dashboard/payment-details', [AdminController::class, 'showPaymentDetails']);
     Route::get('/admins/dashboard/transaction-history', [AdminController::class, 'showTransactionHistory']);
     Route::get('/admins/dashboard/users', [AdminController::class, 'showUsers']);
+    Route::get('/admins/users/search', [AdminController::class, 'searchUsers'])->name('search');
+
 });
 
 Route::get('/', function () {

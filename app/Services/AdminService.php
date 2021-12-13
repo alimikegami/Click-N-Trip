@@ -53,6 +53,10 @@ class AdminService {
         $res = $this->adminRepository->setPaymentApproval($id, $status);
         return $res;
     }
+
+    public function getUsersByKeyword($keyword){
+        return $this->adminRepository->getUsersByKeyword($keyword);
+    }
 }
 
 ?>

@@ -29,6 +29,10 @@ class DayTripPlanService
         return false;
     }
 
+    public function getImages($id){
+        return $this->dayTripPlanRepository->getImages($id);
+    }
+
     public function book($bodyContent)
     {
         $queryRes = $this->dayTripPlanRepository->book($bodyContent);

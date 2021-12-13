@@ -18,7 +18,8 @@ class UserRepository
 
     public function getAllUserDataById($id)
     {
-        return $this->user::getAllUserDataById($id);
+        return DB::select('SELECT dtp.title, dtp.id, dtp.destination, dtp.price_per_day, ROUND(AVG(r2.star_count)) AS star_count, dti.image_path FROM day_trip_plan dtp LEFT JOIN reservation r ON r.day_trip_plan_id = dtp.id LEFT JOIN review r2 ON r2.reservation_id = r.id LEFT JOIN day_trip_image dti ON dti.day_trip_plan_id = dtp.id WHERE dtp.user_id = ? GROUP BY dtp.id', [$id]);
+    
     }
 
     public function store($userData)
@@ -45,13 +46,19 @@ class UserRepository
 
     public function getReservationHistoryByUserId($id)
     {
-        $history = DB::select('SELECT r.*, dtp.title, dtp.destination, dtp.price_per_day FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id WHERE r.user_id = ?', [$id]);
+        $history = DB::select('SELECT r.*, dtp.title, dtp.destination, dtp.price_per_day, dtpi.image_path FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id LEFT JOIN day_trip_image dtpi ON dtp.id = dtpi.day_trip_plan_id WHERE r.user_id = ? GROUP BY dtp.id', [$id]);
         return $history;
     }
 
     public function getListings($id)
     {
-        $myListing = DB::select('SELECT * FROM day_trip_plan WHERE user_id = ?', [$id]);
+        $myListing = DB::select('SELECT dtp.title, dtp.id, dtp.destination, dtp.price_per_day, ROUND(AVG(r2.star_count)) AS star_count, dti.image_path FROM day_trip_plan dtp LEFT JOIN reservation r ON r.day_trip_plan_id = dtp.id LEFT JOIN review r2 ON r2.reservation_id = r.id LEFT JOIN day_trip_image dti ON dti.day_trip_plan_id = dtp.id WHERE dtp.user_id = ? GROUP BY dtp.id', [$id]);
         return $myListing;
+    }
+
+    public function getListingCount($id)
+    {  
+        $listingCount = DB::select('SELECT COUNT(*) AS count FROM day_trip_plan WHERE user_id = ?', [$id]);
+        return $listingCount;
     }
 }
