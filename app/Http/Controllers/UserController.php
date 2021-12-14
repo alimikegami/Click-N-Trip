@@ -12,6 +12,7 @@ use App\Http\Requests\UserStoreRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AuthenticationRequest;
 use App\Http\Requests\TourGuideStoreRequest;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -117,6 +118,17 @@ class UserController extends Controller
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+    public function dayTripPlanEditForm(int $id) {
+        return view('users.edit-day-trip-plan', [
+            'dayTripPlan' => DB::table('day_trip_plan as dtp')
+                ->join('day_trip_plan_details as dtpd', 'dtp.id', '=', 'dtpd.day_trip_plan_id')
+                ->join('day_trip_image as dti', 'dtp.id', '=', 'dti.day_trip_plan_id')
+                ->select('dtp.*', 'dtpd.start_time', 'dtpd.end_time', 'dtpd.agenda', 'dti.image_path')
+                ->where('dtp.id', $id)
+                ->first()
         ]);
     }
 }

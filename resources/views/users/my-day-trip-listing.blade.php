@@ -9,15 +9,20 @@
             @include('components.my-profile')
             <div class="col">
                 <div class="container-fluid" id="trip-container">
-                    <h3 class="mb-3 mt-sm-4 mt-md-4">My Day Trip Listing</h3>
+                    <h3 class="mb-3 mt-sm-4 mt-md-4 text-sm-center text-md-start text-lg-start">My Day Trip Listing</h3>
                     @foreach ($userListing as $listing)
-                        <div id="trip-outside-container" class="container border rounded">
-                            <div id="trip-inside-container" class="container">
+                        <div id="trip-outside-container" class="container border rounded mb-4">
+                            <div id="trip-inside-container" class="container-fluid">
                                 <div class="row mt-3 mb-3">
-                                    <div id="image-holder" class="col-lg-4 col-md-4">
-                                        <img id="image" class="img-fluid rounded"
-                                            src="{{ asset('storage/day-trip/' . $listing->image_path) }}"
-                                            alt="">
+                                    <div 
+                                    style="
+                                        width: 20rem;
+                                        height: 12rem;
+                                        background-image: url({{ asset('storage/day-trip/' . $listing->image_path) }});
+                                        background-size:cover;
+                                        background-position:center;
+                                    " 
+                                    class="col-lg-4 col-md-4 rounded">                               
                                     </div>
                                     <div id="plan-desc" class="col">
                                         <p>
@@ -35,7 +40,7 @@
                                             <span id='star-text'>{{ $listing->star_count ? $listing->star_count :0  }} out of 5</span>
                                         </div>
                                         <div id="list-buttons" class="pt-3">
-                                            <a href=""><i class="editbutton bi bi-pencil-square me-2 px-2"></i></a>
+                                            <a href="/users/day-trips/edit/{{ $listing->id }}"><i class="editbutton2 bi bi-pencil-square me-2 px-2"></i></a>
                                             <a type="button" onclick="showConfirmationModal({{ $listing->id }})"><i
                                                     class="xbutton bi bi-trash me-2 px-2"></i></a>
 

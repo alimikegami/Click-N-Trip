@@ -2,14 +2,7 @@
     font-size: 24px;
 }
 
-#img-container{
-    width: 100%;
-    height: 235px;
-    background-image: url(../Gallery/Uluwatu.jpg);
-    background-size: cover;
-    background-position: center;
-    border-radius: 14px;
-}
+
 
 #desc-title{
     font-size: 18px;

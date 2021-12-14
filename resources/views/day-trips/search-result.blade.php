@@ -26,11 +26,18 @@
         <div class="container" id='section-container'>
             @foreach ($search_result as $item)
                 <a href="/day-trips/{{ $item->id }}">
-                    <div class="container border rounded mb-3">
-                        <div class="row mt-2 mb-2">
-                            <div class="col-lg-3 col-md-3">
-                                <img class="img-fluid rounded" src="{{ asset('storage/day-trip/' . $item->image_path) }}"
-                                    alt="">
+                    <div class="container-fluid border rounded mb-3">
+                        <div class="container">
+                            <div class="row mt-2 mb-2">
+                                <div 
+                            style="
+                                width: 20rem;
+                                height: 12rem;
+                                background-image: url({{ asset('storage/day-trip/' . $item->image_path) }});
+                                background-size:cover;
+                                background-position:center;
+                            " 
+                            class="col-lg-3 col-md-3 rounded">
                             </div>
                             <div class="col-lg">
                                 <p>
@@ -40,11 +47,11 @@
                                 </p>
                                 <div class="pt-3" id='stars'>
                                     @if ($item->star_count)
-                                        @for ($i = 0; $i < $item->star_count; $i++)
-                                            <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-
-                                        @endfor
-
+                                    @for ($i = 0; $i < $item->star_count; $i++)
+                                    <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
+                                    
+                                    @endfor
+                                    
                                     @endif
                                     <span id='star-text'>{{ $item->star_count ? $item->star_count : 0 }} out of 5</span>
                                 </div>
@@ -53,6 +60,7 @@
                                 <p>IDR{{ $item->price_per_day }}/Person</p>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </a>
             @endforeach

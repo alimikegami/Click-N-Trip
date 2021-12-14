@@ -16,14 +16,5 @@ label{
 #tourpostcontainer{
     max-width: 1500px;
 }
-#create-button,#add-button{
-    border-radius: 20px;
-    width: 290px;
-}
-#removebutton{
-    background-color: red !important;
-}
-#removebutton:hover{
-    background-color: rgb(253, 74, 74)  !important;
-    color: white !important;
-}
+
+

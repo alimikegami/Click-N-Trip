@@ -15,8 +15,16 @@
                         <div id="trip-outside-container" class="container border rounded mt-3">
                             <div id="trip-inside-container" class="container">
                                 <div class="row mt-3 mb-3">
-                                    <div id="image-holder" class="col-lg-5 col-md-5">
-                                        <img id="image" class="img-fluid rounded" src="{{ asset('storage/day-trip/' . $item->image_path) }}" alt="">
+                                    <div
+                                    style="                            
+                                    height: 10rem;
+                                    width: 16rem;
+                                    background-image: url({{ asset('storage/day-trip/' . $item->image_path) }});
+                                    background-position:center;
+                                    background-size:cover;
+                                    " 
+                                    class="col-lg-5 col-md-5 rounded">
+                                        
                                     </div>
                                     <div id="plan-desc" class="col">
                                         <p>
@@ -54,7 +62,7 @@
                                                     Proof</button>
                                             @endif
                                             @if ($item->status == 3 && $item->is_reviewed == 0)
-                                                <button type="button" onclick="showReviewModal('{{ $item->id }}')">Leave
+                                                <button class='btn editbutton mt-3' type="button" onclick="showReviewModal('{{ $item->id }}')">Leave
                                                     a Review</button>
                                             @endif
                                         </div>
@@ -87,7 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container d-flex justify-content-center mt-4 mb-4">
+                <div class="container d-flex justify-content-center mt-4 mb-5">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button id='arrow-button' type="button" class="btn btn-primary"><i class="bi bi-arrow-left"
                                 style="font-size: 1rem;"></i></button>

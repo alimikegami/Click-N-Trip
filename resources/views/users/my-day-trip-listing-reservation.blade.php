@@ -14,7 +14,7 @@
                         <div id="trip-inside-container" class="container">
                             <div class="row mt-3 mb-3">
                                 <div id="image-holder" class="col-lg-4 col-md-4">
-                                    <img id="image" class="img-fluid rounded"
+                                    <img style="max-height: 235px; id="image" class="img-fluid rounded"
                                         src="{{ asset('storage/day-trip/' . $dayTripPlan[0]->image_path) }}" alt="">
                                 </div>
                                 <div id="plan-desc" class="col">

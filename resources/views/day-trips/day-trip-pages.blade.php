@@ -19,8 +19,39 @@
                         @endif
                     </div>
                     <a href="/users/{{ $dayTripPlan->user->id }}">{{ $dayTripPlan->user->name }}</a>
-                    <div class="container-fluid mt-3" id='img-container'>
-                        <img src="{{ asset('storage/day-trip/' . $images[0]->image_path) }}" alt="">
+                    <div class="row">
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner rounded">
+                              <div class="carousel-item active">
+                                <div
+                                style="
+                                width: 45rem;
+                                height: 20rem;
+                                background-image: url({{ asset('storage/day-trip/' . $images[0]->image_path ) }});
+                                background-size:cover;
+                                background-position:center;" 
+                                class="col-lg-4 col-md-4">
+                                </div>
+                              </div>
+                              <div class="carousel-item">
+                                <div
+                                style="
+                                width: 45rem;
+                                height: 20rem;
+                                background-image: url({{ asset('Gallery/cityimg.jpg') }});
+                                background-size:cover;
+                                background-position:center;" 
+                                class="col-lg-4 col-md-4">
+                                </div>
+                              </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              </a>
+                        </div>
                     </div>
                     <div class="mt-3">
                         <p id='desc-title'>Description</p>
@@ -73,15 +104,15 @@
                                         <input class="form-control book-form" type="date" id="date" name="date" required>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div>
-                                <button id='check-button' type="button" class="btn btn-primary mt-3 mb-2"
-                                    onclick="checkInput()">Check Availibility
-                                </button>
-                                <a href="" id="check-button" class="btn btn-secondary mt-3 mb-4">
-                                    Our Payment Method
-                                </a>
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <button id='check-button' type="button" class="btn btn-primary mt-3 mb-2"
+                                        onclick="checkInput()">Check Availibility
+                                    </button>
+                                    <a href="" id="check-button" class="btn btn-secondary mt-3 mb-4">
+                                        Our Payment Method
+                                    </a>
+                                </div>
                             </div>
                             <!-- Modal -->
                             <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
@@ -107,7 +138,25 @@
                                 </div>
                             </div>
                         @else
-                            <p>Don't have an account yet?</p>
+                            <div>
+                                <div class="container mt-3">
+                                    <div class="d-flex justify-content-center">
+                                        <span id="desc-title" class="text-center">Log In To Book This Trip!</span>
+                                    </div>
+                                    <a href='{{ route('login') }}' class="d-grid gap-2 pb-3 pt-4">
+                                        <button  type="button" class="btn btn-primary">Log In</button>
+                                    </a>
+                                </div>
+                                <hr>
+                                <div class="container mt-3 mb-3">
+                                    <div class="d-flex justify-content-center">
+                                        <span id="desc-title" class="text-center">Don't have an account?</span>
+                                    </div>
+                                    <a href='{{ route('register') }}' class="d-grid gap-2 pb-3 pt-4">
+                                        <button  type="button" class="btn btn-secondary">Sign Up</button>
+                                    </a>
+                                </div>
+                            </div> 
                     @endif
                 </div>
                 @endif
