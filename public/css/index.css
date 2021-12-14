@@ -84,6 +84,14 @@ p{
     background-color: #FFD700;
     color: white;
 }
+.editbutton2{
+    font-size: 1.7rem; border:1px solid #FFD700; border-radius: 5px; color:black;
+}
+.editbutton2:hover{
+    background-color: #FFD700;
+    color: white;
+}
+
 .wrapper {
     display: flex;
     align-items: stretch;
@@ -214,4 +222,15 @@ ul ul a {
     background-size: cover;
     max-height: 147px;
     min-width: 211px;
+}
+#create-button,#add-button{
+    border-radius: 20px;
+    width: 290px;
+}
+#removebutton{
+    background-color: red !important;
+}
+#removebutton:hover{
+    background-color: rgb(253, 74, 74)  !important;
+    color: white !important;
 }

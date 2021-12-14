@@ -40,7 +40,7 @@
                                             <span id='star-text'>{{ $listing->star_count ? $listing->star_count :0  }} out of 5</span>
                                         </div>
                                         <div id="list-buttons" class="pt-3">
-                                            <a href=""><i class="editbutton bi bi-pencil-square me-2 px-2"></i></a>
+                                            <a href="/users/day-trips/edit/{{ $listing->id }}"><i class="editbutton2 bi bi-pencil-square me-2 px-2"></i></a>
                                             <a type="button" onclick="showConfirmationModal({{ $listing->id }})"><i
                                                     class="xbutton bi bi-trash me-2 px-2"></i></a>
 

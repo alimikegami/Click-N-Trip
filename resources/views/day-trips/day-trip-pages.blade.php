@@ -18,15 +18,38 @@
                     </div>
                     <a href="/users/{{ $dayTripPlan->user->id }}">{{ $dayTripPlan->user->name }}</a>
                     <div class="row">
-                            <div
-                            style="
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <div
+                                style="
                                 width: 45rem;
                                 height: 20rem;
                                 background-image: url({{ asset('storage/day-trip/' . $images[0]->image_path ) }});
                                 background-size:cover;
                                 background-position:center;" 
-                            class="col-lg-4 col-md-4 border rounded">
+                                class="col-lg-4 col-md-4">
+                                </div>
+                              </div>
+                              <div class="carousel-item">
+                                <div
+                                style="
+                                width: 45rem;
+                                height: 20rem;
+                                background-image: url({{ asset('Gallery/cityimg.jpg') }});
+                                background-size:cover;
+                                background-position:center;" 
+                                class="col-lg-4 col-md-4">
+                                </div>
+                              </div>
                             </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              </a>
+                        </div>
                     </div>
                     <div class="mt-3">
                         <p id='desc-title'>Description</p>
