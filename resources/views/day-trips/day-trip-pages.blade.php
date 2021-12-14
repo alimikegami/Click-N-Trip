@@ -19,7 +19,7 @@
                     <a href="/users/{{ $dayTripPlan->user->id }}">{{ $dayTripPlan->user->name }}</a>
                     <div class="row">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
+                            <div class="carousel-inner rounded">
                               <div class="carousel-item active">
                                 <div
                                 style="
