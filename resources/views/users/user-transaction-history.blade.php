@@ -15,8 +15,16 @@
                         <div id="trip-outside-container" class="container border rounded mt-3">
                             <div id="trip-inside-container" class="container">
                                 <div class="row mt-3 mb-3">
-                                    <div id="image-holder" class="col-lg-5 col-md-5">
-                                        <img id="image" class="img-fluid rounded" src="{{ asset('storage/day-trip/' . $item->image_path) }}" alt="">
+                                    <div
+                                    style="                            
+                                    height: 10rem;
+                                    width: 16rem;
+                                    background-image: url({{ asset('storage/day-trip/' . $item->image_path) }});
+                                    background-position:center;
+                                    background-size:cover;
+                                    " 
+                                    class="col-lg-5 col-md-5 rounded">
+                                        
                                     </div>
                                     <div id="plan-desc" class="col">
                                         <p>
@@ -48,18 +56,13 @@
                                                     onclick="showFileUploadModal({{ $item->id }})">Upload Payment
                                                     Proof</button>
                                             @endif
-<<<<<<< HEAD
-                                            @if ($item->status == 3)
-                                                <button id="reviewbutton" class="btn btn-secondary mt-3" type="button" onclick="showReviewModal('{{ $item->id }}')">Leave
-=======
                                             @if ($item->status == 4)
                                                 <button id="paymentbutton" class="btn btn-secondary mt-3"
                                                     onclick="showFileUploadModal({{ $item->id }})">Edit Payment
                                                     Proof</button>
                                             @endif
                                             @if ($item->status == 3 && $item->is_reviewed == 0)
-                                                <button type="button" onclick="showReviewModal('{{ $item->id }}')">Leave
->>>>>>> 0e6c874905d58440c7f1921659d73881542b0fe1
+                                                <button class='btn editbutton mt-3' type="button" onclick="showReviewModal('{{ $item->id }}')">Leave
                                                     a Review</button>
                                             @endif
                                         </div>

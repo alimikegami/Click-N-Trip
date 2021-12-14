@@ -78,7 +78,7 @@ p{
     background-color: white ;
 }
 .editbutton{
-    font-size: 1.7rem; border:1px solid #FFD700; border-radius: 5px; color:black;
+    font-size: 16px; border:1px solid #FFD700; border-radius: 5px; color:black;
 }
 .editbutton:hover{
     background-color: #FFD700;
