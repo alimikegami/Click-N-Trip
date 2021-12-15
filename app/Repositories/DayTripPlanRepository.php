@@ -20,10 +20,11 @@ class DayTripPlanRepository
     public function searchByKeyword($keyword)
     {
         // return DayTripPlan::filter($keyword);
-        return DB::select("SELECT tbl.*, dtpi.image_path FROM (SELECT dtp.id, ROUND(AVG(star_count)) star_count, u.name, dtp.price_per_day, dtp.title, dtp.destination FROM day_trip_plan dtp INNER JOIN users u ON u.id = dtp.user_id LEFT JOIN reservation r ON dtp.id = r.day_trip_plan_id LEFT JOIN review r2 ON r.id = r2.reservation_id GROUP BY dtp.id) tbl LEFT JOIN day_trip_image dtpi ON tbl.id = dtpi.day_trip_plan_id WHERE title LIKE ? OR destination LIKE ? GROUP BY tbl.id;", ["%".$keyword."%", "%".$keyword."%"]);
+        return DB::select("SELECT tbl.*, dtpi.image_path FROM (SELECT dtp.id, ROUND(AVG(star_count)) star_count, u.name, dtp.price_per_day, dtp.title, dtp.destination FROM day_trip_plan dtp INNER JOIN users u ON u.id = dtp.user_id LEFT JOIN reservation r ON dtp.id = r.day_trip_plan_id LEFT JOIN review r2 ON r.id = r2.reservation_id GROUP BY dtp.id) tbl LEFT JOIN day_trip_image dtpi ON tbl.id = dtpi.day_trip_plan_id WHERE title LIKE ? OR destination LIKE ? GROUP BY tbl.id;", ["%" . $keyword . "%", "%" . $keyword . "%"]);
     }
 
-    public function getImages($id){
+    public function getImages($id)
+    {
         return DB::select('SELECT * FROM day_trip_image WHERE day_trip_plan_id = ?', [$id]);
     }
 
@@ -69,6 +70,53 @@ class DayTripPlanRepository
         return $dayTripPlan;
     }
 
+    public function editDayTripPlanById($data, $id)
+    {
+        try {
+            $res = DB::update('UPDATE day_trip_plan SET title = ?, destination = ?, description = ?, price_per_day = ?, max_capacity_per_day = ? WHERE id = ?', [$data["title"], $data["destination"], $data["description"], $data["price_per_day"], $data["max_capacity_per_day"], $id]);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return 0;
+        }
+        return 1;
+    }
+
+    public function ediDayTripPlanDetails($data, $id)
+    {
+        $res = DB::delete("DELETE FROM day_trip_plan_details WHERE day_trip_plan_id = ?", [$id]);
+        for ($x = 0; $x < count($data["time_start"]); $x++) {
+            $time = strtotime($data["time_start"][$x]);
+            $startTime = date("H:i:s", $time);
+            $time = strtotime($data["time_end"][$x]);
+            $endTime = date("H:i:s", $time);
+            $res = DB::insert("INSERT INTO day_trip_plan_details(start_time, end_time, agenda, day_trip_plan_id) VALUES (?, ?, ?, ?)", [$startTime, $endTime, $data["agenda"][$x], $id]);
+            if (!$res) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function editDayTripPlanImages($data, $id)
+    {
+        if (array_key_exists("images", $data)) {
+            $files = $data['images'];
+            $res = DB::delete("DELETE FROM day_trip_image WHERE day_trip_plan_id = ?", [$id]);
+            if ($res) {
+                foreach ($files as $file) {
+                    $path = $file->store('public/day-trip');
+                    $temp = explode('/', $path);    // Getting the attachment name
+                    $res = DB::insert("INSERT INTO day_trip_image(image_path, day_trip_plan_id) VALUES (?, ?)", [$temp[2], $id]);
+                    if (!$res) {
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public function book($bodyContent)
     {
         // check the number of reservation for that particular date
@@ -84,7 +132,7 @@ class DayTripPlanRepository
             return false;
         }
 
-        if ($bodyContent["person"] > $maximumCapacity[0]->max_capacity_per_day){
+        if ($bodyContent["person"] > $maximumCapacity[0]->max_capacity_per_day) {
             return false;
         }
         // create reservation
@@ -101,6 +149,12 @@ class DayTripPlanRepository
         return $queryState;
     }
 
+    public function getDayTripPlanDetails($id)
+    {
+        $res = DB::select("SELECT * FROM day_trip_plan_details WHERE day_trip_plan_id = ?", [$id]);
+        return $res;
+    }
+
     public function getReservationById($userId, $dtpId)
     {
         $res = DB::select('SELECT r.* FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id WHERE dtp.user_id = ? AND r.day_trip_plan_id = ?', [$userId, $dtpId]);
@@ -110,7 +164,7 @@ class DayTripPlanRepository
 
     public function getDayTripPlanById($id)
     {
-        $res = DB::select('SELECT dtp.title, dtp.id, dtp.destination, dtp.price_per_day, ROUND(AVG(r2.star_count)) AS star_count, dti.image_path FROM day_trip_plan dtp LEFT JOIN reservation r ON r.day_trip_plan_id = dtp.id LEFT JOIN review r2 ON r2.reservation_id = r.id LEFT JOIN day_trip_image dti ON dti.day_trip_plan_id = dtp.id WHERE dtp.id = ? GROUP BY dtp.id', [$id]);
+        $res = DB::select('SELECT dtp.title, dtp.id, dtp.destination, dtp.description, dtp.max_capacity_per_day, dtp.price_per_day, ROUND(AVG(r2.star_count)) AS star_count, dti.image_path FROM day_trip_plan dtp LEFT JOIN reservation r ON r.day_trip_plan_id = dtp.id LEFT JOIN review r2 ON r2.reservation_id = r.id LEFT JOIN day_trip_image dti ON dti.day_trip_plan_id = dtp.id WHERE dtp.id = ? GROUP BY dtp.id', [$id]);
         return $res;
     }
 

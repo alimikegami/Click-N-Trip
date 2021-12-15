@@ -19,7 +19,8 @@
         </div>
         <div class='row'>
             <div class="container">
-                <form action="/day-trips" method="post" class='register-form pt-5' enctype="multipart/form-data">
+                <form action="/day-trips/{{ $dayTripPlan[0]->id }}" method="post" class='register-form pt-5' enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     @if (Session::has('success'))
                         <div class="alert alert-success">{{ Session::get('success') }}</div>
@@ -53,7 +54,7 @@
                             <label for="title" class="form-label">Day Trip Plan Title</label>
                         </div>
                         <div class="col">
-                            <input value="{{ $dayTripPlan->title }}" type="text" class="form-control" name="title" id="title" placeholder='The Grand Trip'
+                            <input value="{{ $dayTripPlan[0]->title }}" type="text" class="form-control" name="title" id="title" placeholder='The Grand Trip'
                                 required>
                         </div>
                     </div>
@@ -62,7 +63,7 @@
                             <label for="destination" class="form-label">Day Trip Plan Destination</label>
                         </div>
                         <div class="col">
-                            <input value="{{ $dayTripPlan->destination }}" type="text" class="form-control" name="destination" id="destination"
+                            <input value="{{ $dayTripPlan[0]->destination }}" type="text" class="form-control" name="destination" id="destination"
                                 placeholder='Canggu, Bali' required></input>
                         </div>
                     </div>
@@ -72,7 +73,7 @@
                         </div>
                         <div class="col">
                             <textarea class="form-control" name="description" id="description"
-                                placeholder='The greatest trip plan ever seen' required>{{ $dayTripPlan->description }}</textarea>
+                                placeholder='The greatest trip plan ever seen' required>{{ $dayTripPlan[0]->description }}</textarea>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -80,7 +81,7 @@
                             <label for="price_per_day" class="form-label">Day Trip Plan Price</label>
                         </div>
                         <div class="col">
-                            <input value="{{ $dayTripPlan->price_per_day }}" type="number" name="price_per_day" class="form-control" id="price_per_day"
+                            <input value="{{ $dayTripPlan[0]->price_per_day }}" type="number" name="price_per_day" class="form-control" id="price_per_day"
                                 placeholder='IDR.500.000,00' required>
                         </div>
                     </div>
@@ -89,7 +90,7 @@
                             <label for="max_capacity_per_day" class="form-label">Day Trip Plan Capacity (Person)</label>
                         </div>
                         <div class="col">
-                            <input value="{{ $dayTripPlan->max_capacity_per_day }}" type="number" name='max_capacity_per_day' class="form-control"
+                            <input value="{{ $dayTripPlan[0]->max_capacity_per_day }}" type="number" name='max_capacity_per_day' class="form-control"
                                 id="max_capacity_per_day" placeholder='5' required>
                         </div>
                     </div>
@@ -100,24 +101,25 @@
                                 <label class="form-label">Day Trip Plan Schedule</label>
                             </div>
                             <div class="col">
+                                @foreach ($dayTripPlanDetails as $item)
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
                                                 <label for="time_start" class="form-label">Time Start</label>
-                                                <input value="{{ $dayTripPlan->start_time }}" type="time" name='time_start[]' class="form-control"
+                                                <input value="{{ $item->start_time }}" type="time" name='time_start[]' class="form-control"
                                                     id="time_start" placeholder='start' required>
                                             </div>
                                             <div class="col">
                                                 <label for="time_end" class="form-label">Time End</label>
-                                                <input value="{{ $dayTripPlan->end_time }}" type="time" name='time_end[]' class="form-control" id="time_end"
+                                                <input value="{{ $item->end_time }}" type="time" name='time_end[]' class="form-control" id="time_end"
                                                     placeholder='end' required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <label for='agenda' class="form-label">Agenda</label>
-                                        <input value="{{ $dayTripPlan->agenda }}" type="text" name='agenda[]' class="form-control" id="agenda"
+                                        <input value="{{ $item->agenda }}" type="text" name='agenda[]' class="form-control" id="agenda"
                                             placeholder='Shedule Agenda' required>
                                     </div>
                                     <div class="col">
@@ -126,6 +128,7 @@
                                             class="d-block btn btn-primary">Remove</button>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -138,7 +141,7 @@
                             <label class="form-label">Day Trip Thumbnail</label>
                         </div>
                         <div class="col">
-                            <input type="file" name='images[]' class="form-control" id="images" multiple required>
+                            <input type="file" name='images[]' class="form-control" id="images" multiple>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center pb-5">

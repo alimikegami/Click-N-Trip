@@ -10,11 +10,13 @@
                 <div class="container">
                     <h1 id='page-title'>{{ $dayTripPlan->title }}</h1>
                     <div id='stars'>
-                        <span id='star-text'>Rating 4 out of 5</span>
-                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
+                        <span id='star-text'>Rating {{ $dayTripPlan->star_count ? $dayTripPlan->star_count : 0 }} out of
+                            5</span>
+                        @if ($dayTripPlan->dayTripPlan)
+                            @for ($i = 0; $i < (int)$dayTripPlan->star_count; $i++)
+                                <i class="bi bi-star-fill" style="font-size: 1rem; color:gold;"></i>
+                            @endfor
+                        @endif
                     </div>
                     <a href="/users/{{ $dayTripPlan->user->id }}">{{ $dayTripPlan->user->name }}</a>
                     <div class="row">

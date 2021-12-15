@@ -29,7 +29,8 @@ class DayTripPlanService
         return false;
     }
 
-    public function getImages($id){
+    public function getImages($id)
+    {
         return $this->dayTripPlanRepository->getImages($id);
     }
 
@@ -57,6 +58,12 @@ class DayTripPlanService
         return $res;
     }
 
+    public function getDayTripPlanDetails($id)
+    {
+        $res = $this->dayTripPlanRepository->getDayTripPlanDetails($id);
+        return $res;
+    }
+
     public function updateStatus($status, $id)
     {
         $res = $this->dayTripPlanRepository->updateStatus($status, $id);
@@ -72,5 +79,25 @@ class DayTripPlanService
         $res = $this->dayTripPlanRepository->updatePaymentProof($temp, $id);
 
         return $res;
+    }
+
+    public function editDayTripPlan($data, $id)
+    {
+        $res = $this->dayTripPlanRepository->editDayTripPlanById($data, $id);
+        if (!($res)){
+            return false;
+        }
+
+        $res = $this->dayTripPlanRepository->ediDayTripPlanDetails($data, $id);
+        if (!($res)){
+            return false;
+        }
+
+        $res = $this->dayTripPlanRepository->editDayTripPlanImages($data, $id);
+        if (!($res)){
+            return false;
+        }
+
+        return true;
     }
 }

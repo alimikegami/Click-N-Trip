@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DayTripStoreRequest;
 use App\Models\DayTripPlan;
-use App\Models\DayTripPlanDetails;
-use App\Models\DayTripPlanImages;
-use App\Services\DayTripPlanService;
-use App\Services\ReviewService;
-use App\Services\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Services\UserService;
+use App\Services\ReviewService;
+use App\Models\DayTripPlanImages;
+use App\Models\DayTripPlanDetails;
 use Illuminate\Support\Facades\DB;
+use App\Services\DayTripPlanService;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\DayTripEditRequest;
+use App\Http\Requests\DayTripStoreRequest;
 
 class DayTripPlanController extends Controller
 {
@@ -26,34 +27,38 @@ class DayTripPlanController extends Controller
         $this->userService = $userService;
     }
 
-    public function search(){
+    public function search()
+    {
         $result = $this->dayTripPlanService->searchByKeyword(request('search'));
         return view("day-trips.search-result", [
-            "search_result"=>$result,
-            "keyword"=>request('search')
+            "search_result" => $result,
+            "keyword" => request('search')
         ]);
     }
 
-    public function show(DayTripPlan $day_trip_plan){
+    public function show(DayTripPlan $day_trip_plan)
+    {
         $reviews = $this->reviewService->getReviewsByDayTripId($day_trip_plan->id);
         $dayTripPlanImages = $this->dayTripPlanService->getImages($day_trip_plan->id);
-        return view('day-trips.day-trip-pages',[
-            "dayTripPlan"=>$day_trip_plan,
-            "reviews"=>$reviews,
-            "images"=>$dayTripPlanImages
+        return view('day-trips.day-trip-pages', [
+            "dayTripPlan" => $day_trip_plan,
+            "reviews" => $reviews,
+            "images" => $dayTripPlanImages
         ]);
     }
 
-    public function book(Request $request){
+    public function book(Request $request)
+    {
         $bodyContent = $request->json()->all();
         $queryState = $this->dayTripPlanService->book($bodyContent);
-        if ($queryState){
+        if ($queryState) {
             return response()->json(['status' => 'reservation has been made'], 200);
         }
         return response()->json(['status' => 'invalid'], 500);
     }
 
-    public function store(DayTripStoreRequest $request) {
+    public function store(DayTripStoreRequest $request)
+    {
         $validated = $request->validated();
         $queryState = $this->dayTripPlanService->store($validated);
         if ($queryState) {
@@ -62,7 +67,8 @@ class DayTripPlanController extends Controller
         return back()->with('error', 'Day Trip Listing Could Not Be Created!');
     }
 
-    public function delete(Request $request, $id){
+    public function delete(Request $request, $id)
+    {
         $querystate = $this->dayTripPlanService->delete($id);
         if ($querystate) {
             return response()->json(['status' => 'success'], 200);
@@ -70,7 +76,8 @@ class DayTripPlanController extends Controller
         return response()->json(['status' => 'invalid'], 500);
     }
 
-    public function showReservation(Request $request, $id){
+    public function showReservation(Request $request, $id)
+    {
         $dayTripPlan = $this->dayTripPlanService->getDayTripPlanById($id);
         $reservation = $this->dayTripPlanService->getReservationById($id);
         $listingCount = $this->userService->getListingCount($id);
@@ -79,26 +86,49 @@ class DayTripPlanController extends Controller
             "reservation" => $reservation,
             'listingCount' => $listingCount
         ]);
-
     }
 
-    public function updateStatus(Request $request, $resId){
+    public function updateStatus(Request $request, $resId)
+    {
         $bodyContent = $request->json()->all();
         $res = $this->dayTripPlanService->updateStatus($bodyContent["status"], $resId);
-        if ($res){
+        if ($res) {
             return response()->json(['status' => "success"], 200);
         }
-        
+
         return response()->json(['status' => "invalid"], 500);
     }
 
-    public function updatePaymentProof(Request $request, $id){
+    public function updatePaymentProof(Request $request, $id)
+    {
         $res = $this->dayTripPlanService->updatePaymentProof($request->file('proofImg'), $id);
         if ($res) {
             return response()->json(['status' => "success"], 200);
         }
 
-        return response()->json(['status' => $id], 500);
+        return response()->json(['status' => "invalid"], 500);
+    }
 
+    public function showEditForm($id)
+    {
+        $dayTripPlan = $this->dayTripPlanService->getDayTripPlanById($id);
+        $dayTripPlanDetails = $this->dayTripPlanService->getDayTripPlanDetails($id);
+
+        return view('users.edit-day-trip-plan', [
+            "dayTripPlan" => $dayTripPlan,
+            "dayTripPlanDetails" => $dayTripPlanDetails
+        ]);
+    }
+
+    public function edit(DayTripEditRequest $request, $id)
+    {
+        $validated = $request->validated();
+        $status = $this->dayTripPlanService->editDayTripPlan($validated, $id);
+        if ($status)
+        {
+            return back()->with('success', 'Day Trip Listing Successfully Changed!');
+
+        }
+        return back()->with('error', 'Day Trip Listing Could Not Be Changed!');
     }
 }

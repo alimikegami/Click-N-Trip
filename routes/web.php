@@ -30,11 +30,12 @@ Route::middleware(['auth'])->group(function(){
     
 Route::middleware(['auth', 'ensureroles:tour_guide'])->group(function(){
     Route::patch('/day-trips/reservation/{resId}', [DayTripPlanController::class, 'updateStatus']);
-    Route::get('/users/day-trips', [UserController:: class, 'dayTripPlanForm'])->name('list-day-trips');
-    Route::get('/users/day-trips/edit/{id}', [UserController:: class, 'dayTripPlanEditForm'])->name('list-day-trips-edit');
+    Route::get('/users/day-trips', [UserController::class, 'dayTripPlanForm'])->name('list-day-trips');
+    Route::get('/users/day-trips/edit/{id}', [DayTripPlanController::class, 'showEditForm'])->name('list-day-trips-edit');
     Route::post('/day-trips', [DayTripPlanController::class, 'store']);
     Route::get('/users/my-listings', [UserController::class, 'showMyListings']);
     Route::get('/day-trips/{id}/reservation', [DayTripPlanController::class, 'showReservation']);
+    Route::put('/day-trips/{id}', [DayTripPlanController::class, 'edit']);
     Route::delete('/day-trips/{id}', [DayTripPlanController::class, 'delete']);
 });
 
