@@ -22,28 +22,25 @@
                     <div class="row">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner rounded">
-                              <div class="carousel-item active">
-                                <div
-                                style="
-                                width: 45rem;
-                                height: 20rem;
-                                background-image: url({{ asset('storage/day-trip/' . $images[0]->image_path ) }});
-                                background-size:cover;
-                                background-position:center;" 
-                                class="col-lg-4 col-md-4">
+                              @php
+                                 $i = 0;
+                              @endphp
+                              @foreach ($images as $item)
+                                <div class="carousel-item {{ $i==0? "active":"" }}">
+                                    <div
+                                    style="
+                                    width: 45rem;
+                                    height: 20rem;
+                                    background-image: url({{ asset('storage/day-trip/' . $item->image_path ) }});
+                                    background-size:cover;
+                                    background-position:center;" 
+                                    class="col-lg-4 col-md-4">
+                                    </div>
+                                    @php
+                                        $i += 1;
+                                    @endphp
                                 </div>
-                              </div>
-                              <div class="carousel-item">
-                                <div
-                                style="
-                                width: 45rem;
-                                height: 20rem;
-                                background-image: url({{ asset('Gallery/cityimg.jpg') }});
-                                background-size:cover;
-                                background-position:center;" 
-                                class="col-lg-4 col-md-4">
-                                </div>
-                              </div>
+                              @endforeach
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
