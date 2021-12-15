@@ -8,9 +8,9 @@
             <div class="input-group pt-5 pb-5">
                 <input type="text" class="form-control" name="search" placeholder="Search Your Destination..."
                     aria-label="SearchLabel" />
-                    <button class='btn btn-primary' id="search-icon" type='submit'>
-                        <i class="bi bi-search" style="font-size: 1.5rem; color:white;"></i>
-                    </button>
+                <button class='btn btn-primary' id="search-icon" type='submit'>
+                    <i class="bi bi-search" style="font-size: 1.5rem; color:white;"></i>
+                </button>
             </div>
         </form>
     </div>
@@ -41,54 +41,29 @@
         <h2 class='text-left mb-5 mt-5'>Hot Deals</h2>
         <div class="container-fluid d-flex justify-content-center">
             <div class="row">
-                <div class="col mb-3">
-                    <div class="card" id="zoom-element">
-                        <img src="Gallery/Surabaya.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Suramadu full Tour</h5>
-                            <p class="card-text text-center">IDR.599.000,00</p>
-                            <div class="d-flex justify-content-center">
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+                @foreach ($featured as $item)
+                    <a href="/day-trips/{{ $item->id }}">
+                        <div class="col mb-3">
+                            <div class="card" id="zoom-element">
+                                <img src="{{ asset('storage/day-trip/' . $item->image_path) }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{ $item->title }}</h5>
+                                    <p class="card-text text-center">IDR{{ $item->price_per_day }}</p>
+                                    <div class="d-flex justify-content-center">
+                                        @if ($item->star_count)
+                                            @for ($i = 0; $i < $item->star_count; $i++)
+                                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+    
+                                            @endfor
+                                        @else
+                                            <p>No ratings yet</p>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <div class="card" id="zoom-element">
-                        <img src="Gallery/Uluwatu.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Seminyak Beach Full Tour</h5>
-                            <p class="card-text text-center">IDR.599.000,00</p>
-                            <div class="d-flex justify-content-center">
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <div class="card" id="zoom-element">
-                        <img src="Gallery/baligirls.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Nusa Penida Full Tour</h5>
-                            <p class="card-text text-center">IDR.599.000,00</p>
-                            <div class="d-flex justify-content-center">
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
@@ -98,36 +73,42 @@
         <h2 class='text-left mb-5 mt-5'>Top Destination Nowadays</h2>
         <div class="container-fluid">
             <div class="row">
-                <div class="col mb-3">
-                    <div class="card" id="zoom-element">
-                        <img src=" Gallery/Surabaya.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Surabaya</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
+                <a href="/day-trips/search?search=surabaya">
+                    <div class="col mb-3">
+                        <div class="card" id="zoom-element">
+                            <img src=" Gallery/Surabaya.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Surabaya</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col mb-3">
-                    <div class="card" id="zoom-element">
-                        <img src="Gallery/Uluwatu.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Bali</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
+                </a>
+                <a href="/day-trips/search?search=bali">
+                    <div class="col mb-3">
+                        <div class="card" id="zoom-element">
+                            <img src="Gallery/Uluwatu.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Bali</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col mb-3">
-                    <div class="card" id="zoom-element">
-                        <img src="Gallery/baligirls.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Nusa Penida</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
+                </a>
+                <a href="/day-trips/search?search=nusa%20penida">
+                    <div class="col mb-3">
+                        <div class="card" id="zoom-element">
+                            <img src="Gallery/baligirls.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Nusa Penida</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -138,32 +119,38 @@
             <div class="row">
                 <div class="col pt-5 pb-5">
                     <h3 class="pb-2 px-5">About Click n Trip</h3>
-                    <p class="px-5"><a id='footer-links' href="">Click n Trip</a> is the online solution for your tour guides needs!</p>
-   
+                    <p class="px-5"><a id='footer-links' href="">Click n Trip</a> is the online solution for your
+                        tour guides needs!</p>
+
                 </div>
                 <div class="col pt-5 pb-5">
                     <h3 class="pb-2 px-5">Get Your Day Trip Now</h3>
-                    <p class="px-5">Click n Trip provides <a id='footer-links' href="">day trips</a> from our travel guides/agencies for customer needs!</p>
- 
+                    <p class="px-5">Click n Trip provides <a id='footer-links' href="">day trips</a> from our
+                        travel guides/agencies for customer needs!</p>
+
                 </div>
                 <div class="col pt-5 pb-5">
                     <h3 class="pb-2 px-5">Connect With Us</h3>
                     <div class="container">
                         <div class="row px-4">
                             <div class="col">
-                            <a href=""><i id="contact-logo" class="bi bi-instagram px-3 py-2" style="font-size: 2rem; "></i> </a> 
-                        </div>
-                        <div class="col">
-                            <a href=""><i id="contact-logo" class="bi bi-facebook px-3 py-2" style="font-size: 2rem; "></i> </a>
-                        </div>
-                        <div class="col">
-                            <a href=""><i id="contact-logo" class="bi bi-whatsapp px-3 py-2" style="font-size: 2rem;"></i></a>
-                        </div>
-                        <div class="col">
-                            <a href=""><i id="contact-logo" class="bi bi-twitter px-3 py-2" style="font-size: 2rem;"></i></a>
+                                <a href=""><i id="contact-logo" class="bi bi-instagram px-3 py-2"
+                                        style="font-size: 2rem; "></i> </a>
+                            </div>
+                            <div class="col">
+                                <a href=""><i id="contact-logo" class="bi bi-facebook px-3 py-2"
+                                        style="font-size: 2rem; "></i> </a>
+                            </div>
+                            <div class="col">
+                                <a href=""><i id="contact-logo" class="bi bi-whatsapp px-3 py-2"
+                                        style="font-size: 2rem;"></i></a>
+                            </div>
+                            <div class="col">
+                                <a href=""><i id="contact-logo" class="bi bi-twitter px-3 py-2"
+                                        style="font-size: 2rem;"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

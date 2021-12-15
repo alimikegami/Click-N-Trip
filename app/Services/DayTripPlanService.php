@@ -64,6 +64,12 @@ class DayTripPlanService
         return $res;
     }
 
+    public function getFeatured()
+    {
+        $res = $this->dayTripPlanRepository->getFeatured();
+        return $res;
+    }
+
     public function updateStatus($status, $id)
     {
         $res = $this->dayTripPlanRepository->updateStatus($status, $id);

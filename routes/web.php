@@ -52,9 +52,7 @@ Route::middleware(['auth', 'ensureroles:admin'])->group(function(){
 
 });
 
-Route::get('/', function () {
-    return view('landing-page.landing-page');
-})->name('landingPage');
+Route::get('/', [UserController::class, 'landingPage'])->name('landingPage');
 
 Route::get('/users/login', [UserController::class, 'login'])->name('login');
 Route::post('/users/logout', [UserController::class, 'logout']);

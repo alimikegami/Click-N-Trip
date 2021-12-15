@@ -12,15 +12,26 @@ use App\Http\Requests\UserStoreRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AuthenticationRequest;
 use App\Http\Requests\TourGuideStoreRequest;
+use App\Services\DayTripPlanService;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    protected $userService;
+    protected $userService, $daytripPlanService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, DayTripPlanService $daytripPlanService)
     {
         $this->userService = $userService;
+        $this->daytripPlanService = $daytripPlanService;
+    }
+
+    public function landingPage()
+    {
+        $featured = $this->daytripPlanService->getFeatured();
+        return view('landing-page.landing-page', [
+            "featured" => $featured
+        ]);
+
     }
 
     public function login()
