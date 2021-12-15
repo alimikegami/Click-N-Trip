@@ -43,7 +43,7 @@
             <div class="row">
                 @foreach ($featured as $item)
                         <a href="/day-trips/{{ $item->id }}" class="col mb-3">
-                            <div style="max-width:33rem;max-height:37rem;color:white" class="col card" id="zoom-element">
+                            <div style="max-width:33rem;max-height:40rem;color:white" class="col card" id="zoom-element">
                                 <div 
                                 class="card-img-top"
                                 style="
