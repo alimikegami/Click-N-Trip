@@ -25,12 +25,12 @@ class AdminRepository {
     }
 
     public function getUsers(){
-        $users = DB::select("SELECT * FROM users");
+        $users = DB::select("SELECT * FROM users WHERE role != 'admin'");
         return $users;
     }
 
     public function getTransactionHistory(){
-        $history = DB::select("SELECT * FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id INNER JOIN users u ON u.id = r.user_id WHERE status = 3");
+        $history = DB::select("CALL GetAllTransactionHistory()");
         return $history;
     }
 
