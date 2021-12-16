@@ -111,11 +111,7 @@
                                         <button id='check-button' type="button" class="btn btn-primary mt-3 mb-2"
                                         onclick="checkInput()">Check Availibility
                                     </button>
-<<<<<<< HEAD
-                                    <a href="/users/payment-method" id="check-button" class="btn btn-secondary mt-3 mb-4">
-=======
                                     <a href="/payment-method" id="check-button" class="btn btn-secondary mt-3 mb-4">
->>>>>>> 3174d1ed8628c957e09db16eae869b6e139fa1e4
                                         Our Payment Method
                                     </a>
                                 </div>
