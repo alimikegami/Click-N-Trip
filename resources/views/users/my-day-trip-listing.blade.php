@@ -11,7 +11,7 @@
                 <div class="container-fluid" id="trip-container">
                     <h3 class="mb-3 mt-sm-4 mt-md-4 text-sm-center text-md-start text-lg-start">My Day Trip Listing</h3>
                     @foreach ($userListing as $listing)
-                        <div id="trip-outside-container" class="container border rounded mb-4">
+                        <div id="trip-outside-container" class="container border rounded mb-4 hover-shadow">
                             <div id="trip-inside-container" class="container-fluid">
                                 <div class="row mt-3 mb-3">
                                     <div 
@@ -65,14 +65,14 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
-                                <i type='button' data-dismiss="modal" aria-label="Close"
+                                <i onclick="closeConfirmationModal()" type='button' data-dismiss="modal" aria-label="Close"
                                     class="px-2 xbutton2 bi bi-x close"></i>
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to delete this day trip plan?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="redbutton"
+                                <button onclick="closeConfirmationModal()" type="button" class="btn btn-primary" id="redbutton"
                                     data-dismiss="modal">No</button>
                                 <button onclick="deleteById()" type="button" class="btn btn-primary"
                                     id="greenbutton">Delete</button>
@@ -148,6 +148,9 @@
         function showConfirmationModal($id) {
             $('#confirmationModal').modal('show');
             document.getElementById('greenbutton').dataset.id = $id;
+        }
+        function closeConfirmationModal($id) {
+            $('#confirmationModal').modal('hide');
         }
         
         $(document).ready(function(){
