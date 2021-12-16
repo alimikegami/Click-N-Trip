@@ -20,7 +20,7 @@ class AdminRepository {
     }
 
     public function getPendingPayments(){
-        $payments = DB::select("SELECT * FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id WHERE status = 1");
+        $payments = DB::select("SELECT * FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id WHERE status = 1 AND payment_image_path != ''");
         return $payments;
     }
 

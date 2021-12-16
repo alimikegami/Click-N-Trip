@@ -157,7 +157,7 @@ class DayTripPlanRepository
 
     public function getReservationById($userId, $dtpId)
     {
-        $res = DB::select('SELECT r.* FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id WHERE dtp.user_id = ? AND r.day_trip_plan_id = ?', [$userId, $dtpId]);
+        $res = DB::select('SELECT r.*, u.email FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id INNER JOIN users u ON r.user_id = u.id WHERE dtp.user_id = ? AND r.day_trip_plan_id = ?', [$userId, $dtpId]);
 
         return $res;
     }

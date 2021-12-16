@@ -24,7 +24,7 @@
                     <h3 class="mb-3 mt-sm-4 mt-md-4">Payment Details</h3>
                         <div id="trip-inside-container" class="container">
                             <div id="methods" class="pt-4 d-flex justify-content-center">
-                                    <a href=""><img src="../Gallery/bca 2.png"  alt="" class="img-fluid"></a>
+                                    <a href=""><img src="../Gallery/{{ $type }}"  alt="" class="img-fluid"></a>
                             </div>
                             <div class="d-flex justify-content-center pt-4">
                                 <p class="fw-bold">Account Number</p>

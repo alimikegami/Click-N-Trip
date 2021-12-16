@@ -23,26 +23,26 @@
                 <div class="container-fluid" id="trip-container">
                     <h3 class="mb-3 mt-sm-4 mt-md-4">Payment Method</h3>
                         <div id="trip-inside-container" class="container">
-                            <div id="methods" class="border py-3 px-4">
-                                <a href=""><img src="../Gallery/bca 2.png"  alt="" class="img-fluid"></a>
+                            <a href="/payment-method/bca"><div id="methods" class="border py-3 px-4">
+                                <img src="../Gallery/bca 2.png"  alt="" class="img-fluid">
                                 <span clas>BCA</span>
-                            </div>
-                            <div id="methods" class="border py-3 px-4">
-                                <a href=""><img src="../Gallery/bni 1.png"  alt="" class="img-fluid"></a>
+                            </div></a>
+                            <a href="/payment-method/bni"><div id="methods" class="border py-3 px-4">
+                                <img src="../Gallery/bni 1.png"  alt="" class="img-fluid">
                                 <span clas>BNI</span>
-                            </div>
-                            <div id="methods" class="border py-3 px-4">
-                                <a href=""><img src="../Gallery/mandiri 1.png"  alt="" class="img-fluid"></a>
+                            </div></a>
+                            <a href="/payment-method/mandiri"><div id="methods" class="border py-3 px-4">
+                                <img src="../Gallery/mandiri 1.png"  alt="" class="img-fluid">
                                 <span clas>Mandiri</span>
-                            </div>
-                            <div id="methods" class="border py-3 px-4">
-                                <a href=""><img src="../Gallery/indomaret 1.png"  alt="" class="img-fluid"></a>
+                            </div></a>
+                            <a href="/payment-method/indomaret"><div id="methods" class="border py-3 px-4">
+                                <img src="../Gallery/indomaret 1.png"  alt="" class="img-fluid">
                                 <span clas>Indomaret</span>
-                            </div>
-                            <div id="methods" class="border py-3 px-4">
-                                <a href=""><img src="../Gallery/alfamart 1.png"  alt="" class="img-fluid"></a>
+                            </div></a>
+                            <a href="/payment-method/alfamart"><div id="methods" class="border py-3 px-4">
+                                <img src="../Gallery/alfamart 1.png"  alt="" class="img-fluid">
                                 <span>Alfamart</span>
-                            </div>
+                            </div></a>
                         </div>
                 </div>
             </div>

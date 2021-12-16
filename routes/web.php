@@ -53,8 +53,6 @@ Route::middleware(['auth', 'ensureroles:admin'])->group(function(){
 });
 
 Route::get('/', [UserController::class, 'landingPage'])->name('landingPage');
-Route::get('/users/payment-method', [UserController::class, 'paymentMethod']);
-
 Route::get('/users/login', [UserController::class, 'login'])->name('login');
 Route::post('/users/logout', [UserController::class, 'logout']);
 Route::get('/users/register', [UserController::class, 'register'])->name('register');
@@ -63,6 +61,9 @@ Route::post('/users/login', [UserController::class, 'authenticate'])->name('auth
 Route::get('/users/{user}', [UserController::class, 'show']);
 Route::get('/day-trips/search', [DayTripPlanController::class, 'search'])->name('search');
 Route::get('/day-trips/{day_trip_plan}', [DayTripPlanController::class, 'show']);
+Route::get('/payment-method', [UserController::class, 'showPaymentMethod'])->middleware('auth');
+Route::get('/payment-method/{type}', [UserController::class, 'showPaymentDetails'])->middleware('auth');
+
 
 
 

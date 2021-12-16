@@ -46,7 +46,7 @@ class UserRepository
 
     public function getReservationHistoryByUserId($id)
     {
-        $history = DB::select('SELECT r.*, dtp.title, dtp.destination, dtp.price_per_day, dtpi.image_path FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id LEFT JOIN day_trip_image dtpi ON dtp.id = dtpi.day_trip_plan_id WHERE r.user_id = ? GROUP BY dtp.id', [$id]);
+        $history = DB::select('SELECT r.*, u.email, dtp.title, dtp.destination, dtp.price_per_day, dtpi.image_path FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id LEFT JOIN day_trip_image dtpi ON dtp.id = dtpi.day_trip_plan_id INNER JOIN users u ON u.id = r.user_id WHERE r.user_id = ? GROUP BY dtp.id', [$id]);
         return $history;
     }
 
