@@ -47,6 +47,7 @@ Route::middleware(['auth', 'ensureroles:admin'])->group(function(){
     Route::patch('/admins/reservation/{id}', [AdminController::class, 'setPaymentApproval']);
     Route::get('/admins/dashboard/payment-details', [AdminController::class, 'showPaymentDetails']);
     Route::get('/admins/dashboard/transaction-history', [AdminController::class, 'showTransactionHistory']);
+    Route::get('/admins/dashboard/transaction-history/search', [AdminController::class, 'searchTransactionHistory']);
     Route::get('/admins/dashboard/users', [AdminController::class, 'showUsers']);
     Route::get('/admins/users/search', [AdminController::class, 'searchUsers'])->name('search');
 

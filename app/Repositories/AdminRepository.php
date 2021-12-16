@@ -30,7 +30,7 @@ class AdminRepository {
     }
 
     public function getTransactionHistory(){
-        $history = DB::select("SELECT * FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id WHERE status = 3");
+        $history = DB::select("SELECT * FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id INNER JOIN users u ON u.id = r.user_id WHERE status = 3");
         return $history;
     }
 
@@ -52,6 +52,12 @@ class AdminRepository {
     public function getUsersByKeyword($keyword){
         $users = DB::select("SELECT * FROM users WHERE name LIKE ? OR nik LIKE ? OR email LIKE ?", ["%" . $keyword . "%", "%" . $keyword . "%", "%" . $keyword . "%"]);
         return $users;
+    }
+
+    public function getTransactionHistoryByKeyword($keyword)
+    {
+        $transaction = DB::select("SELECT * FROM reservation r INNER JOIN day_trip_plan dtp ON r.day_trip_plan_id = dtp.id INNER JOIN users u ON u.id = r.user_id WHERE status = 3 AND u.email LIKE ? OR dtp.title LIKE ?", ["%" . $keyword . "%", "%" . $keyword . "%"]);
+        return $transaction;
     }
 }
 
