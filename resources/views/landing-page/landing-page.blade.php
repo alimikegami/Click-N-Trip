@@ -14,6 +14,82 @@
             </div>
         </form>
     </div>
+    <!-- Top Destination Section -->
+    <div class="container-fluid">
+        <h2 class='text-center mb-5 mt-5'>Top Destination Nowadays</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <a href="/day-trips/search?search=surabaya" class="col mb-3">
+                    <div class="card" id="zoom-element">
+                        <img src=" Gallery/Surabaya.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Surabaya</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="col mb-3" href="/day-trips/search?search=bali">
+                    <div class="card" id="zoom-element">
+                        <img src="Gallery/Uluwatu.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Bali</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="col mb-3" href="/day-trips/search?search=nusa%20penida">
+                    <div class="card" id="zoom-element">
+                        <img src="Gallery/baligirls.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Nusa Penida</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Section -->
+    <div class="container-fluid">
+        <h2 class='text-center mb-5 mt-5'>Hot Deals</h2>
+        <div class="container-fluid">
+            <div class="row">
+                @foreach ($featured as $item)
+                    <a href="/day-trips/{{ $item->id }}" class="col mb-3">
+                        <div style="max-width:33rem;max-height:40rem;color:white" class="col card" id="zoom-element">
+                            <div class="card-img-top" style="
+                                            border:none;
+                                            height:20rem;
+                                            background-image: url({{ asset('storage/day-trip/' . $item->image_path) }});
+                                            background-size:cover;
+                                            background-position:center;
+                                        ">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ $item->title }}</h5>
+                                <p class="card-text text-center">IDR{{ $item->price_per_day }}</p>
+                                <div class="d-flex justify-content-center">
+                                    @if ($item->star_count)
+                                        @for ($i = 0; $i < $item->star_count; $i++)
+                                            <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
+
+                                        @endfor
+                                    @else
+                                        <p>No ratings yet</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
     <!-- Benefits Section -->
     <div class="benefits-section container">
         <div class="row">
@@ -36,84 +112,6 @@
             </div>
         </div>
     </div>
-    <!-- Ad Section -->
-    <div class="container-fluid">
-        <h2 class='text-left mb-5 mt-5'>Hot Deals</h2>
-        <div class="container-fluid">
-            <div class="row">
-                @foreach ($featured as $item)
-                        <a href="/day-trips/{{ $item->id }}" class="col mb-3">
-                            <div style="max-width:33rem;max-height:40rem;color:white" class="col card" id="zoom-element">
-                                <div 
-                                class="card-img-top"
-                                style="
-                                    border:none;
-                                    height:20rem;
-                                    background-image: url({{ asset('storage/day-trip/' . $item->image_path) }});
-                                    background-size:cover;
-                                    background-position:center;
-                                ">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">{{ $item->title }}</h5>
-                                    <p class="card-text text-center">IDR{{ $item->price_per_day }}</p>
-                                    <div class="d-flex justify-content-center">
-                                        @if ($item->star_count)
-                                            @for ($i = 0; $i < $item->star_count; $i++)
-                                                <i class="bi bi-star-fill" style="font-size: 2rem; color:gold;"></i>
-    
-                                            @endfor
-                                        @else
-                                            <p>No ratings yet</p>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                @endforeach
-            </div>
-        </div>
-    </div>
-
-    <!-- Top Destination Section -->
-    <div class="container-fluid">
-        <h2 class='text-left mb-5 mt-5'>Top Destination Nowadays</h2>
-        <div class="container-fluid">
-            <div class="row">
-                    <a href="/day-trips/search?search=surabaya" class="col mb-3">
-                        <div class="card" id="zoom-element">
-                            <img src=" Gallery/Surabaya.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Surabaya</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="col mb-3" href="/day-trips/search?search=bali">
-                        <div class="card" id="zoom-element">
-                            <img src="Gallery/Uluwatu.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Bali</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </a>                
-                    <a class="col mb-3" href="/day-trips/search?search=nusa%20penida">
-                        <div class="card" id="zoom-element">
-                            <img src="Gallery/baligirls.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Nusa Penida</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </a>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer Section -->
     <div class="container-fluid mt-5" id="landing-footer">
         <div class="container d-flex justify-content-center" id="footer-inner">

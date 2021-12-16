@@ -30,6 +30,12 @@
                                         <p>
                                             {{ $item->title }}
                                             <br> <span style='font-size: 14px;'>{{ $item->destination }}</span>
+                                            <br> <span style='font-size: 14px;'>{{ $item->reservation_date }}</span>
+                                            <br> <span style='font-size: 14px;'>{{ $item->person }} Person</span>
+
+                                            @if ($item->status == 1)
+                                            <br> <span style='font-size: 14px;'>Rp{{ $item->price_per_day * $item->person }},00</span>
+                                            @endif
                                         </p>
                                         <div id="list-buttons" class="pt-3">
                                             <div>
@@ -51,6 +57,7 @@
                                                     @endif
                                                 </span>
                                             </div>
+                                            
                                             @if ($item->status == 1)
                                                 <button id="paymentbutton" class="btn btn-secondary mt-3"
                                                     onclick="showFileUploadModal({{ $item->id }})">Upload Payment
@@ -93,17 +100,6 @@
                                     onclick="uploadPaymentProof()">Submit</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="container d-flex justify-content-center mt-4 mb-5">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button id='arrow-button' type="button" class="btn btn-primary"><i class="bi bi-arrow-left"
-                                style="font-size: 1rem;"></i></button>
-                        <button id="num-button" type="button" class="btn btn-secondary">1</button>
-                        <button id="num-button" type="button" class="btn btn-secondary">2</button>
-                        <button id="num-button" type="button" class="btn btn-secondary">3</button>
-                        <button id='arrow-button' type="button" class="btn btn-primary"><i class="bi bi-arrow-right"
-                                style="font-size: 1rem;"></i></button>
                     </div>
                 </div>
             </div>

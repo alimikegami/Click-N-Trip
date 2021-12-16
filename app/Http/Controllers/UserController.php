@@ -57,6 +57,28 @@ class UserController extends Controller
         ]);
     }
 
+    public function showPaymentMethod()
+    {
+        return view('users.payment-method');
+    }
+
+    public function showPaymentDetails($type){
+        if ($type == "bca") {
+            $type = "bca 2.png";
+        } else if ($type == "bni") {
+            $type = "bni 1.png";
+        } else if ($type == "mandiri") {
+            $type = "mandiri 1.png";
+        } else if ($type == "indomaret"){
+            $type = "indomaret 1.png";
+        } else {
+            $type = "alfamart 1.png";
+        }
+        return view('users.payment-details', [
+            "type"=>$type
+        ]);
+    }
+
     public function show(User $user)
     {
         $userListing = $this->userService->getAllUserDataById($user->id);

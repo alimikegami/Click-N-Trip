@@ -34,10 +34,6 @@
                                             id='star-text'>{{ $dayTripPlan[0]->star_count ? $dayTripPlan[0]->star_count : 0 }}
                                             out of 5</span>
                                     </div>
-                                    <div id="list-buttons" class="pt-3">
-                                        <a href=""><i class="bi bi-pencil-square border me-2 px-2"
-                                                style="font-size: 1.7rem; color:black;"></i></a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +54,7 @@
                                 @foreach ($reservation as $item)
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>alimikegami1@gmail.com</td>
+                                        <td>{{ $item->email }}</td>
                                         <td>{{ $item->person }}</td>
                                         <td>{{ $item->reservation_date }}</td>
                                         <td>
@@ -89,17 +85,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
-                    <div class="container d-flex justify-content-center mt-5 mb-4">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button id='arrow-button' type="button" class="btn btn-primary"><i class="bi bi-arrow-left"
-                                    style="font-size: 1rem;"></i></button>
-                            <button id="num-button" type="button" class="btn btn-secondary">1</button>
-                            <button id="num-button" type="button" class="btn btn-secondary">2</button>
-                            <button id="num-button" type="button" class="btn btn-secondary">3</button>
-                            <button id='arrow-button' type="button" class="btn btn-primary"><i class="bi bi-arrow-right"
-                                    style="font-size: 1rem;"></i></button>
-                        </div>
                     </div>
                 </div>
 
