@@ -26,7 +26,7 @@
         <div class="container" id='section-container'>
             @foreach ($search_result as $item)
                 <a href="/day-trips/{{ $item->id }}">
-                    <div class="container-fluid border rounded mb-3">
+                    <div class="container-fluid border rounded mb-3 hover-shadow">
                         <div class="container">
                             <div class="row mt-2 mb-2">
                                 <div 
