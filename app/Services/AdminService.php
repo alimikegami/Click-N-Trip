@@ -57,6 +57,11 @@ class AdminService {
     public function getUsersByKeyword($keyword){
         return $this->adminRepository->getUsersByKeyword($keyword);
     }
+
+    public function getTransactionHistoryByKeyword($keyword)
+    {
+        return $this->adminRepository->getTransactionHistoryByKeyword($keyword);
+    }
 }
 
 ?>

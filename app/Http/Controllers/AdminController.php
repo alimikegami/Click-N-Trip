@@ -79,4 +79,12 @@ class AdminController extends Controller
             'users'=>$users
         ]);
     }
+
+    public function searchTransactionHistory(){
+        $history = $this->adminService->getTransactionHistoryByKeyword(request('search'));
+        return view('admin.admin-approved-payment', [
+            "history" => $history
+        ]);
+
+    }
 }
