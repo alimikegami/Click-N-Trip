@@ -114,6 +114,10 @@ class UserController extends Controller
     {
         return view('users.create-day-trip-plan');
     }
+    public function paymentMethod()
+    {
+        return view('users.payment-method');
+    }
 
     public function store(UserStoreRequest $request)
     {

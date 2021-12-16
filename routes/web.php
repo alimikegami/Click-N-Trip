@@ -66,3 +66,6 @@ Route::get('/payment-method', [UserController::class, 'showPaymentMethod'])->mid
 Route::get('/payment-method/{type}', [UserController::class, 'showPaymentDetails'])->middleware('auth');
 
 
+
+
+

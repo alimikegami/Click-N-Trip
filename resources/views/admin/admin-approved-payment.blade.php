@@ -41,12 +41,36 @@
                             <td>{{ $item->title }}</td>
                             <td>IDR{{ $item->price_per_day *  $item->person}}</td>
                             <td>
-                                <button class="btn btn-primary">View</button>
+                                <button type="button" onclick="showImages('{{ $item->payment_image_path }}')" class="btn btn-primary">View</button>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Payment Proof</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="" alt="application-img" id="applicationImg">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        function showImages(imgPath) {
+            let path = "http://127.0.0.1:8000/storage/payment-proof/" + imgPath;
+            console.log(path);
+            document.getElementById("applicationImg").src = path;
+            $('#paymentModal').modal('show');
+        }
+    </script>
 @endsection
