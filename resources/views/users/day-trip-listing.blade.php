@@ -12,13 +12,21 @@
                     <h3 class="mb-3 mt-sm-4 mt-md-4">{{ $user->name }}'s Day Trip Listing</h3>
                     @foreach ($userListing as $listing)
                         <a href="/day-trips/{{ $listing->id }}">
-                            <div id="trip-outside-container" class="container border rounded">
+                            <div id="trip-outside-container" class="container border round mb-3 hover-shadow">
                                 <div id="trip-inside-container" class="container">
                                     <div class="row mt-3 mb-3">
-                                        <div id="image-holder" class="col-lg-4 col-md-4">
-                                            <img id="image" class="img-fluid rounded"
-                                                src="{{ asset('storage/day-trip/' . $listing->image_path) }}" alt="">
-                                        </div>
+                                            <div 
+                                                class="col-lg-5"
+                                                style="
+                                                    height:9rem;
+                                                    width:14rem;
+                                                    background-image:url({{ asset('storage/day-trip/' . $listing->image_path) }});
+                                                    background-position:center;
+                                                    background-size:cover;
+                                                ">
+                                            </div>
+                                            {{-- <img id="image" class="img-fluid rounded"
+                                                src="{{ asset('storage/day-trip/' . $listing->image_path) }}" alt=""> --}}
                                         <div id="plan-desc" class="col">
                                             <p>
                                                 {{ $listing->title }}

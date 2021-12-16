@@ -18,8 +18,8 @@
                             @endfor
                         @endif
                     </div>
-                    <a href="/users/{{ $dayTripPlan->user->id }}">{{ $dayTripPlan->user->name }}</a>
-                    <div class="row">
+                    <a class="user-name" href="/users/{{ $dayTripPlan->user->id }}">{{ $dayTripPlan->user->name }}</a>
+                    <div class="row mt-2">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
@@ -123,14 +123,14 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
-                                            <i type='button' data-dismiss="modal" aria-label="Close"
+                                            <i onclick="closeConfirmationModal()" type='button' data-dismiss="modal" aria-label="Close"
                                                 class="px-2 bi bi-x xbutton2"></i>
                                         </div>
                                         <div class="modal-body">
                                             Do you want to book this trip?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" id="redbutton"
+                                            <button onclick="closeConfirmationModal()" type="button" class="btn btn-primary" id="redbutton"
                                                 data-dismiss="modal">No</button>
                                             <button type="button" class="btn btn-primary" id="greenbutton"
                                                 onclick="event.preventDefault(); return book('{{ $dayTripPlan->id }}');">Book
@@ -245,8 +245,11 @@
             if (person != "" && date != "") {
                 $('#confirmationModal').modal('show');
             } else {
-                alert('sdfas');
+                alert('Please fill in the inputs!');
             }
+        }
+        function closeConfirmationModal($id) {
+            $('#confirmationModal').modal('hide');
         }
 
         function book(id) {
