@@ -10,9 +10,6 @@
           <a class="nav-link active" href="{{ route('list-day-trips') }}">List your Trip</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">About</a>
-        </li>
-        <li class="nav-item">
           <a type="button" href='{{ route('login') }}' id="navbar-button" class='btn btn-secondary'>Log In</a>
         </li>
         <li class="nav-item">

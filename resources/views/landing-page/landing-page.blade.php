@@ -54,8 +54,8 @@
     </div>
 
     <!-- Ad Section -->
-    <div class="container-fluid">
-        <h2 class='text-center mb-5 mt-5'>Hot Deals</h2>
+    <div id="hot-day-trips" class="container-fluid">
+        <h2  class='text-center mb-5 mt-5'>Hot Deals</h2>
         <div class="container-fluid">
             <div class="row">
                 @foreach ($featured as $item)
@@ -124,7 +124,7 @@
                 </div>
                 <div class="col pt-5 pb-5">
                     <h3 class="pb-2 px-5">Get Your Day Trip Now</h3>
-                    <p class="px-5">Click n Trip provides <a id='footer-links' href="">day trips</a> from our
+                    <p class="px-5">Click n Trip provides <a id='footer-links' href="#hot-day-trips">day trips</a> from our
                         travel guides/agencies for customer needs!</p>
 
                 </div>
