@@ -43,6 +43,15 @@ p{
 #redbutton:hover{
     background-color: white !important;
 }
+.redbutton{
+    background-color: #ed1c24;
+    border-color: #ed1c24;
+    color: white;
+}
+.redbutton:hover{
+    background-color: white;
+    color: black;
+}
 .redbutton2{
     background-color: #ed1c24;
     border-color: #ed1c24;
@@ -51,6 +60,15 @@ p{
 .redbutton2:hover{
     background-color:#fd0e35;
     color: white;
+}
+.greenbutton{
+    background-color: #228b22;
+    border-color: #228b22;
+    color: white;
+}
+.greenbutton:hover{
+    background-color: white;
+    color: black;
 }
 #greenbutton{
     background-color: #228b22 !important;

@@ -10,7 +10,6 @@
             <table class="table admin-table">
                 <thead>
                     <tr class="text-center">
-                        <th scope="col">#</th>
                         <th scope="col">Date</th>
                         <th scope="col">Email</th>
                         <th scope="col">Ordered Plan</th>
@@ -24,7 +23,6 @@
 
                     @foreach ($payments as $item)
                         <tr>
-                            <th scope="row">1</th>
                             <td>{{ $item->reservation_date }}</td>
                             <td>hans@gmail.com</td>
                             <td>{{ $item->title }}</td>
@@ -55,7 +53,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="application-img" id="applicationImg">
+                    <img class="img-fluid" src="" alt="application-img" id="applicationImg">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -76,7 +74,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="approveButton"
+                    <button type="button" class="btn greenbutton" id="approveButton"
                         onclick="fetchApproval(1)">Approve</button>
                 </div>
             </div>
@@ -95,7 +93,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="rejectButton"
+                    <button type="button" class="btn redbutton" id="rejectButton"
                         onclick="fetchApproval(0)">Reject</button>
                 </div>
             </div>

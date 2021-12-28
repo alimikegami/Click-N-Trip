@@ -10,7 +10,6 @@
             <table class="table admin-table">
                 <thead>
                     <tr class="text-center">
-                        <th scope="col">#</th>
                         <th scope="col">Date</th>
                         <th scope="col">Email</th>
                         <th scope="col">Ordered Plan</th>
@@ -35,7 +34,6 @@
                     </div>
                     @foreach ($history as $item)
                         <tr>
-                            <th scope="row">1</th>
                             <td>{{ $item->reservation_date }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->title }}</td>
@@ -55,7 +53,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <img src="" alt="application-img" id="applicationImg">
+                            <img class="img-fluid" src="" alt="application-img" id="applicationImg">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

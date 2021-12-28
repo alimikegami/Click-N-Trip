@@ -57,7 +57,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="application-img" id="applicationImg">
+                    <img class="img-fluid" src="" alt="application-img" id="applicationImg">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="approveButton"
+                    <button type="button" class="btn greenbutton" id="approveButton"
                         onclick="fetchApproval(1)">Approve</button>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="rejectButton"
+                    <button type="button" class="btn redbutton" id="rejectButton"
                         onclick="fetchApproval(2)">Reject</button>
                 </div>
             </div>
