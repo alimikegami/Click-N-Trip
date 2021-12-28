@@ -277,11 +277,9 @@
                     if (data.status === "reservation has been made") {
                         $('#confirmationModal').modal('hide');
                         $('#successModal').modal('show');
-                    } else if (data.status === "not available") {
-
+                    } else if (data.status === "invalid") {
                         $('#confirmationModal').modal('hide');
                         $('#unavailableModal').modal('show');
-
                     }
                 })
         }
