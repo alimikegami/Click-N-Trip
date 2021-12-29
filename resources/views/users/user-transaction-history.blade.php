@@ -112,7 +112,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5>Review</h5>
-                        <i type='button' data-dismiss="modal" aria-label="Close" class="px-2 bi bi-x xbutton2"></i>
+                        <i onclick="closeReviewModal()" type='button' data-dismiss="modal" aria-label="Close" class="px-2 bi bi-x xbutton2"></i>
                     </div>
                     <div class="modal-body">
                         <div class="d-flex align-items-center justify-content-center mb-2">
@@ -247,6 +247,9 @@
             review = $('textarea#description').val();;
             $('#reviewModal').modal('hide');
             $('#approvalModal').modal('show');
+        }
+        function closeReviewModal($id) {
+            $('#reviewModal').modal('hide');
         }
 
         function fetchReview() {
